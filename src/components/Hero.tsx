@@ -22,21 +22,21 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
       <HeroBackground />
       <div className="container mx-auto relative z-10">
-        {/* Name at the top, centered */}
-        <div className="text-center mb-12 animate-fade-in">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-foreground">
-            Danilo Messinese
-          </h1>
-        </div>
-        
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
           <div className="space-y-6 animate-fade-in">
+            {/* Academic Signature Name */}
+            <div className="mb-8">
+              <p className="font-signature text-2xl md:text-3xl font-light text-foreground/90 tracking-wide">
+                Danilo Messinese
+              </p>
+            </div>
+            
             <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground leading-tight">
+              <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground leading-tight">
                 AI, Entrepreneurship
                 <span className="block text-primary mt-2">& Innovation</span>
-              </h2>
+              </h1>
               <p className="text-xl text-muted-foreground max-w-xl">
                 Bridging artificial intelligence, strategic decision-making, and entrepreneurial
                 innovation through rigorous academic research.

@@ -66,6 +66,7 @@ export default {
       fontFamily: {
         serif: ['Playfair Display', 'Georgia', 'serif'],
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        signature: ['Cormorant Garamond', 'Playfair Display', 'serif'],
       },
       keyframes: {
         "accordion-down": {
