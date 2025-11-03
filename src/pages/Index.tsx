@@ -3,6 +3,8 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import ResearchAgenda from "@/components/ResearchAgenda";
+import Practitioners from "@/components/Practitioners";
+import ResearchMap from "@/components/ResearchMap";
 import Publications from "@/components/Publications";
 import Teaching from "@/components/Teaching";
 import Contact from "@/components/Contact";
@@ -26,6 +28,8 @@ const Index = () => {
         <Hero />
         <About />
         <ResearchAgenda onCategoryClick={handleCategoryClick} />
+        <Practitioners />
+        <ResearchMap onCategoryClick={handleCategoryClick} />
         <Publications activeFilter={activeFilter} onClearFilter={handleClearFilter} />
         <Teaching />
         <Contact />

@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, GraduationCap, Microscope, Gamepad2 } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap, Microscope, Gamepad2, Users, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import professorPortrait from "@/assets/professor-portrait.jpg";
@@ -35,22 +35,31 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button
-                size="lg"
-                onClick={() => scrollToSection("research")}
-                className="group"
-              >
-                Explore Research
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-smooth" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => scrollToSection("contact")}
-              >
-                Get in Touch
-              </Button>
+            <div className="space-y-4 pt-4">
+              <p className="text-sm font-medium text-muted-foreground">
+                Navigate to:
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button
+                  size="lg"
+                  onClick={() => scrollToSection("research")}
+                  className="group shadow-elegant hover:shadow-glow"
+                >
+                  <Users className="mr-2 h-5 w-5" />
+                  For Researchers
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-smooth" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => scrollToSection("practitioners")}
+                  className="group"
+                >
+                  <Briefcase className="mr-2 h-5 w-5" />
+                  For Practitioners
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-smooth" />
+                </Button>
+              </div>
             </div>
 
             {/* Quick Links */}
