@@ -25,8 +25,8 @@ const Hero = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
           <div className="space-y-6 animate-fade-in">
-            <div className="space-y-4">
-              <p className="text-lg font-medium text-primary mb-2">Danilo Messinese</p>
+            <div className="space-y-4 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground">Danilo Messinese</h2>
               <h1 className="text-5xl md:text-6xl font-serif font-bold text-foreground leading-tight">
                 AI, Entrepreneurship
                 <span className="block text-primary mt-2">& Innovation</span>
