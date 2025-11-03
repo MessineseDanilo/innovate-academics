@@ -114,27 +114,32 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
                       
                       {/* Connection indicators */}
                       {area.connections && area.connections.length > 0 && (
-                        <div className="flex items-center gap-2 pt-2">
-                          <Link2 size={14} className="text-muted-foreground" />
-                          <div className="flex gap-1">
-                            {area.connections.map((conn) => (
+                        <div className="flex items-center gap-3 pt-2 flex-wrap justify-center">
+                          {area.connections.map((conn) => {
+                            const ConnectedIcon = researchAreas.find(a => a.id === conn.area)?.icon;
+                            return (
                               <Tooltip key={conn.area}>
                                 <TooltipTrigger asChild>
-                                  <Badge 
-                                    variant="outline" 
-                                    className="text-xs px-2 py-0 cursor-help hover:bg-secondary"
-                                  >
-                                    {conn.count}
-                                  </Badge>
+                                  <div className="flex items-center gap-1 cursor-help hover:opacity-80 transition-smooth">
+                                    {ConnectedIcon && (
+                                      <ConnectedIcon size={14} className="text-muted-foreground" />
+                                    )}
+                                    <Badge 
+                                      variant="outline" 
+                                      className="text-xs px-2 py-0"
+                                    >
+                                      {conn.count}
+                                    </Badge>
+                                  </div>
                                 </TooltipTrigger>
-                                <TooltipContent>
+                                <TooltipContent side="top">
                                   <p className="text-xs">
                                     {conn.count} paper{conn.count > 1 ? 's' : ''} with {conn.label}
                                   </p>
                                 </TooltipContent>
                               </Tooltip>
-                            ))}
-                          </div>
+                            );
+                          })}
                         </div>
                       )}
                       
