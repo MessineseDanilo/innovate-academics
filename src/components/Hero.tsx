@@ -22,21 +22,21 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
       <HeroBackground />
       <div className="container mx-auto relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* Floating Topics - Centered at top */}
+        <div className="absolute top-8 left-0 right-0 flex justify-center animate-float">
+          <div className="flex items-center gap-3 text-lg md:text-xl font-medium">
+            <span className="text-primary">AI</span>
+            <span className="text-muted-foreground">×</span>
+            <span className="text-accent">Entrepreneurship</span>
+            <span className="text-muted-foreground">×</span>
+            <span className="text-foreground">Innovation</span>
+          </div>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-12 items-center mt-16">
           {/* Left Column - Text Content */}
           <div className="space-y-6 animate-fade-in">
-            <div className="space-y-6">
-              {/* Topics - Fancy and centered */}
-              <div className="text-center space-y-2">
-                <div className="flex items-center justify-center gap-3 text-lg md:text-xl font-medium">
-                  <span className="text-primary">AI</span>
-                  <span className="text-muted-foreground">×</span>
-                  <span className="text-accent">Entrepreneurship</span>
-                  <span className="text-muted-foreground">×</span>
-                  <span className="text-secondary-foreground">Innovation</span>
-                </div>
-              </div>
-              
+            <div className="space-y-4">
               {/* Name - Main title */}
               <h1 className="text-5xl md:text-6xl font-serif font-bold text-foreground leading-tight">
                 Danilo Messinese
