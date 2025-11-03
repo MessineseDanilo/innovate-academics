@@ -44,24 +44,24 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
   }, [activeFilter]);
   const publications: Publication[] = [
     {
-      title: "AI-Augmented Decision-Making in Strategic Management",
-      authors: "Smith, J. & Johnson, A.",
-      journal: "Strategic Management Journal",
-      year: "2024",
+      title: "Design- and Theory-Based Approaches to Strategic Decisions",
+      authors: "Gambardella, A., Messinese, D.",
+      journal: "Organization Science",
+      year: "2025",
       image: paper1,
-      categories: ["ai", "decisions"],
-      ssrnLink: "https://ssrn.com/abstract=example1",
-      journalLink: "https://onlinelibrary.wiley.com/journal/10970266",
+      categories: ["decisions"],
+      journalLink: "https://doi.org/10.1287/orsc.2023.18245",
+      status: "Best Paper, AOM 2022, TIM Division",
     },
     {
-      title: "Machine Learning and Entrepreneurial Decision Quality",
-      authors: "Smith, J., Williams, R. & Brown, M.",
-      journal: "Organization Science",
-      year: "2023",
+      title: "A Scientific Approach to Entrepreneurial Decision Making: Large Scale Replication and Extension",
+      authors: "Camuffo, A., Gambardella, A., Messinese, D., Novelli, E., Paolucci, E., & Spina, C.",
+      journal: "Strategic Management Journal",
+      year: "2024",
       image: paper2,
-      categories: ["ai", "entrepreneurship"],
-      ssrnLink: "https://ssrn.com/abstract=example2",
-      journalLink: "https://pubsonline.informs.org/journal/orsc",
+      categories: ["entrepreneurship", "decisions"],
+      journalLink: "https://doi.org/10.1002/smj.3580",
+      status: "Best Experimental Paper, 2024 IGL Research Prize",
     },
   ];
 
