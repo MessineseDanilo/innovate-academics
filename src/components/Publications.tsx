@@ -281,15 +281,21 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
           )}
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="publications">
-                Peer-Reviewed Publications {activeFilter && `(${filteredPublications.length})`}
+            <TabsList className="grid w-full grid-cols-3 mb-8 h-auto">
+              <TabsTrigger value="publications" className="text-xs sm:text-sm px-2 py-2 sm:px-3 sm:py-2.5">
+                <span className="hidden sm:inline">Peer-Reviewed Publications</span>
+                <span className="sm:hidden">Peer-Rev.</span>
+                {activeFilter && <span className="ml-1">({filteredPublications.length})</span>}
               </TabsTrigger>
-              <TabsTrigger value="working">
-                Working Papers {activeFilter && `(${filteredWorking.length})`}
+              <TabsTrigger value="working" className="text-xs sm:text-sm px-2 py-2 sm:px-3 sm:py-2.5">
+                <span className="hidden sm:inline">Working Papers</span>
+                <span className="sm:hidden">Working</span>
+                {activeFilter && <span className="ml-1">({filteredWorking.length})</span>}
               </TabsTrigger>
-              <TabsTrigger value="new">
-                Work in Progress {activeFilter && `(${filteredNew.length})`}
+              <TabsTrigger value="new" className="text-xs sm:text-sm px-2 py-2 sm:px-3 sm:py-2.5">
+                <span className="hidden sm:inline">Work in Progress</span>
+                <span className="sm:hidden">In Progress</span>
+                {activeFilter && <span className="ml-1">({filteredNew.length})</span>}
               </TabsTrigger>
             </TabsList>
 
