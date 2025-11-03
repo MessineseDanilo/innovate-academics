@@ -2,110 +2,10 @@ import { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-// Anomaly Cubes - Normal cubes that suddenly transform and light up
-function AnomalyCubes() {
-  const groupRef = useRef<THREE.Group>(null);
-  
-  const [cubes] = useState(() => 
-    Array.from({ length: 8 }, () => ({
-      position: [
-        (Math.random() - 0.5) * 14,
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 8
-      ] as [number, number, number],
-      isAnomalous: false,
-      anomalyStartTime: 0,
-      nextAnomalyCheck: Math.random() * 5,
-    }))
-  );
-
-  const normalGeometry = useMemo(() => new THREE.BoxGeometry(0.5, 0.5, 0.5), []);
-  const anomalyGeometries = useMemo(() => [
-    new THREE.TetrahedronGeometry(0.6),
-    new THREE.OctahedronGeometry(0.6),
-    new THREE.IcosahedronGeometry(0.6),
-    new THREE.DodecahedronGeometry(0.6),
-    new THREE.TorusGeometry(0.4, 0.15, 8, 12),
-    new THREE.TorusKnotGeometry(0.4, 0.12, 32, 8),
-  ], []);
-
-  useFrame((state) => {
-    const time = state.clock.getElapsedTime();
-    
-    if (groupRef.current) {
-      groupRef.current.children.forEach((mesh, i) => {
-        const cube = cubes[i];
-        const m = mesh as THREE.Mesh;
-        const mat = m.material as THREE.MeshStandardMaterial;
-        
-        // Check if it's time to trigger or end an anomaly
-        if (!cube.isAnomalous && time > cube.nextAnomalyCheck) {
-          // Random chance to become anomalous
-          if (Math.random() > 0.85) {
-            cube.isAnomalous = true;
-            cube.anomalyStartTime = time;
-            // Transform into random anomaly shape
-            const randomShape = anomalyGeometries[Math.floor(Math.random() * anomalyGeometries.length)];
-            m.geometry = randomShape;
-          }
-          cube.nextAnomalyCheck = time + 2 + Math.random() * 3;
-        }
-        
-        // If anomalous, check if anomaly should end
-        if (cube.isAnomalous) {
-          const anomalyDuration = time - cube.anomalyStartTime;
-          
-          if (anomalyDuration > 1 + Math.random() * 2) {
-            // End anomaly - return to cube
-            cube.isAnomalous = false;
-            m.geometry = normalGeometry;
-          } else {
-            // During anomaly: bright illumination
-            const intensity = 1.5 + Math.sin(time * 8) * 0.5;
-            mat.emissive.setHex(0x06b6d4);
-            mat.emissiveIntensity = intensity;
-            mat.opacity = 0.9;
-            
-            // Erratic rotation during anomaly
-            m.rotation.x += 0.05;
-            m.rotation.y += 0.08;
-            m.rotation.z += 0.03;
-          }
-        } else {
-          // Normal state: dim and gentle rotation
-          mat.emissive.setHex(0x000000);
-          mat.emissiveIntensity = 0;
-          mat.opacity = 0.2;
-          
-          m.rotation.x += 0.01;
-          m.rotation.y += 0.01;
-        }
-      });
-    }
-  });
-
-  return (
-    <group ref={groupRef}>
-      {cubes.map((cube, i) => (
-        <mesh key={i} position={cube.position} geometry={normalGeometry}>
-          <meshStandardMaterial
-            color="#06b6d4"
-            transparent
-            opacity={0.2}
-            emissive="#000000"
-            emissiveIntensity={0}
-            metalness={0.8}
-            roughness={0.2}
-          />
-        </mesh>
-      ))}
-    </group>
-  );
-}
-
 function CognitiveNetwork() {
   const pointsRef = useRef<THREE.Points>(null);
   const linesRef = useRef<THREE.Group>(null);
+  const anomalyNodesRef = useRef<THREE.Group>(null);
 
   // Generate fewer points for minimalist approach
   const points = useMemo(() => {
@@ -121,6 +21,24 @@ function CognitiveNetwork() {
     }
     return new Float32Array(positions);
   }, []);
+
+  // Track which nodes are currently anomalous
+  const [anomalousNodes] = useState(() => 
+    Array.from({ length: 25 }, () => ({
+      isAnomalous: false,
+      anomalyStartTime: 0,
+      nextAnomalyCheck: Math.random() * 5,
+      anomalyShape: 0,
+    }))
+  );
+
+  const anomalyGeometries = useMemo(() => [
+    new THREE.BoxGeometry(0.4, 0.4, 0.4),
+    new THREE.TetrahedronGeometry(0.5),
+    new THREE.OctahedronGeometry(0.5),
+    new THREE.IcosahedronGeometry(0.5),
+    new THREE.TorusGeometry(0.3, 0.12, 8, 12),
+  ], []);
 
   // Track connection states for intermittent connections
   const connectionStates = useMemo(() => {
@@ -162,6 +80,59 @@ function CognitiveNetwork() {
     if (pointsRef.current) {
       pointsRef.current.rotation.y = time * 0.015;
       pointsRef.current.rotation.x = Math.sin(time * 0.05) * 0.08;
+      
+      // Check each node for anomaly triggers
+      const positions = pointsRef.current.geometry.attributes.position.array as Float32Array;
+      
+      for (let i = 0; i < anomalousNodes.length; i++) {
+        const node = anomalousNodes[i];
+        
+        // Check if it's time to trigger or end an anomaly
+        if (!node.isAnomalous && time > node.nextAnomalyCheck) {
+          if (Math.random() > 0.92) { // Random chance
+            node.isAnomalous = true;
+            node.anomalyStartTime = time;
+            node.anomalyShape = Math.floor(Math.random() * anomalyGeometries.length);
+          }
+          node.nextAnomalyCheck = time + 2 + Math.random() * 3;
+        }
+        
+        if (node.isAnomalous) {
+          const anomalyDuration = time - node.anomalyStartTime;
+          if (anomalyDuration > 1.5 + Math.random() * 1.5) {
+            node.isAnomalous = false;
+          }
+        }
+      }
+    }
+
+    // Handle anomaly mesh transformations
+    if (anomalyNodesRef.current) {
+      anomalyNodesRef.current.rotation.y = time * 0.015;
+      anomalyNodesRef.current.rotation.x = Math.sin(time * 0.05) * 0.08;
+      
+      anomalyNodesRef.current.children.forEach((mesh, i) => {
+        const node = anomalousNodes[i];
+        const m = mesh as THREE.Mesh;
+        const mat = m.material as THREE.MeshStandardMaterial;
+        
+        if (node.isAnomalous) {
+          m.visible = true;
+          m.geometry = anomalyGeometries[node.anomalyShape];
+          
+          // Bright illumination like a light bulb
+          const intensity = 1.8 + Math.sin(time * 10) * 0.4;
+          mat.emissive.setHex(0x06b6d4);
+          mat.emissiveIntensity = intensity;
+          mat.opacity = 0.95;
+          
+          // Erratic rotation
+          m.rotation.x += 0.05;
+          m.rotation.y += 0.07;
+        } else {
+          m.visible = false;
+        }
+      });
     }
 
     if (linesRef.current) {
@@ -188,9 +159,6 @@ function CognitiveNetwork() {
 
   return (
     <>
-      {/* Anomaly Cubes */}
-      <AnomalyCubes />
-      
       {/* Glowing Points */}
       <points ref={pointsRef}>
         <bufferGeometry>
@@ -210,6 +178,28 @@ function CognitiveNetwork() {
           depthWrite={false}
         />
       </points>
+
+      {/* Anomaly Node Transformations */}
+      <group ref={anomalyNodesRef}>
+        {Array.from({ length: 25 }).map((_, i) => (
+          <mesh 
+            key={i} 
+            position={[points[i * 3], points[i * 3 + 1], points[i * 3 + 2]]}
+            visible={false}
+          >
+            <boxGeometry args={[0.4, 0.4, 0.4]} />
+            <meshStandardMaterial
+              color="#06b6d4"
+              transparent
+              opacity={0.95}
+              emissive="#000000"
+              emissiveIntensity={0}
+              metalness={0.9}
+              roughness={0.1}
+            />
+          </mesh>
+        ))}
+      </group>
 
       {/* Intermittent Connections */}
       <group ref={linesRef}>
