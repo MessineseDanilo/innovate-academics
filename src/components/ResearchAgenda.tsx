@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Brain, Target, Rocket, ArrowRight } from "lucide-react";
+import { Brain, Target, Rocket, ArrowRight, Link2 } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface ResearchAgendaProps {
   onCategoryClick: (category: string) => void;
@@ -16,6 +17,10 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       publications: 4,
       color: "bg-primary/10 hover:bg-primary/20 border-primary/30",
       iconColor: "text-primary",
+      connections: [
+        { area: "decisions", count: 4, label: "Strategic Decisions" },
+        { area: "entrepreneurship", count: 4, label: "Entrepreneurship" }
+      ]
     },
     {
       id: "decisions",
@@ -25,6 +30,10 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       publications: 5,
       color: "bg-accent/10 hover:bg-accent/20 border-accent/30",
       iconColor: "text-accent",
+      connections: [
+        { area: "ai", count: 4, label: "AI" },
+        { area: "entrepreneurship", count: 1, label: "Entrepreneurship" }
+      ]
     },
     {
       id: "entrepreneurship",
@@ -34,6 +43,10 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       publications: 3,
       color: "bg-emerald-50/50 hover:bg-emerald-50 border-emerald-100 dark:bg-emerald-950/20 dark:hover:bg-emerald-950/30 dark:border-emerald-900/30",
       iconColor: "text-emerald-600 dark:text-emerald-400",
+      connections: [
+        { area: "ai", count: 4, label: "AI" },
+        { area: "decisions", count: 1, label: "Strategic Decisions" }
+      ]
     },
   ];
 
@@ -75,36 +88,65 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {researchAreas.map((area, index) => (
-              <Card
-                key={area.id}
-                onClick={() => handleCardClick(area.id)}
-                className={`cursor-pointer border-2 ${area.color} transition-smooth hover:scale-105 hover:shadow-glow animate-fade-in`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <CardContent className="p-8">
-                  <div className="flex flex-col items-center text-center space-y-4">
-                    <div className={`${area.iconColor} p-4 rounded-full bg-background`}>
-                      <area.icon size={40} />
+          <TooltipProvider>
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              {researchAreas.map((area, index) => (
+                <Card
+                  key={area.id}
+                  onClick={() => handleCardClick(area.id)}
+                  className={`cursor-pointer border-2 ${area.color} transition-smooth hover:scale-105 hover:shadow-glow animate-fade-in`}
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <CardContent className="p-8">
+                    <div className="flex flex-col items-center text-center space-y-4">
+                      <div className={`${area.iconColor} p-4 rounded-full bg-background`}>
+                        <area.icon size={40} />
+                      </div>
+                      <h3 className="text-xl font-serif font-semibold text-foreground">
+                        {area.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed min-h-[60px]">
+                        {area.summary}
+                      </p>
+                      <Badge variant="secondary" className="mt-2">
+                        {area.publications} Publications
+                      </Badge>
+                      
+                      {/* Connection indicators */}
+                      {area.connections && area.connections.length > 0 && (
+                        <div className="flex items-center gap-2 pt-2">
+                          <Link2 size={14} className="text-muted-foreground" />
+                          <div className="flex gap-1">
+                            {area.connections.map((conn) => (
+                              <Tooltip key={conn.area}>
+                                <TooltipTrigger asChild>
+                                  <Badge 
+                                    variant="outline" 
+                                    className="text-xs px-2 py-0 cursor-help hover:bg-secondary"
+                                  >
+                                    {conn.count}
+                                  </Badge>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p className="text-xs">
+                                    {conn.count} paper{conn.count > 1 ? 's' : ''} with {conn.label}
+                                  </p>
+                                </TooltipContent>
+                              </Tooltip>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      
+                      <div className="flex items-center gap-2 text-primary text-sm font-medium mt-4">
+                        View Research <ArrowRight size={16} />
+                      </div>
                     </div>
-                    <h3 className="text-xl font-serif font-semibold text-foreground">
-                      {area.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed min-h-[60px]">
-                      {area.summary}
-                    </p>
-                    <Badge variant="secondary" className="mt-2">
-                      {area.publications} Publications
-                    </Badge>
-                    <div className="flex items-center gap-2 text-primary text-sm font-medium mt-4">
-                      View Research <ArrowRight size={16} />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TooltipProvider>
 
           <div className="relative py-12">
             <div className="absolute inset-0 flex items-center justify-center">
