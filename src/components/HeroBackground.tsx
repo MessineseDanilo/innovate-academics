@@ -136,7 +136,7 @@ function CognitiveNetwork() {
 
 const HeroBackground = () => {
   return (
-    <div className="absolute inset-0 w-full h-full -z-10">
+    <div className="absolute inset-0 w-full h-full -z-10 bg-slate-900/95">
       <Canvas
         camera={{ position: [0, 0, 12], fov: 60 }}
         style={{ background: "transparent" }}
