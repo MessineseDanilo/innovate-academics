@@ -38,7 +38,7 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
     {
       id: "entrepreneurship",
       icon: Rocket,
-      title: "Entrepreneurship",
+      title: "Entrepreneurial Innovation",
       summary: "Innovation, venture creation, and entrepreneurial cognition in digital markets",
       publications: 3,
       color: "bg-emerald-50/50 hover:bg-emerald-50 border-emerald-100 dark:bg-emerald-950/20 dark:hover:bg-emerald-950/30 dark:border-emerald-900/30",
