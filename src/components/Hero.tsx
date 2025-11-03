@@ -24,19 +24,21 @@ const Hero = () => {
       <div className="container mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 animate-fade-in">
-            {/* Academic Signature Name */}
-            <div className="mb-8">
-              <p className="font-signature text-2xl md:text-3xl font-light text-foreground/90 tracking-wide">
+          <div className="space-y-8 animate-fade-in">
+            {/* Distinguished Signature Name */}
+            <div className="space-y-4">
+              <h1 className="font-signature text-5xl md:text-6xl font-light tracking-[0.15em] uppercase" 
+                  style={{ color: 'hsl(220 20% 20%)' }}>
                 Danilo Messinese
-              </p>
+              </h1>
+              <div className="w-32 h-[1px] bg-gradient-to-r from-primary/60 to-transparent"></div>
             </div>
             
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground leading-tight">
+            <div className="space-y-4 pt-2">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground leading-tight">
                 AI, Entrepreneurship
                 <span className="block text-primary mt-2">& Innovation</span>
-              </h1>
+              </h2>
               <p className="text-xl text-muted-foreground max-w-xl">
                 Bridging artificial intelligence, strategic decision-making, and entrepreneurial
                 innovation through rigorous academic research.
