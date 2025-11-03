@@ -18,34 +18,34 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       color: "bg-primary/10 hover:bg-primary/20 border-primary/30",
       iconColor: "text-primary",
       connections: [
-        { area: "decisions", count: 5, label: "Strategic Decisions" },
-        { area: "entrepreneurship", count: 1, label: "Entrepreneurship" }
+        { area: "decisions", count: 5, label: "Entrepreneurial Strategy" },
+        { area: "entrepreneurship", count: 1, label: "Innovation" }
       ]
     },
     {
       id: "decisions",
       icon: Target,
-      title: "Strategic Decisions",
+      title: "Entrepreneurial Strategy",
       summary: "Understanding decision-making processes in complex, uncertain environments",
       publications: 8,
       color: "bg-accent/10 hover:bg-accent/20 border-accent/30",
       iconColor: "text-accent",
       connections: [
         { area: "ai", count: 5, label: "AI" },
-        { area: "entrepreneurship", count: 3, label: "Entrepreneurship" }
+        { area: "entrepreneurship", count: 3, label: "Innovation" }
       ]
     },
     {
       id: "entrepreneurship",
       icon: Rocket,
-      title: "Entrepreneurial Innovation",
+      title: "Innovation",
       summary: "Innovation, venture creation, and entrepreneurial cognition in digital markets",
       publications: 3,
       color: "bg-emerald-50/50 hover:bg-emerald-50 border-emerald-100 dark:bg-emerald-950/20 dark:hover:bg-emerald-950/30 dark:border-emerald-900/30",
       iconColor: "text-emerald-600 dark:text-emerald-400",
       connections: [
         { area: "ai", count: 1, label: "AI" },
-        { area: "decisions", count: 3, label: "Strategic Decisions" }
+        { area: "decisions", count: 3, label: "Entrepreneurial Strategy" }
       ]
     },
   ];
