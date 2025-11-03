@@ -39,7 +39,7 @@ const CuratedInsights = () => {
       author: "Harvard Business Review",
       link: "#",
       color: "text-emerald-600",
-      badge: "Article",
+      badge: "Practitioner-oriented article",
       topics: ["AI", "Entrepreneurship"],
     },
     {
@@ -61,7 +61,7 @@ const CuratedInsights = () => {
       author: "MIT Sloan Management Review",
       link: "#",
       color: "text-emerald-600",
-      badge: "Article",
+      badge: "Practitioner-oriented article",
       topics: ["AI", "Innovation"],
     },
     {
@@ -80,7 +80,7 @@ const CuratedInsights = () => {
   const types = [
     { value: "paper", label: "Paper", icon: FileText },
     { value: "podcast", label: "Podcast", icon: Podcast },
-    { value: "article", label: "Article", icon: Newspaper },
+    { value: "article", label: "Practitioner-oriented article", icon: Newspaper },
   ];
 
   const topics = ["AI", "Entrepreneurship", "Innovation"];
