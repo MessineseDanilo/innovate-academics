@@ -1,4 +1,4 @@
-import { ExternalLink, FileText, X, MessageCircle } from "lucide-react";
+import { ExternalLink, FileText, X, MessageCircle, Headphones } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -218,6 +218,20 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
                 {expandedAbstracts.has(pub.title) ? "Hide Abstract" : "View Abstract"}
               </Button>
             )}
+            {pub.podcastUrl && (
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => {
+                  const audio = new Audio(pub.podcastUrl);
+                  audio.play();
+                }}
+                className="flex items-center gap-2"
+              >
+                <Headphones size={16} />
+                AI Podcast
+              </Button>
+            )}
             {!pub.hideAiChat && (
               <Button
                 variant="default"
@@ -271,15 +285,6 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {pub.abstract}
               </p>
-            </div>
-          )}
-          {pub.podcastUrl && (
-            <div className="mt-4 pt-4 border-t border-border">
-              <h4 className="font-semibold mb-3 text-sm">AI-Generated Podcast</h4>
-              <audio controls className="w-full">
-                <source src={pub.podcastUrl} type="audio/mp4" />
-                Il tuo browser non supporta l'elemento audio.
-              </audio>
             </div>
           )}
         </div>
