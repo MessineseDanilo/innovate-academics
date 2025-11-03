@@ -33,7 +33,7 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start md:items-center mt-12 md:mt-16">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mt-12 md:mt-16">
           {/* Left Column - Text Content */}
           <div className="space-y-4 md:space-y-6 animate-fade-in text-center md:text-left">
             <div className="space-y-3 md:space-y-4">
