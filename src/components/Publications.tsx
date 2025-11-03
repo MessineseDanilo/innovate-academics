@@ -7,6 +7,7 @@ import paperDesignTheory from "@/assets/paper-design-theory.jpg";
 import paperScientificApproach from "@/assets/paper-scientific-approach.jpg";
 import paperAiStartups from "@/assets/paper-ai-startups.jpg";
 import paperCausalAi from "@/assets/paper-causal-ai.jpg";
+import paperUnsupervisedCausal from "@/assets/paper-unsupervised-causal.jpg";
 import paper1 from "@/assets/paper1.jpg";
 import paper2 from "@/assets/paper2.jpg";
 import paper3 from "@/assets/paper3.jpg";
@@ -149,6 +150,16 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       categories: ["ai", "decisions"],
       hideAiChat: true,
       abstract: "Artificial intelligence (AI) is transforming how social scientists discover, interpret, and explain empirical phenomena. Beyond prediction and optimization, advances in machine learning (ML), causal discovery, and large language models (LLMs) open new possibilities for theory generation. This paper proposes a framework in which AI acts as an epistemic partner in abductive theorizing—the process of generating explanations for unexpected empirical patterns that violate established causal explanations. We show how AI can augment key stages of theorizing: detecting theory violations in the data, tracing their causal structure, and assisting researchers in formulating plausible explanatory mechanisms. In addition to purely inductive uses of ML, our approach emphasizes explanation: helping scholars understand why models fail and how conceptual innovation can emerge from such failures. We demonstrate the approach through classic economic and organizational settings, illustrating how systematic discrepancies between predicted and observed outcomes reveal hidden pathways and latent heterogeneity. More broadly, the paper argues that computational methods can make theorizing more systematic, transparent, and cumulative across the social sciences, positioning AI not as a tool of prediction, but as a collaborator in the creation of new theoretical insight.",
+    },
+    {
+      title: "Unsupervised Discovery of Causal Mechanisms for Management Research",
+      authors: "Messinese, D. & Barbero Mota, M.",
+      journal: "Work in Progress",
+      year: "2025",
+      image: paperUnsupervisedCausal,
+      categories: ["ai", "decisions"],
+      hideAiChat: true,
+      abstract: "We explore the potential of independence-based causal machine learning to identify unobserved predictive causal sources in longitudinal business data. This causal inference approach does not require the full discovery of the data generating process graph or defining treatment groups. In particular, we adapt the pipeline in Lasko et al. (2025), which discovers probabilistically independent latent sources and their interpretable signatures directly from observational data. We apply this method to a large-scale panel of U.S. software startups. We benchmark this approach against standard difference-in-differences (DiD) estimates of the exogenous release of AI tools and show that causal machine learning not only replicates average treatment effects but also reveals multiple latent drivers, can clusters firms by their causal profiles, and estimates heterogeneous causal effects at the firm-time level. Our contribution is to demonstrate the multiple advantages of this approach to management research and decision making and to highlight its value as a flexible complement to established econometric inference.",
     },
     {
       title: "Algorithmic Bias in Entrepreneurial Financing Decisions",
