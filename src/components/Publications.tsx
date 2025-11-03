@@ -74,6 +74,36 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       ssrnLink: "https://ssrn.com/abstract=example3",
       status: "R&R",
     },
+    {
+      title: "Cognitive Biases in AI-Assisted Strategic Planning",
+      authors: "Smith, J., Martinez, C. & Lee, H.",
+      journal: "Under Review at Strategic Management Journal",
+      year: "2024",
+      image: paper1,
+      categories: ["ai", "decisions"],
+      ssrnLink: "https://ssrn.com/abstract=example4",
+      status: "Under Review",
+    },
+    {
+      title: "Neural Networks and Entrepreneurial Pattern Recognition",
+      authors: "Smith, J. & Wilson, P.",
+      journal: "Revise & Resubmit at Organization Science",
+      year: "2024",
+      image: paper2,
+      categories: ["ai", "entrepreneurship"],
+      ssrnLink: "https://ssrn.com/abstract=example5",
+      status: "R&R",
+    },
+    {
+      title: "Strategic Decision-Making in AI-Enabled Organizations",
+      authors: "Smith, J., Brown, R. & Taylor, S.",
+      journal: "Under Review at Administrative Science Quarterly",
+      year: "2024",
+      image: paper3,
+      categories: ["ai", "decisions"],
+      ssrnLink: "https://ssrn.com/abstract=example6",
+      status: "Under Review",
+    },
   ];
 
   const newProjects: Publication[] = [
@@ -94,6 +124,24 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       image: paper2,
       categories: ["ai", "decisions"],
       status: "Early Stage",
+    },
+    {
+      title: "Entrepreneurial Learning in AI-Driven Markets",
+      authors: "Smith, J., Kumar, R. & White, D.",
+      journal: "Research Design Phase",
+      year: "2024",
+      image: paper3,
+      categories: ["entrepreneurship", "ai"],
+      status: "Conceptual",
+    },
+    {
+      title: "Decision Automation and Strategic Flexibility",
+      authors: "Smith, J. & Chen, L.",
+      journal: "Data Collection Phase",
+      year: "2024",
+      image: paper1,
+      categories: ["decisions", "ai"],
+      status: "In Progress",
     },
   ];
 
