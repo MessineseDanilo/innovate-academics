@@ -3,8 +3,20 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import researchHero from "@/assets/research-hero.jpg";
 
-const ResearchAgenda = () => {
+interface ResearchAgendaProps {
+  onCategoryClick: (category: string) => void;
+}
+
+const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
   const [activeNode, setActiveNode] = useState<string | null>(null);
+
+  const handleNodeClick = (nodeId: string) => {
+    onCategoryClick(nodeId);
+    const publicationsSection = document.getElementById("publications");
+    if (publicationsSection) {
+      publicationsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const researchNodes = [
     {
@@ -73,10 +85,11 @@ const ResearchAgenda = () => {
                 style={{ animationDelay: `${(index + 3) * 100}ms` }}
                 onMouseEnter={() => setActiveNode(node.id)}
                 onMouseLeave={() => setActiveNode(null)}
+                onClick={() => handleNodeClick(node.id)}
               >
                 <div className="space-y-4">
                   <Badge variant={node.color === "primary" ? "default" : "secondary"}>
-                    Research Area
+                    Click to Filter Papers
                   </Badge>
                   <h3 className="text-xl font-serif font-semibold">{node.title}</h3>
                   <p className="text-sm text-muted-foreground">{node.description}</p>

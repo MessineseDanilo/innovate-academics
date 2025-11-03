@@ -1,4 +1,4 @@
-import { ExternalLink, FileText } from "lucide-react";
+import { ExternalLink, FileText, X } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import paper1 from "@/assets/paper1.jpg";
 import paper2 from "@/assets/paper2.jpg";
 import paper3 from "@/assets/paper3.jpg";
+import { useEffect, useState } from "react";
 
 interface Publication {
   title: string;
@@ -13,12 +14,32 @@ interface Publication {
   journal: string;
   year: string;
   image: string;
+  categories: string[];
   ssrnLink?: string;
   journalLink?: string;
   status?: string;
 }
 
-const Publications = () => {
+interface PublicationsProps {
+  activeFilter: string | null;
+  onClearFilter: () => void;
+}
+
+const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
+  const [activeTab, setActiveTab] = useState("publications");
+
+  useEffect(() => {
+    if (activeFilter) {
+      // Auto-switch to the tab that has papers with this filter
+      const hasInPublications = publications.some(p => p.categories.includes(activeFilter));
+      const hasInWorking = workingPapers.some(p => p.categories.includes(activeFilter));
+      const hasInNew = newProjects.some(p => p.categories.includes(activeFilter));
+      
+      if (hasInPublications) setActiveTab("publications");
+      else if (hasInWorking) setActiveTab("working");
+      else if (hasInNew) setActiveTab("new");
+    }
+  }, [activeFilter]);
   const publications: Publication[] = [
     {
       title: "AI-Augmented Decision-Making in Strategic Management",
@@ -26,6 +47,7 @@ const Publications = () => {
       journal: "Strategic Management Journal",
       year: "2024",
       image: paper1,
+      categories: ["ai", "decisions"],
       ssrnLink: "https://ssrn.com/abstract=example1",
       journalLink: "https://onlinelibrary.wiley.com/journal/10970266",
     },
@@ -35,6 +57,7 @@ const Publications = () => {
       journal: "Organization Science",
       year: "2023",
       image: paper2,
+      categories: ["ai", "entrepreneurship"],
       ssrnLink: "https://ssrn.com/abstract=example2",
       journalLink: "https://pubsonline.informs.org/journal/orsc",
     },
@@ -47,6 +70,7 @@ const Publications = () => {
       journal: "Under Review at Academy of Management Journal",
       year: "2024",
       image: paper3,
+      categories: ["ai", "entrepreneurship", "decisions"],
       ssrnLink: "https://ssrn.com/abstract=example3",
       status: "R&R",
     },
@@ -59,6 +83,7 @@ const Publications = () => {
       journal: "Work in Progress",
       year: "2024",
       image: paper1,
+      categories: ["ai", "entrepreneurship"],
       status: "Data Collection",
     },
     {
@@ -67,9 +92,21 @@ const Publications = () => {
       journal: "Pilot Study",
       year: "2024",
       image: paper2,
+      categories: ["ai", "decisions"],
       status: "Early Stage",
     },
   ];
+
+  const categoryLabels: Record<string, { label: string; variant: "default" | "secondary" }> = {
+    ai: { label: "Artificial Intelligence", variant: "default" },
+    decisions: { label: "Strategic Decisions", variant: "secondary" },
+    entrepreneurship: { label: "Entrepreneurship", variant: "default" },
+  };
+
+  const filterPublications = (pubs: Publication[]) => {
+    if (!activeFilter) return pubs;
+    return pubs.filter(pub => pub.categories.includes(activeFilter));
+  };
 
   const renderPublicationCard = (pub: Publication, index: number) => (
     <Card
@@ -87,9 +124,20 @@ const Publications = () => {
         </div>
         <div className="p-6 md:w-2/3 space-y-4">
           <div className="space-y-2">
-            {pub.status && (
-              <Badge variant="secondary">{pub.status}</Badge>
-            )}
+            <div className="flex flex-wrap gap-2">
+              {pub.status && (
+                <Badge variant="outline">{pub.status}</Badge>
+              )}
+              {pub.categories.map(cat => (
+                <Badge 
+                  key={cat} 
+                  variant={categoryLabels[cat]?.variant || "default"}
+                  className="text-xs"
+                >
+                  {categoryLabels[cat]?.label || cat}
+                </Badge>
+              ))}
+            </div>
             <h3 className="text-xl font-serif font-semibold">{pub.title}</h3>
             <p className="text-sm text-muted-foreground">{pub.authors}</p>
           </div>
@@ -139,6 +187,10 @@ const Publications = () => {
     </Card>
   );
 
+  const filteredPublications = filterPublications(publications);
+  const filteredWorking = filterPublications(workingPapers);
+  const filteredNew = filterPublications(newProjects);
+
   return (
     <section id="publications" className="py-24 px-6 bg-secondary/30">
       <div className="container mx-auto max-w-6xl">
@@ -152,23 +204,64 @@ const Publications = () => {
             </p>
           </div>
 
-          <Tabs defaultValue="publications" className="w-full">
+          {activeFilter && (
+            <div className="flex items-center justify-center gap-3 animate-fade-in">
+              <Badge variant="default" className="text-sm py-2 px-4">
+                Filtering by: {categoryLabels[activeFilter]?.label || activeFilter}
+              </Badge>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onClearFilter}
+                className="h-8"
+              >
+                <X size={16} className="mr-1" />
+                Clear Filter
+              </Button>
+            </div>
+          )}
+
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="publications">Publications</TabsTrigger>
-              <TabsTrigger value="working">Working Papers</TabsTrigger>
-              <TabsTrigger value="new">New Projects</TabsTrigger>
+              <TabsTrigger value="publications">
+                Publications {activeFilter && `(${filteredPublications.length})`}
+              </TabsTrigger>
+              <TabsTrigger value="working">
+                Working Papers {activeFilter && `(${filteredWorking.length})`}
+              </TabsTrigger>
+              <TabsTrigger value="new">
+                New Projects {activeFilter && `(${filteredNew.length})`}
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="publications" className="space-y-6">
-              {publications.map((pub, index) => renderPublicationCard(pub, index))}
+              {filteredPublications.length > 0 ? (
+                filteredPublications.map((pub, index) => renderPublicationCard(pub, index))
+              ) : (
+                <p className="text-center text-muted-foreground py-12">
+                  No publications found for this research area.
+                </p>
+              )}
             </TabsContent>
 
             <TabsContent value="working" className="space-y-6">
-              {workingPapers.map((pub, index) => renderPublicationCard(pub, index))}
+              {filteredWorking.length > 0 ? (
+                filteredWorking.map((pub, index) => renderPublicationCard(pub, index))
+              ) : (
+                <p className="text-center text-muted-foreground py-12">
+                  No working papers found for this research area.
+                </p>
+              )}
             </TabsContent>
 
             <TabsContent value="new" className="space-y-6">
-              {newProjects.map((pub, index) => renderPublicationCard(pub, index))}
+              {filteredNew.length > 0 ? (
+                filteredNew.map((pub, index) => renderPublicationCard(pub, index))
+              ) : (
+                <p className="text-center text-muted-foreground py-12">
+                  No new projects found for this research area.
+                </p>
+              )}
             </TabsContent>
           </Tabs>
         </div>
