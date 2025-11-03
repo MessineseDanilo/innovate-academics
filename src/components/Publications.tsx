@@ -14,6 +14,7 @@ import paperReasoningLogics from "@/assets/paper-reasoning-logics.jpg";
 import paper1 from "@/assets/paper1.jpg";
 import paper2 from "@/assets/paper2.jpg";
 import paper3 from "@/assets/paper3.jpg";
+import podcastScientificApproach from "@/assets/podcast-scientific-approach.m4a";
 import { useEffect, useState } from "react";
 import PaperChatDialog from "@/components/PaperChatDialog";
 
@@ -29,6 +30,7 @@ interface Publication {
   status?: string;
   abstract?: string;
   hideAiChat?: boolean;
+  podcastUrl?: string;
 }
 
 interface PublicationsProps {
@@ -86,7 +88,8 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       categories: ["decisions"],
       journalLink: "https://doi.org/10.1002/smj.3580",
       status: "Best Experimental Paper, 2024 IGL Research Prize",
-      abstract: "This article runs a large-scale replication of Camuffo and colleagues in 2020, involving 759 firms in four randomized control trials. The larger sample generates novel and more precise insights about the teachability and implications of a scientific approach in entrepreneurship. We observe a positive impact on idea termination and results that are consistent with a nonlinear effect on radical pivots, with treated firms running few over no or repeated pivots. We provide a theoretical interpretation of the empirical results: the scientific approach enhances entrepreneurs' efficiency in searching for viable ideas and raises their methodic doubt because, like scientists, they realize that there may be alternative scenarios from the ones that they theorize.",
+      abstract: "This article runs a large-scale replication of Camuffo and colleagues in 2020, involving 759 firms in four randomized control trials. The larger sample generates novel and more precise insights about the teachability and implications of a scientific approach in entrepreneurship. We observe a positive impact on idea termination and results that are consistent with a nonlinear effect on radical pivots, with treated firms running few over no or repeated pivots. We provide a theoretical interpretation of the empirical results: the scientific approach enhances entrepreneurs' efficiency in searching for viable ideas and raises their methodic doubt because, like scientists, they realize that there may alternative scenarios from the ones that they theorize.",
+      podcastUrl: podcastScientificApproach,
     },
   ];
 
@@ -268,6 +271,15 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {pub.abstract}
               </p>
+            </div>
+          )}
+          {pub.podcastUrl && (
+            <div className="mt-4 pt-4 border-t border-border">
+              <h4 className="font-semibold mb-3 text-sm">AI-Generated Podcast</h4>
+              <audio controls className="w-full">
+                <source src={pub.podcastUrl} type="audio/mp4" />
+                Il tuo browser non supporta l'elemento audio.
+              </audio>
             </div>
           )}
         </div>
