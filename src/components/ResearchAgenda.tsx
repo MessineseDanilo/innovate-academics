@@ -46,15 +46,32 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
   };
 
   return (
-    <section id="research-agenda" className="py-24 bg-background">
+    <section id="about" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-serif font-bold text-foreground mb-4">
-            Research Agenda
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Explore the interconnected landscape of my research across AI, strategy, and innovation
-          </p>
+        <div className="max-w-4xl mx-auto text-center mb-16 space-y-8 animate-fade-in">
+          <div>
+            <h2 className="text-4xl font-serif font-bold text-foreground mb-4">
+              About My Research
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              At the intersection of cutting-edge technology and strategic thinking
+            </p>
+          </div>
+          <div className="space-y-6 text-muted-foreground">
+            <p className="text-center leading-relaxed">
+              My research explores how artificial intelligence is reshaping the landscape of strategic
+              decision-making and entrepreneurship. By combining rigorous quantitative methods with
+              deep qualitative insights, I investigate how organizations and entrepreneurs navigate
+              uncertainty, leverage AI capabilities, and make critical strategic choices in rapidly
+              evolving markets.
+            </p>
+            <p className="text-center leading-relaxed">
+              Through both theoretical development and empirical validation, my work bridges the gap
+              between technological innovation and strategic management, contributing to leading
+              academic journals while maintaining practical relevance for business leaders and
+              policymakers.
+            </p>
+          </div>
         </div>
 
         <div className="max-w-6xl mx-auto">
