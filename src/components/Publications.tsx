@@ -1,0 +1,180 @@
+import { ExternalLink, FileText } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import paper1 from "@/assets/paper1.jpg";
+import paper2 from "@/assets/paper2.jpg";
+import paper3 from "@/assets/paper3.jpg";
+
+interface Publication {
+  title: string;
+  authors: string;
+  journal: string;
+  year: string;
+  image: string;
+  ssrnLink?: string;
+  journalLink?: string;
+  status?: string;
+}
+
+const Publications = () => {
+  const publications: Publication[] = [
+    {
+      title: "AI-Augmented Decision-Making in Strategic Management",
+      authors: "Smith, J. & Johnson, A.",
+      journal: "Strategic Management Journal",
+      year: "2024",
+      image: paper1,
+      ssrnLink: "https://ssrn.com/abstract=example1",
+      journalLink: "https://onlinelibrary.wiley.com/journal/10970266",
+    },
+    {
+      title: "Machine Learning and Entrepreneurial Decision Quality",
+      authors: "Smith, J., Williams, R. & Brown, M.",
+      journal: "Organization Science",
+      year: "2023",
+      image: paper2,
+      ssrnLink: "https://ssrn.com/abstract=example2",
+      journalLink: "https://pubsonline.informs.org/journal/orsc",
+    },
+  ];
+
+  const workingPapers: Publication[] = [
+    {
+      title: "Deep Learning Applications in Venture Capital Decision-Making",
+      authors: "Smith, J. & Davis, K.",
+      journal: "Under Review at Academy of Management Journal",
+      year: "2024",
+      image: paper3,
+      ssrnLink: "https://ssrn.com/abstract=example3",
+      status: "R&R",
+    },
+  ];
+
+  const newProjects: Publication[] = [
+    {
+      title: "Algorithmic Bias in Entrepreneurial Financing Decisions",
+      authors: "Smith, J., Thompson, L. & Garcia, P.",
+      journal: "Work in Progress",
+      year: "2024",
+      image: paper1,
+      status: "Data Collection",
+    },
+    {
+      title: "AI and the Future of Strategic Planning: A Field Experiment",
+      authors: "Smith, J. & Anderson, M.",
+      journal: "Pilot Study",
+      year: "2024",
+      image: paper2,
+      status: "Early Stage",
+    },
+  ];
+
+  const renderPublicationCard = (pub: Publication, index: number) => (
+    <Card
+      key={pub.title}
+      className="overflow-hidden hover:shadow-hover transition-smooth animate-slide-in"
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
+      <div className="md:flex">
+        <div className="md:w-1/3">
+          <img
+            src={pub.image}
+            alt={pub.title}
+            className="w-full h-48 md:h-full object-cover"
+          />
+        </div>
+        <div className="p-6 md:w-2/3 space-y-4">
+          <div className="space-y-2">
+            {pub.status && (
+              <Badge variant="secondary">{pub.status}</Badge>
+            )}
+            <h3 className="text-xl font-serif font-semibold">{pub.title}</h3>
+            <p className="text-sm text-muted-foreground">{pub.authors}</p>
+          </div>
+          <div className="space-y-1">
+            <p className="text-sm font-medium text-primary">{pub.journal}</p>
+            <p className="text-sm text-muted-foreground">{pub.year}</p>
+          </div>
+          <div className="flex flex-wrap gap-3 pt-2">
+            {pub.ssrnLink && (
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+              >
+                <a
+                  href={pub.ssrnLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <FileText size={16} />
+                  SSRN
+                  <ExternalLink size={14} />
+                </a>
+              </Button>
+            )}
+            {pub.journalLink && (
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+              >
+                <a
+                  href={pub.journalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  Journal
+                  <ExternalLink size={14} />
+                </a>
+              </Button>
+            )}
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
+
+  return (
+    <section id="publications" className="py-24 px-6 bg-secondary/30">
+      <div className="container mx-auto max-w-6xl">
+        <div className="space-y-12">
+          <div className="text-center space-y-4 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
+              Publications
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Peer-reviewed research and ongoing projects
+            </p>
+          </div>
+
+          <Tabs defaultValue="publications" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mb-8">
+              <TabsTrigger value="publications">Publications</TabsTrigger>
+              <TabsTrigger value="working">Working Papers</TabsTrigger>
+              <TabsTrigger value="new">New Projects</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="publications" className="space-y-6">
+              {publications.map((pub, index) => renderPublicationCard(pub, index))}
+            </TabsContent>
+
+            <TabsContent value="working" className="space-y-6">
+              {workingPapers.map((pub, index) => renderPublicationCard(pub, index))}
+            </TabsContent>
+
+            <TabsContent value="new" className="space-y-6">
+              {newProjects.map((pub, index) => renderPublicationCard(pub, index))}
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Publications;
