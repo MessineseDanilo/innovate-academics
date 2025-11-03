@@ -10,10 +10,10 @@ function ParticleNetwork() {
   // Generate particles
   const particles = useMemo(() => {
     const temp = [];
-    for (let i = 0; i < 150; i++) {
-      const x = (Math.random() - 0.5) * 20;
-      const y = (Math.random() - 0.5) * 20;
-      const z = (Math.random() - 0.5) * 20;
+    for (let i = 0; i < 80; i++) {
+      const x = (Math.random() - 0.5) * 18;
+      const y = (Math.random() - 0.5) * 18;
+      const z = (Math.random() - 0.5) * 15;
       temp.push(x, y, z);
     }
     return new Float32Array(temp);
@@ -23,7 +23,7 @@ function ParticleNetwork() {
   const lines = useMemo(() => {
     const linePositions = [];
     const particleCount = particles.length / 3;
-    const maxDistance = 3.5;
+    const maxDistance = 4.5;
 
     for (let i = 0; i < particleCount; i++) {
       const x1 = particles[i * 3];
@@ -53,13 +53,13 @@ function ParticleNetwork() {
     const time = state.clock.getElapsedTime();
     
     if (ref.current) {
-      ref.current.rotation.y = time * 0.05;
-      ref.current.rotation.x = Math.sin(time * 0.1) * 0.1;
+      ref.current.rotation.y = time * 0.03;
+      ref.current.rotation.x = Math.sin(time * 0.08) * 0.15;
     }
     
     if (linesRef.current) {
-      linesRef.current.rotation.y = time * 0.05;
-      linesRef.current.rotation.x = Math.sin(time * 0.1) * 0.1;
+      linesRef.current.rotation.y = time * 0.03;
+      linesRef.current.rotation.x = Math.sin(time * 0.08) * 0.15;
     }
   });
 
@@ -69,11 +69,11 @@ function ParticleNetwork() {
       <Points ref={ref} positions={particles} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="hsl(var(--primary))"
-          size={0.15}
+          color="#6366f1"
+          size={0.35}
           sizeAttenuation={true}
           depthWrite={false}
-          opacity={0.8}
+          opacity={0.9}
         />
       </Points>
 
@@ -88,9 +88,10 @@ function ParticleNetwork() {
           />
         </bufferGeometry>
         <lineBasicMaterial
-          color="hsl(var(--primary))"
+          color="#6366f1"
           transparent
-          opacity={0.2}
+          opacity={0.4}
+          linewidth={2}
         />
       </lineSegments>
     </>
