@@ -32,7 +32,7 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       title: "Entrepreneurship",
       summary: "Innovation, venture creation, and entrepreneurial cognition in digital markets",
       publications: 3,
-      color: "bg-secondary/10 hover:bg-secondary/20 border-secondary/30",
+      color: "bg-secondary/30 hover:bg-secondary/40 border-secondary/50",
       iconColor: "text-secondary",
     },
   ];
