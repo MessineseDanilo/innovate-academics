@@ -23,7 +23,7 @@ const Hero = () => {
       <HeroBackground />
       <div className="container mx-auto relative z-10">
         {/* Floating Topics - Centered at top */}
-        <div className="absolute top-8 left-0 right-0 flex justify-center animate-float">
+        <div className="absolute top-2 left-0 right-0 flex justify-center animate-float">
           <div className="flex items-center gap-3 text-lg md:text-xl font-medium">
             <span className="text-primary">AI</span>
             <span className="text-muted-foreground">×</span>
