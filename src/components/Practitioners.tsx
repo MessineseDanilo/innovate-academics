@@ -59,11 +59,6 @@ const Practitioners = () => {
           ))}
         </div>
 
-        <div className="max-w-3xl mx-auto mt-16 p-8 rounded-lg bg-background/50 border border-primary/20 animate-fade-in">
-          <p className="text-center text-muted-foreground italic">
-            "The future of strategy isn't about choosing between human insight and artificial intelligence—it's about orchestrating both to create competitive advantages that neither could achieve alone."
-          </p>
-        </div>
       </div>
     </section>
   );
