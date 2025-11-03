@@ -42,9 +42,22 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
   const [activeTab, setActiveTab] = useState("publications");
   const [selectedPaper, setSelectedPaper] = useState<Publication | null>(null);
   const [expandedAbstracts, setExpandedAbstracts] = useState<Set<string>>(new Set());
+  const [expandedPodcasts, setExpandedPodcasts] = useState<Set<string>>(new Set());
 
   const toggleAbstract = (title: string) => {
     setExpandedAbstracts(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(title)) {
+        newSet.delete(title);
+      } else {
+        newSet.add(title);
+      }
+      return newSet;
+    });
+  };
+
+  const togglePodcast = (title: string) => {
+    setExpandedPodcasts(prev => {
       const newSet = new Set(prev);
       if (newSet.has(title)) {
         newSet.delete(title);
@@ -215,21 +228,18 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
                 className="flex items-center gap-2"
               >
                 <FileText size={16} />
-                {expandedAbstracts.has(pub.title) ? "Hide Abstract" : "View Abstract"}
+                {expandedAbstracts.has(pub.title) ? "Hide Abstract" : "Abstract"}
               </Button>
             )}
             {pub.podcastUrl && (
               <Button
                 variant="secondary"
                 size="sm"
-                onClick={() => {
-                  const audio = new Audio(pub.podcastUrl);
-                  audio.play();
-                }}
+                onClick={() => togglePodcast(pub.title)}
                 className="flex items-center gap-2"
               >
                 <Headphones size={16} />
-                AI Podcast
+                {expandedPodcasts.has(pub.title) ? "Hide Podcast" : "Podcast"}
               </Button>
             )}
             {!pub.hideAiChat && (
@@ -240,7 +250,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
                 className="flex items-center gap-2"
               >
                 <MessageCircle size={16} />
-                Ask AI about this paper
+                Ask AI
               </Button>
             )}
             {pub.ssrnLink && (
@@ -285,6 +295,15 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {pub.abstract}
               </p>
+            </div>
+          )}
+          {pub.podcastUrl && expandedPodcasts.has(pub.title) && (
+            <div className="mt-4 pt-4 border-t border-border animate-fade-in">
+              <h4 className="font-semibold mb-3 text-sm">AI-Generated Podcast</h4>
+              <audio controls className="w-full">
+                <source src={pub.podcastUrl} type="audio/mp4" />
+                Il tuo browser non supporta l'elemento audio.
+              </audio>
             </div>
           )}
         </div>
