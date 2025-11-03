@@ -88,7 +88,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
     {
       title: "The Selective Tailwind Effect of A.I. on Startups: Predictions and Anomalies",
       authors: "Conti, A. & Messinese, D.",
-      journal: "SSRN Working Paper",
+      journal: "Under Review",
       year: "2024",
       image: paperAiStartups,
       categories: ["ai", "entrepreneurship", "decisions"],
