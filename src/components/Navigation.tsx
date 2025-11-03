@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -14,10 +17,25 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleNavigation = (id: string, isPage?: boolean) => {
+    if (isPage) {
+      navigate(`/${id}`);
+      setIsMobileMenuOpen(false);
+    } else {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      } else {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
       setIsMobileMenuOpen(false);
     }
   };
@@ -26,7 +44,7 @@ const Navigation = () => {
     { label: "Home", id: "home" },
     { label: "Research", id: "about" },
     { label: "Publications", id: "publications" },
-    { label: "Insights", id: "curated-insights" },
+    { label: "Insights", id: "insights", isPage: true },
     { label: "Teaching", id: "teaching" },
     { label: "Contact", id: "contact" },
   ];
@@ -42,7 +60,7 @@ const Navigation = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <button
-            onClick={() => scrollToSection("home")}
+            onClick={() => navigate("/")}
             className="text-xl font-serif font-semibold text-foreground hover:text-primary transition-smooth"
           >
             Academic Portfolio
@@ -53,7 +71,7 @@ const Navigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavigation(item.id, item.isPage)}
                 className="text-sm font-medium text-muted-foreground hover:text-primary transition-smooth"
               >
                 {item.label}
@@ -79,7 +97,7 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => handleNavigation(item.id, item.isPage)}
                   className="text-left text-sm font-medium text-muted-foreground hover:text-primary transition-smooth"
                 >
                   {item.label}
