@@ -12,7 +12,7 @@ const Hero = () => {
   };
 
   const quickLinks = [
-    { icon: Microscope, label: "Research", id: "research" },
+    { icon: Microscope, label: "Research", id: "about" },
     { icon: BookOpen, label: "Publications", id: "publications" },
     { icon: GraduationCap, label: "Teaching", id: "teaching" },
     { icon: Gamepad2, label: "Simulation Games", id: "teaching" },
@@ -42,7 +42,7 @@ const Hero = () => {
               <div className="flex flex-wrap gap-4">
                 <Button
                   size="lg"
-                  onClick={() => scrollToSection("research")}
+                  onClick={() => scrollToSection("about")}
                   className="group shadow-elegant hover:shadow-glow"
                 >
                   <Users className="mr-2 h-5 w-5" />
