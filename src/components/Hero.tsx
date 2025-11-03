@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, GraduationCap, Microscope, Gamepad2, Users, Briefcase } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap, Microscope, Gamepad2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import professorPortrait from "@/assets/professor-portrait.jpg";
@@ -55,32 +55,6 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="space-y-3 md:space-y-4 pt-2 md:pt-4">
-              <p className="text-xs md:text-sm font-medium text-muted-foreground">
-                Navigate to:
-              </p>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 justify-center md:justify-start">
-                <Button
-                  size="lg"
-                  onClick={() => scrollToSection("about")}
-                  className="group shadow-elegant hover:shadow-glow w-full sm:w-auto"
-                >
-                  <Users className="mr-2 h-4 w-4 md:h-5 md:w-5" />
-                  For Researchers
-                  <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 group-hover:translate-x-1 transition-smooth" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => scrollToSection("practitioners")}
-                  className="group w-full sm:w-auto"
-                >
-                  <Briefcase className="mr-2 h-4 w-4 md:h-5 md:w-5" />
-                  For Practitioners
-                  <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 group-hover:translate-x-1 transition-smooth" />
-                </Button>
-              </div>
-            </div>
 
             {/* Quick Links - Different layout for mobile vs desktop */}
             <div className="pt-4 md:pt-8">

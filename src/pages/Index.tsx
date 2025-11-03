@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import ResearchAgenda from "@/components/ResearchAgenda";
-import Practitioners from "@/components/Practitioners";
+
 import Publications from "@/components/Publications";
 import Teaching from "@/components/Teaching";
 import Contact from "@/components/Contact";
@@ -25,7 +25,6 @@ const Index = () => {
       <main>
         <Hero />
         <ResearchAgenda onCategoryClick={handleCategoryClick} />
-        <Practitioners />
         <Publications activeFilter={activeFilter} onClearFilter={handleClearFilter} />
         <Teaching />
         <Contact />
