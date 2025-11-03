@@ -99,7 +99,7 @@ function CognitiveNetwork() {
         </bufferGeometry>
         <pointsMaterial
           size={0.15}
-          color="#a5d8ff"
+          color="#ffffff"
           transparent
           opacity={0.7}
           sizeAttenuation={true}
@@ -121,7 +121,7 @@ function CognitiveNetwork() {
               />
             </bufferGeometry>
             <lineBasicMaterial
-              color="#a5d8ff"
+              color="#ffffff"
               transparent
               opacity={0}
               linewidth={1}
