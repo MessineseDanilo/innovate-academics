@@ -1,6 +1,6 @@
 import { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial } from "@react-three/drei";
+import { Points, PointMaterial, Text } from "@react-three/drei";
 import * as THREE from "three";
 
 function ParticleNetwork() {
@@ -26,6 +26,21 @@ function ParticleNetwork() {
       particles: new Float32Array(positions), 
       sizes: new Float32Array(nodeSizes) 
     };
+  }, []);
+
+  // Generate probability labels at random positions
+  const probabilityLabels = useMemo(() => {
+    return Array.from({ length: 12 }, (_, i) => ({
+      position: [
+        (Math.random() - 0.5) * 16,
+        (Math.random() - 0.5) * 16,
+        (Math.random() - 0.5) * 12
+      ] as [number, number, number],
+      value: Math.random(),
+      label: Math.random() > 0.5 
+        ? `${(Math.random() * 0.4 + 0.6).toFixed(2)}` 
+        : `P=${(Math.random() * 0.3 + 0.7).toFixed(2)}`
+    }));
   }, []);
 
   // Generate connections between nearby particles
@@ -108,15 +123,30 @@ function ParticleNetwork() {
           </bufferGeometry>
           <pointsMaterial
             size={0.35}
-            color="#06b6d4"
+            color="#67e8f9"
             transparent
-            opacity={0.8}
+            opacity={0.5}
             sizeAttenuation={true}
             depthWrite={false}
             vertexColors={false}
           />
         </points>
       </group>
+
+      {/* Probability Labels */}
+      {probabilityLabels.map((label, i) => (
+        <Text
+          key={i}
+          position={label.position}
+          fontSize={0.4}
+          color="#67e8f9"
+          anchorX="center"
+          anchorY="middle"
+          fillOpacity={0.4}
+        >
+          {label.label}
+        </Text>
+      ))}
 
       {/* Connection lines - Probabilistic Edges */}
       <lineSegments ref={linesRef}>
@@ -129,9 +159,9 @@ function ParticleNetwork() {
           />
         </bufferGeometry>
         <lineBasicMaterial
-          color="#0ea5e9"
+          color="#67e8f9"
           transparent
-          opacity={0.2}
+          opacity={0.15}
           linewidth={1}
         />
       </lineSegments>
