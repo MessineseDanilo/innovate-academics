@@ -157,8 +157,8 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
 
   const categoryLabels: Record<string, { label: string; variant: "default" | "secondary" }> = {
     ai: { label: "Artificial Intelligence", variant: "default" },
-    decisions: { label: "Strategic Decisions", variant: "secondary" },
-    entrepreneurship: { label: "Entrepreneurship", variant: "default" },
+    decisions: { label: "Entrepreneurial Strategy", variant: "secondary" },
+    entrepreneurship: { label: "Innovation", variant: "default" },
   };
 
   const filterPublications = (pubs: Publication[]) => {
