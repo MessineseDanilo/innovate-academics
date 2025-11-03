@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import paperDesignTheory from "@/assets/paper-design-theory.jpg";
 import paperScientificApproach from "@/assets/paper-scientific-approach.jpg";
 import paperAiStartups from "@/assets/paper-ai-startups.jpg";
+import paperCausalAi from "@/assets/paper-causal-ai.jpg";
 import paper1 from "@/assets/paper1.jpg";
 import paper2 from "@/assets/paper2.jpg";
 import paper3 from "@/assets/paper3.jpg";
@@ -23,6 +24,7 @@ interface Publication {
   journalLink?: string;
   status?: string;
   abstract?: string;
+  hideAiChat?: boolean;
 }
 
 interface PublicationsProps {
@@ -139,6 +141,16 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
 
   const newProjects: Publication[] = [
     {
+      title: "Causal Explanations and Theory Generation with AI",
+      authors: "Messinese, D.",
+      journal: "Work in Progress",
+      year: "2025",
+      image: paperCausalAi,
+      categories: ["ai", "decisions"],
+      hideAiChat: true,
+      abstract: "Artificial intelligence (AI) is transforming how social scientists discover, interpret, and explain empirical phenomena. Beyond prediction and optimization, advances in machine learning (ML), causal discovery, and large language models (LLMs) open new possibilities for theory generation. This paper proposes a framework in which AI acts as an epistemic partner in abductive theorizing—the process of generating explanations for unexpected empirical patterns that violate established causal explanations. We show how AI can augment key stages of theorizing: detecting theory violations in the data, tracing their causal structure, and assisting researchers in formulating plausible explanatory mechanisms. In addition to purely inductive uses of ML, our approach emphasizes explanation: helping scholars understand why models fail and how conceptual innovation can emerge from such failures. We demonstrate the approach through classic economic and organizational settings, illustrating how systematic discrepancies between predicted and observed outcomes reveal hidden pathways and latent heterogeneity. More broadly, the paper argues that computational methods can make theorizing more systematic, transparent, and cumulative across the social sciences, positioning AI not as a tool of prediction, but as a collaborator in the creation of new theoretical insight.",
+    },
+    {
       title: "Algorithmic Bias in Entrepreneurial Financing Decisions",
       authors: "Smith, J., Thompson, L. & Garcia, P.",
       journal: "Work in Progress",
@@ -236,15 +248,17 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
                 {expandedAbstracts.has(pub.title) ? "Hide Abstract" : "View Abstract"}
               </Button>
             )}
-            <Button
-              variant="default"
-              size="sm"
-              onClick={() => setSelectedPaper(pub)}
-              className="flex items-center gap-2"
-            >
-              <MessageCircle size={16} />
-              Ask AI about this paper
-            </Button>
+            {!pub.hideAiChat && (
+              <Button
+                variant="default"
+                size="sm"
+                onClick={() => setSelectedPaper(pub)}
+                className="flex items-center gap-2"
+              >
+                <MessageCircle size={16} />
+                Ask AI about this paper
+              </Button>
+            )}
             {pub.ssrnLink && (
               <Button
                 variant="outline"
