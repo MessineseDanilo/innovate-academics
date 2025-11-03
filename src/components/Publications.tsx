@@ -19,6 +19,7 @@ interface Publication {
   ssrnLink?: string;
   journalLink?: string;
   status?: string;
+  abstract?: string;
 }
 
 interface PublicationsProps {
@@ -29,6 +30,19 @@ interface PublicationsProps {
 const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
   const [activeTab, setActiveTab] = useState("publications");
   const [selectedPaper, setSelectedPaper] = useState<Publication | null>(null);
+  const [expandedAbstracts, setExpandedAbstracts] = useState<Set<string>>(new Set());
+
+  const toggleAbstract = (title: string) => {
+    setExpandedAbstracts(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(title)) {
+        newSet.delete(title);
+      } else {
+        newSet.add(title);
+      }
+      return newSet;
+    });
+  };
 
   useEffect(() => {
     if (activeFilter) {
@@ -52,6 +66,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       categories: ["decisions"],
       journalLink: "https://doi.org/10.1287/orsc.2023.18245",
       status: "Best Paper, AOM 2022, TIM Division",
+      abstract: "We develop a unified framework to examine the implications of two primary approaches to strategic decision making under uncertainty: designing and shaping future scenarios vis-à-vis testing theories about future scenarios. We conducted a three-arm randomized controlled trial involving 308 early stage entrepreneurs, dividing them into three groups—design-based training, theory-based training, and a control group—and tracked them over approximately 1.5 years. Our findings reveal that both approaches reduce the need for information in decision making and lead to higher commitment rates. The design-based approach encourages action despite negative beliefs, resulting in less frequent and later project termination. In contrast, the theory-based approach promotes a more conservative termination rule, leading to earlier and more frequent project abandonment. Although the theory-based approach is associated with higher average performance upon survival, the design-based approach fosters breakthroughs for decision makers. In sum, the design-based approach is well-suited for innovative ventures that gather information to shape their environment, whereas the theory-based approach is optimal for pursuing high performance under lower degrees of uncertainty.",
     },
     {
       title: "A Scientific Approach to Entrepreneurial Decision Making: Large Scale Replication and Extension",
@@ -62,6 +77,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       categories: ["entrepreneurship", "decisions"],
       journalLink: "https://doi.org/10.1002/smj.3580",
       status: "Best Experimental Paper, 2024 IGL Research Prize",
+      abstract: "This article runs a large-scale replication of Camuffo and colleagues in 2020, involving 759 firms in four randomized control trials. The larger sample generates novel and more precise insights about the teachability and implications of a scientific approach in entrepreneurship. We observe a positive impact on idea termination and results that are consistent with a nonlinear effect on radical pivots, with treated firms running few over no or repeated pivots. We provide a theoretical interpretation of the empirical results: the scientific approach enhances entrepreneurs' efficiency in searching for viable ideas and raises their methodic doubt because, like scientists, they realize that there may be alternative scenarios from the ones that they theorize.",
     },
   ];
 
@@ -196,6 +212,17 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
             <p className="text-sm text-muted-foreground">{pub.year}</p>
           </div>
           <div className="flex flex-wrap gap-3 pt-2">
+            {pub.abstract && (
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => toggleAbstract(pub.title)}
+                className="flex items-center gap-2"
+              >
+                <FileText size={16} />
+                {expandedAbstracts.has(pub.title) ? "Hide Abstract" : "View Abstract"}
+              </Button>
+            )}
             <Button
               variant="default"
               size="sm"
@@ -241,6 +268,14 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
               </Button>
             )}
           </div>
+          {pub.abstract && expandedAbstracts.has(pub.title) && (
+            <div className="mt-4 pt-4 border-t border-border animate-fade-in">
+              <h4 className="font-semibold mb-2 text-sm">Abstract</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {pub.abstract}
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </Card>
