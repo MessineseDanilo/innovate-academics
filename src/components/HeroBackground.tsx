@@ -2,24 +2,25 @@ import { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-// Anomaly Shapes Component - Unpredictable forms that light up like bulbs
-function AnomalyShapes() {
+// Anomaly Cubes - Normal cubes that suddenly transform and light up
+function AnomalyCubes() {
   const groupRef = useRef<THREE.Group>(null);
-  const [shapes] = useState(() => 
+  
+  const [cubes] = useState(() => 
     Array.from({ length: 8 }, () => ({
       position: [
         (Math.random() - 0.5) * 14,
         (Math.random() - 0.5) * 10,
         (Math.random() - 0.5) * 8
       ] as [number, number, number],
-      phase: Math.random() * Math.PI * 2,
-      frequency: 0.3 + Math.random() * 0.7,
-      nextShapeTime: Math.random() * 3,
-      currentShape: Math.floor(Math.random() * 6),
+      isAnomalous: false,
+      anomalyStartTime: 0,
+      nextAnomalyCheck: Math.random() * 5,
     }))
   );
 
-  const geometries = useMemo(() => [
+  const normalGeometry = useMemo(() => new THREE.BoxGeometry(0.5, 0.5, 0.5), []);
+  const anomalyGeometries = useMemo(() => [
     new THREE.TetrahedronGeometry(0.6),
     new THREE.OctahedronGeometry(0.6),
     new THREE.IcosahedronGeometry(0.6),
@@ -33,51 +34,64 @@ function AnomalyShapes() {
     
     if (groupRef.current) {
       groupRef.current.children.forEach((mesh, i) => {
-        const shape = shapes[i];
+        const cube = cubes[i];
         const m = mesh as THREE.Mesh;
         const mat = m.material as THREE.MeshStandardMaterial;
         
-        // Random "light bulb" illumination - sudden bright flashes
-        const pulse = Math.sin(time * shape.frequency + shape.phase);
-        const randomFlash = Math.random() > 0.97; // Occasional random flash
-        const isActive = pulse > 0.8 || randomFlash;
+        // Check if it's time to trigger or end an anomaly
+        if (!cube.isAnomalous && time > cube.nextAnomalyCheck) {
+          // Random chance to become anomalous
+          if (Math.random() > 0.85) {
+            cube.isAnomalous = true;
+            cube.anomalyStartTime = time;
+            // Transform into random anomaly shape
+            const randomShape = anomalyGeometries[Math.floor(Math.random() * anomalyGeometries.length)];
+            m.geometry = randomShape;
+          }
+          cube.nextAnomalyCheck = time + 2 + Math.random() * 3;
+        }
         
-        if (isActive) {
-          // Bright like a light bulb
-          mat.emissive.setHex(0x06b6d4);
-          mat.emissiveIntensity = randomFlash ? 2.5 : 1.5 + pulse;
-          mat.opacity = 0.9;
+        // If anomalous, check if anomaly should end
+        if (cube.isAnomalous) {
+          const anomalyDuration = time - cube.anomalyStartTime;
+          
+          if (anomalyDuration > 1 + Math.random() * 2) {
+            // End anomaly - return to cube
+            cube.isAnomalous = false;
+            m.geometry = normalGeometry;
+          } else {
+            // During anomaly: bright illumination
+            const intensity = 1.5 + Math.sin(time * 8) * 0.5;
+            mat.emissive.setHex(0x06b6d4);
+            mat.emissiveIntensity = intensity;
+            mat.opacity = 0.9;
+            
+            // Erratic rotation during anomaly
+            m.rotation.x += 0.05;
+            m.rotation.y += 0.08;
+            m.rotation.z += 0.03;
+          }
         } else {
-          // Dim/off
+          // Normal state: dim and gentle rotation
           mat.emissive.setHex(0x000000);
           mat.emissiveIntensity = 0;
-          mat.opacity = 0.15;
+          mat.opacity = 0.2;
+          
+          m.rotation.x += 0.01;
+          m.rotation.y += 0.01;
         }
-        
-        // Change shape unexpectedly
-        if (Math.floor(time) !== Math.floor(time - 0.016)) {
-          if (Math.random() > 0.95) {
-            shape.currentShape = Math.floor(Math.random() * geometries.length);
-            m.geometry = geometries[shape.currentShape];
-          }
-        }
-        
-        // Unpredictable rotation
-        m.rotation.x += 0.02 * (Math.sin(time * 0.5) + 1);
-        m.rotation.y += 0.015 * (Math.cos(time * 0.3) + 1);
-        m.rotation.z += 0.01 * Math.sin(time * 0.7);
       });
     }
   });
 
   return (
     <group ref={groupRef}>
-      {shapes.map((shape, i) => (
-        <mesh key={i} position={shape.position} geometry={geometries[shape.currentShape]}>
+      {cubes.map((cube, i) => (
+        <mesh key={i} position={cube.position} geometry={normalGeometry}>
           <meshStandardMaterial
             color="#06b6d4"
             transparent
-            opacity={0.15}
+            opacity={0.2}
             emissive="#000000"
             emissiveIntensity={0}
             metalness={0.8}
@@ -174,8 +188,8 @@ function CognitiveNetwork() {
 
   return (
     <>
-      {/* Anomaly Shapes */}
-      <AnomalyShapes />
+      {/* Anomaly Cubes */}
+      <AnomalyCubes />
       
       {/* Glowing Points */}
       <points ref={pointsRef}>
