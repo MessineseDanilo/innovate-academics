@@ -206,6 +206,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       image: paperBoundedCreativity,
       categories: ["ai", "decisions"],
       hideAiChat: true,
+      abstract: "Artificial intelligence increasingly produces outputs that appear creative—generating novel and counter-intuitive strategies rather than merely optimizing known ones. Yet it remains unclear whether such algorithmic creativity constitutes genuine innovation in the eyes of human experts. We develop the concept of bounded machine creativity—the capacity of AI systems to generate surprising yet valid solutions under formal constraints—and examine how humans evaluate its strategic relevance. Using DeepMind's chess-puzzle generator as an empirical setting, we operationalize algorithmic surprise as the divergence between shallow and deep engine evaluations, capturing counter-intuitive coherence. We then study how expert players interpret and judge these AI- and human-generated puzzles. The analysis explores when machine-generated novelty is perceived as creative, when it is dismissed as unrealistic, and how labeling affects trust and perceived strategic value. This approach advances a behavioral theory of innovation in strategy, highlighting how human judgment legitimizes and constrains the imaginative potential of artificial intelligence.",
     },
   ];
 
