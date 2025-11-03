@@ -2,6 +2,7 @@ import { ArrowRight, BookOpen, GraduationCap, Microscope, Gamepad2, Users, Brief
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import professorPortrait from "@/assets/professor-portrait.jpg";
+import HeroBackground from "@/components/HeroBackground";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -18,8 +19,9 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-6">
-      <div className="container mx-auto">
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
+      <HeroBackground />
+      <div className="container mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
           <div className="space-y-6 animate-fade-in">
