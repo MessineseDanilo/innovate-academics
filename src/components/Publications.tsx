@@ -100,6 +100,15 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       ssrnLink: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4958898",
       abstract: "What role does predictive artificial intelligence (A.I.) play in entrepreneurial decision-making? We explore this question using a comprehensive dataset of U.S. software startups and their time-varying adoption of A.I. We find that A.I. adoption significantly reshapes startups' technology portfolios and enhances customer acquisition, with performance gains concentrated in the upper tail of the treatment effect distribution. These effects are strongest among startups led by highly skilled founders. Complementary survey evidence and an ad hoc experiment shed light on the underlying mechanism: beyond extrapolating from past trends, A.I. detects unexpected patterns–anomalies–in data, signaling novel opportunities and enabling breakthrough innovation. To capitalize on these anomalies, however, entrepreneurs must embed them within causal theories that guide the development of actionable strategies.",
     },
+    {
+      title: "How Entrepreneurs Respond to New Information under Different Reasoning Logics",
+      authors: "Camuffo, A., Gambardella, A., & Messinese, D.",
+      journal: "Under Review",
+      year: "2025",
+      image: paper2,
+      categories: ["entrepreneurship", "decisions"],
+      abstract: "The way entrepreneurs process information shapes how they strategize, and innovate. We study this mechanism through a randomized controlled trial in Italy involving early-stage entrepreneurs randomly assigned to one of two training conditions: Theorists, trained to reason through explicit causal models and interpret information against structured hypotheses, and Designers, trained to adapt opportunistically through action and treat new signals as cues for reshaping their environment. Over eighteen months, we tracked how entrepreneurs' expectations about their venture's value evolved in response to new information—both endogenous feedback and exogenous shocks. Two main results emerge. First, Theorists hold expectations approximately 2.3 times higher than those of Designers, yet their forecast errors, when benchmarked against realized revenues, are about 10% lower. Second, Theorists update more conservatively: their responsiveness to comparable informational shifts, including exogenous shocks, is about 50% lower than that of Designers. However, when confronted with major, theory-violating surprises, they react sharply—becoming roughly 20% more likely to revise their business model than Designers. Together, the findings reveal a fundamental trade-off in entrepreneurial cognition: the theory-based logic fosters well-calibrated yet rigid expectations, whereas the design-based logic promotes flexibility at the cost of greater volatility.",
+    },
   ];
 
   const newProjects: Publication[] = [
