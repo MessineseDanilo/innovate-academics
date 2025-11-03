@@ -18,8 +18,8 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       color: "bg-primary/10 hover:bg-primary/20 border-primary/30",
       iconColor: "text-primary",
       connections: [
-        { area: "decisions", count: 5, label: "Entrepreneurial Strategy" },
-        { area: "entrepreneurship", count: 1, label: "Innovation" }
+        { area: "decisions", count: 1, label: "Entrepreneurial Strategy" },
+        { area: "entrepreneurship", count: 4, label: "Innovation" }
       ]
     },
     {
@@ -27,12 +27,12 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       icon: Target,
       title: "Entrepreneurial Strategy",
       summary: "Strategic reasoning, information processing, and decision-making approaches in uncertain environments",
-      publications: 8,
+      publications: 4,
       color: "bg-accent/10 hover:bg-accent/20 border-accent/30",
       iconColor: "text-accent",
       connections: [
-        { area: "ai", count: 5, label: "AI" },
-        { area: "entrepreneurship", count: 3, label: "Innovation" }
+        { area: "ai", count: 1, label: "AI" },
+        { area: "entrepreneurship", count: 2, label: "Innovation" }
       ]
     },
     {
@@ -40,12 +40,12 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       icon: Rocket,
       title: "Innovation",
       summary: "Venture creation, entrepreneurial cognition, and systematic experimentation in digital markets",
-      publications: 3,
+      publications: 5,
       color: "bg-emerald-50/50 hover:bg-emerald-50 border-emerald-100 dark:bg-emerald-950/20 dark:hover:bg-emerald-950/30 dark:border-emerald-900/30",
       iconColor: "text-emerald-600 dark:text-emerald-400",
       connections: [
-        { area: "ai", count: 1, label: "AI" },
-        { area: "decisions", count: 3, label: "Entrepreneurial Strategy" }
+        { area: "ai", count: 4, label: "AI" },
+        { area: "decisions", count: 2, label: "Entrepreneurial Strategy" }
       ]
     },
   ];
