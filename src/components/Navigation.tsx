@@ -63,7 +63,7 @@ const Navigation = () => {
             onClick={() => navigate("/")}
             className="text-xl font-serif font-semibold text-foreground hover:text-primary transition-smooth"
           >
-            Academic Portfolio
+            Danilo Messinese
           </button>
 
           {/* Desktop Navigation */}

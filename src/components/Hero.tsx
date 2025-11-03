@@ -37,10 +37,6 @@ const Hero = () => {
           {/* Left Column - Text Content */}
           <div className="space-y-4 md:space-y-6 animate-fade-in text-center md:text-left">
             <div className="space-y-3 md:space-y-4">
-              {/* Name - Main title */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-black leading-tight">
-                Danilo Messinese
-              </h1>
               
               {/* Mobile: Image positioned here */}
               <div className="md:hidden flex justify-center my-4">
