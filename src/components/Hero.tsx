@@ -38,7 +38,7 @@ const Hero = () => {
           <div className="space-y-4 md:space-y-6 animate-fade-in text-center md:text-left">
             <div className="space-y-3 md:space-y-4">
               {/* Name - Main title */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-foreground leading-tight">
                 Danilo Messinese
               </h1>
               
@@ -54,10 +54,8 @@ const Hero = () => {
                 </div>
               </div>
               
-              <p className="text-base md:text-xl text-muted-foreground max-w-xl mx-auto md:mx-0">
-                Danilo Messinese is an Assistant Professor of Strategy at IE Business School.
-                His research investigates how data and AI reshape strategic decision-making and innovation, focusing on how humans and algorithms learn and create under uncertainty.
-                His work has been featured in Harvard Business Review and leading academic journals.
+              <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto md:mx-0">
+                Danilo Messinese is an Assistant Professor of Strategy at IE Business School. His research examines how data and artificial intelligence (AI) shape strategic decision-making, innovation, and entrepreneurship. He combines field and laboratory experiments with computational methods to study how humans and algorithms learn, create, and adapt under uncertainty. His work has been published in leading academic journals and featured in Harvard Business Review. Before academia, Danilo worked at Bain & Company and UniCredit Group.
               </p>
             </div>
 
