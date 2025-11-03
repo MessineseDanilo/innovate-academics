@@ -143,16 +143,6 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
 
   const newProjects: Publication[] = [
     {
-      title: "Bounded Machine Creativity and Human Judgment: Evidence from Chess",
-      authors: "Messinese, D.",
-      journal: "Work in Progress",
-      year: "2025",
-      image: paperBoundedCreativity,
-      categories: ["ai", "decisions"],
-      hideAiChat: true,
-      abstract: "Artificial intelligence increasingly generates outputs that appear creative—producing novel and counter-intuitive strategies rather than merely optimizing known ones. This capacity raises a strategic question: can machine-generated ideas be recognized as genuine innovation within the bounds of human judgment? Do humans trust them? We theorize bounded machine creativity, the ability of AI systems to generate surprising yet valid solutions under formal constraints, and examine how humans evaluate its strategic relevance. Our empirical setting is DeepMind's chess-puzzle generator, a system that creates original positions designed to maximize surprise under constraint. We operationalize algorithmic surprise—the divergence between shallow and deep engine evaluations—as a measure of counter-intuitive coherence. In an experiment with expert chess players, perceived creativity follows an inverted-U relationship with algorithmic surprise: moderate surprise is judged most innovative, while extreme surprise is rejected as unrealistic. When puzzles are labeled as AI-generated, experts further discount their strategic value, revealing a bias that narrows the accepted boundaries of machine creativity. These findings advance a behavioral theory of innovation in strategy, showing how human judgment legitimizes and limits the role of AI as a source of creative strategic exploration.",
-    },
-    {
       title: "Causal Explanations and Theory Generation with AI",
       authors: "Messinese, D.",
       journal: "Work in Progress",
@@ -207,6 +197,15 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       image: paper1,
       categories: ["decisions", "ai"],
       status: "In Progress",
+    },
+    {
+      title: "Bounded Machine Creativity and Human Judgment: Evidence from Chess",
+      authors: "Messinese, D.",
+      journal: "Work in Progress",
+      year: "2025",
+      image: paperBoundedCreativity,
+      categories: ["ai", "decisions"],
+      hideAiChat: true,
     },
   ];
 
