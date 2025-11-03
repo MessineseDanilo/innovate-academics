@@ -69,11 +69,11 @@ function ParticleNetwork() {
       <Points ref={ref} positions={particles} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#6366f1"
+          color="#10b981"
           size={0.35}
           sizeAttenuation={true}
           depthWrite={false}
-          opacity={0.9}
+          opacity={0.6}
         />
       </Points>
 
@@ -88,9 +88,9 @@ function ParticleNetwork() {
           />
         </bufferGeometry>
         <lineBasicMaterial
-          color="#6366f1"
+          color="#10b981"
           transparent
-          opacity={0.4}
+          opacity={0.25}
           linewidth={2}
         />
       </lineSegments>
