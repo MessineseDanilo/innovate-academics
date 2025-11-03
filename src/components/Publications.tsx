@@ -283,13 +283,13 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-3 mb-8">
               <TabsTrigger value="publications">
-                Publications {activeFilter && `(${filteredPublications.length})`}
+                Peer-Reviewed Publications {activeFilter && `(${filteredPublications.length})`}
               </TabsTrigger>
               <TabsTrigger value="working">
                 Working Papers {activeFilter && `(${filteredWorking.length})`}
               </TabsTrigger>
               <TabsTrigger value="new">
-                New Projects {activeFilter && `(${filteredNew.length})`}
+                Work in Progress {activeFilter && `(${filteredNew.length})`}
               </TabsTrigger>
             </TabsList>
 
