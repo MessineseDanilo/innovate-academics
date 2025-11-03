@@ -15,7 +15,6 @@ const Hero = () => {
     { icon: Microscope, label: "Research", id: "about" },
     { icon: BookOpen, label: "Publications", id: "publications" },
     { icon: GraduationCap, label: "Teaching", id: "teaching" },
-    { icon: Gamepad2, label: "Simulation Games", id: "teaching" },
   ];
 
   return (
