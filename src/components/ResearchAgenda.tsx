@@ -14,12 +14,12 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       icon: Brain,
       title: "Artificial Intelligence",
       summary: "How AI systems shape organizational capabilities and competitive dynamics",
-      publications: 4,
+      publications: 5,
       color: "bg-primary/10 hover:bg-primary/20 border-primary/30",
       iconColor: "text-primary",
       connections: [
-        { area: "decisions", count: 4, label: "Strategic Decisions" },
-        { area: "entrepreneurship", count: 4, label: "Entrepreneurship" }
+        { area: "decisions", count: 5, label: "Strategic Decisions" },
+        { area: "entrepreneurship", count: 1, label: "Entrepreneurship" }
       ]
     },
     {
@@ -27,12 +27,12 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       icon: Target,
       title: "Strategic Decisions",
       summary: "Understanding decision-making processes in complex, uncertain environments",
-      publications: 5,
+      publications: 8,
       color: "bg-accent/10 hover:bg-accent/20 border-accent/30",
       iconColor: "text-accent",
       connections: [
-        { area: "ai", count: 4, label: "AI" },
-        { area: "entrepreneurship", count: 1, label: "Entrepreneurship" }
+        { area: "ai", count: 5, label: "AI" },
+        { area: "entrepreneurship", count: 3, label: "Entrepreneurship" }
       ]
     },
     {
@@ -44,8 +44,8 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       color: "bg-emerald-50/50 hover:bg-emerald-50 border-emerald-100 dark:bg-emerald-950/20 dark:hover:bg-emerald-950/30 dark:border-emerald-900/30",
       iconColor: "text-emerald-600 dark:text-emerald-400",
       connections: [
-        { area: "ai", count: 4, label: "AI" },
-        { area: "decisions", count: 1, label: "Strategic Decisions" }
+        { area: "ai", count: 1, label: "AI" },
+        { area: "decisions", count: 3, label: "Strategic Decisions" }
       ]
     },
   ];
