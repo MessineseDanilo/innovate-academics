@@ -1,6 +1,65 @@
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+
+// Anomaly Cubes Component
+function AnomalyCubes() {
+  const groupRef = useRef<THREE.Group>(null);
+  
+  const cubes = useMemo(() => {
+    return Array.from({ length: 6 }, (_, i) => ({
+      position: [
+        (Math.random() - 0.5) * 12,
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 8
+      ] as [number, number, number],
+      phase: Math.random() * Math.PI * 2,
+      frequency: 0.5 + Math.random() * 0.5,
+      morphPhase: Math.random() * Math.PI * 2,
+    }));
+  }, []);
+
+  useFrame((state) => {
+    const time = state.clock.getElapsedTime();
+    
+    if (groupRef.current) {
+      groupRef.current.children.forEach((mesh, i) => {
+        const cube = cubes[i];
+        const m = mesh as THREE.Mesh;
+        const mat = m.material as THREE.MeshBasicMaterial;
+        
+        // Random illumination
+        const pulse = Math.sin(time * cube.frequency + cube.phase);
+        const isActive = pulse > 0.7;
+        mat.opacity = isActive ? 0.6 + pulse * 0.4 : 0.1;
+        
+        // Morph between cube and sphere-like shape
+        const morphValue = (Math.sin(time * 0.3 + cube.morphPhase) + 1) * 0.5;
+        m.scale.setScalar(0.3 + morphValue * 0.2);
+        
+        // Gentle rotation
+        m.rotation.x += 0.01;
+        m.rotation.y += 0.01;
+      });
+    }
+  });
+
+  return (
+    <group ref={groupRef}>
+      {cubes.map((cube, i) => (
+        <mesh key={i} position={cube.position}>
+          <boxGeometry args={[1, 1, 1]} />
+          <meshBasicMaterial
+            color="#06b6d4"
+            transparent
+            opacity={0.1}
+            wireframe={Math.random() > 0.5}
+          />
+        </mesh>
+      ))}
+    </group>
+  );
+}
 
 function CognitiveNetwork() {
   const pointsRef = useRef<THREE.Points>(null);
@@ -87,6 +146,9 @@ function CognitiveNetwork() {
 
   return (
     <>
+      {/* Anomaly Cubes */}
+      <AnomalyCubes />
+      
       {/* Glowing Points */}
       <points ref={pointsRef}>
         <bufferGeometry>
