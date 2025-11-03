@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import paperDesignTheory from "@/assets/paper-design-theory.jpg";
 import paperScientificApproach from "@/assets/paper-scientific-approach.jpg";
+import paperAiStartups from "@/assets/paper-ai-startups.jpg";
 import paper1 from "@/assets/paper1.jpg";
 import paper2 from "@/assets/paper2.jpg";
 import paper3 from "@/assets/paper3.jpg";
@@ -84,6 +85,17 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
   ];
 
   const workingPapers: Publication[] = [
+    {
+      title: "The Selective Tailwind Effect of A.I. on Startups: Predictions and Anomalies",
+      authors: "Conti, A. & Messinese, D.",
+      journal: "SSRN Working Paper",
+      year: "2024",
+      image: paperAiStartups,
+      categories: ["ai", "entrepreneurship", "decisions"],
+      ssrnLink: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4958898",
+      status: "Under Review",
+      abstract: "What role does predictive artificial intelligence (A.I.) play in entrepreneurial decision-making? We explore this question using a comprehensive dataset of U.S. software startups and their time-varying adoption of A.I. We find that A.I. adoption significantly reshapes startups' technology portfolios and enhances customer acquisition, with performance gains concentrated in the upper tail of the treatment effect distribution. These effects are strongest among startups led by highly skilled founders. Complementary survey evidence and an ad hoc experiment shed light on the underlying mechanism: beyond extrapolating from past trends, A.I. detects unexpected patterns–anomalies–in data, signaling novel opportunities and enabling breakthrough innovation. To capitalize on these anomalies, however, entrepreneurs must embed them within causal theories that guide the development of actionable strategies.",
+    },
     {
       title: "Deep Learning Applications in Venture Capital Decision-Making",
       authors: "Smith, J. & Davis, K.",

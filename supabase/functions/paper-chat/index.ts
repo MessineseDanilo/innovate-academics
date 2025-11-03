@@ -87,7 +87,50 @@ PRACTICAL IMPLICATIONS:
 - Improves termination of non-promising projects
 - Leads to focused strategic pivoting
 - Results in higher performance
-- Entrepreneurs learn to combine cognition with action under uncertainty`
+- Entrepreneurs learn to combine cognition with action under uncertainty`,
+
+      "The Selective Tailwind Effect of A.I. on Startups: Predictions and Anomalies": `
+PAPER DETAILS:
+- Authors: Annamaria Conti (IE University), Danilo Messinese (IE University)
+- Status: SSRN Working Paper (Under Review)
+- Year: 2024
+- Registered experiment: AEA RCT Registry (AEARCTR-0015201)
+
+METHODOLOGY:
+- Large-scale empirical analysis: 22,622 U.S. software startups (founded 2017-2018)
+- Data from Crunchbase, BuiltWith (web tech), Semrush (traffic metrics)
+- Focus on Google Analytics 4 (GA4) adoption - predictive A.I. tool with advanced ML and anomaly detection
+- Two-way Mundlak regression + matching algorithm + instrumental variables
+- Survey: 148 founders
+- Experiment: 275 entrepreneurs on Prolific (2×2 design with anomaly detection + causal theorizing interventions)
+
+CENTRAL QUESTION:
+Does A.I. merely extrapolate trends for incremental gains, OR can it catalyze breakthrough innovation?
+
+KEY CONCEPTS:
+1. Predictive A.I. as "Anomaly Detector": Beyond extrapolating expected patterns, A.I. detects UNEXPECTED patterns (anomalies) in data
+2. A.I. as "Artificial Muse": Signals novel opportunities enabling breakthrough innovation
+3. Role of Causal Theorizing: Entrepreneurs must embed anomalies within causal theories to develop actionable strategies
+
+MAIN FINDINGS:
+- A.I. adoption increases website visits by 27%
+- Effects CONCENTRATED in UPPER TAIL: +48% likelihood of above-median visits, +77% for 90th percentile
+- HIGHLY SKILLED FOUNDERS benefit most: +107% probability of reaching 90th percentile
+- Technology portfolio shifts toward experimentation and monetization
+- 41% of entrepreneurs use A.I. for anomaly detection; 76% among GA4 users
+- Entrepreneurs leverage anomalies to refine existing models OR develop entirely new ones
+
+EXPERIMENT KEY FINDING:
+A.I.-detected anomalies spur innovation ONLY when combined with causal theorizing. Without causal reasoning, entrepreneurs myopically follow anomalies, discarding valuable prior knowledge.
+
+REAL-WORLD EXAMPLE (HubSpot):
+Early sales data showed SMBs had higher conversion/retention than large enterprises (contrary to founders' theory). Instead of dismissing this anomaly, founders repositioned HubSpot around SMBs, creating "inbound marketing" concept - defining company identity and dominating SMB space.
+
+PRACTICAL IMPLICATIONS:
+- A.I. serves as SELECTIVE TAILWIND - enhances skilled entrepreneurs' causal reasoning
+- Skilled founders can pivot businesses and achieve substantial performance gains
+- Challenges view that A.I. produces low-variance ideas
+- Turning anomalies into breakthroughs requires structured entrepreneurial reasoning`
     };
 
     const paperContext = paperDetails[paper.title] || "";
