@@ -2,58 +2,86 @@ import { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-// Anomaly Cubes Component
-function AnomalyCubes() {
+// Anomaly Shapes Component - Unpredictable forms that light up like bulbs
+function AnomalyShapes() {
   const groupRef = useRef<THREE.Group>(null);
-  
-  const cubes = useMemo(() => {
-    return Array.from({ length: 6 }, (_, i) => ({
+  const [shapes] = useState(() => 
+    Array.from({ length: 8 }, () => ({
       position: [
-        (Math.random() - 0.5) * 12,
+        (Math.random() - 0.5) * 14,
         (Math.random() - 0.5) * 10,
         (Math.random() - 0.5) * 8
       ] as [number, number, number],
       phase: Math.random() * Math.PI * 2,
-      frequency: 0.5 + Math.random() * 0.5,
-      morphPhase: Math.random() * Math.PI * 2,
-    }));
-  }, []);
+      frequency: 0.3 + Math.random() * 0.7,
+      nextShapeTime: Math.random() * 3,
+      currentShape: Math.floor(Math.random() * 6),
+    }))
+  );
+
+  const geometries = useMemo(() => [
+    new THREE.TetrahedronGeometry(0.6),
+    new THREE.OctahedronGeometry(0.6),
+    new THREE.IcosahedronGeometry(0.6),
+    new THREE.DodecahedronGeometry(0.6),
+    new THREE.TorusGeometry(0.4, 0.15, 8, 12),
+    new THREE.TorusKnotGeometry(0.4, 0.12, 32, 8),
+  ], []);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     
     if (groupRef.current) {
       groupRef.current.children.forEach((mesh, i) => {
-        const cube = cubes[i];
+        const shape = shapes[i];
         const m = mesh as THREE.Mesh;
-        const mat = m.material as THREE.MeshBasicMaterial;
+        const mat = m.material as THREE.MeshStandardMaterial;
         
-        // Random illumination
-        const pulse = Math.sin(time * cube.frequency + cube.phase);
-        const isActive = pulse > 0.7;
-        mat.opacity = isActive ? 0.6 + pulse * 0.4 : 0.1;
+        // Random "light bulb" illumination - sudden bright flashes
+        const pulse = Math.sin(time * shape.frequency + shape.phase);
+        const randomFlash = Math.random() > 0.97; // Occasional random flash
+        const isActive = pulse > 0.8 || randomFlash;
         
-        // Morph between cube and sphere-like shape
-        const morphValue = (Math.sin(time * 0.3 + cube.morphPhase) + 1) * 0.5;
-        m.scale.setScalar(0.3 + morphValue * 0.2);
+        if (isActive) {
+          // Bright like a light bulb
+          mat.emissive.setHex(0x06b6d4);
+          mat.emissiveIntensity = randomFlash ? 2.5 : 1.5 + pulse;
+          mat.opacity = 0.9;
+        } else {
+          // Dim/off
+          mat.emissive.setHex(0x000000);
+          mat.emissiveIntensity = 0;
+          mat.opacity = 0.15;
+        }
         
-        // Gentle rotation
-        m.rotation.x += 0.01;
-        m.rotation.y += 0.01;
+        // Change shape unexpectedly
+        if (Math.floor(time) !== Math.floor(time - 0.016)) {
+          if (Math.random() > 0.95) {
+            shape.currentShape = Math.floor(Math.random() * geometries.length);
+            m.geometry = geometries[shape.currentShape];
+          }
+        }
+        
+        // Unpredictable rotation
+        m.rotation.x += 0.02 * (Math.sin(time * 0.5) + 1);
+        m.rotation.y += 0.015 * (Math.cos(time * 0.3) + 1);
+        m.rotation.z += 0.01 * Math.sin(time * 0.7);
       });
     }
   });
 
   return (
     <group ref={groupRef}>
-      {cubes.map((cube, i) => (
-        <mesh key={i} position={cube.position}>
-          <boxGeometry args={[1, 1, 1]} />
-          <meshBasicMaterial
+      {shapes.map((shape, i) => (
+        <mesh key={i} position={shape.position} geometry={geometries[shape.currentShape]}>
+          <meshStandardMaterial
             color="#06b6d4"
             transparent
-            opacity={0.1}
-            wireframe={Math.random() > 0.5}
+            opacity={0.15}
+            emissive="#000000"
+            emissiveIntensity={0}
+            metalness={0.8}
+            roughness={0.2}
           />
         </mesh>
       ))}
@@ -146,8 +174,8 @@ function CognitiveNetwork() {
 
   return (
     <>
-      {/* Anomaly Cubes */}
-      <AnomalyCubes />
+      {/* Anomaly Shapes */}
+      <AnomalyShapes />
       
       {/* Glowing Points */}
       <points ref={pointsRef}>
@@ -201,6 +229,8 @@ const HeroBackground = () => {
         camera={{ position: [0, 0, 12], fov: 60 }}
         style={{ background: "transparent" }}
       >
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} intensity={1} />
         <CognitiveNetwork />
       </Canvas>
     </div>
