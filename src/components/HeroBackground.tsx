@@ -30,17 +30,38 @@ function ParticleNetwork() {
 
   // Generate probability labels at random positions
   const probabilityLabels = useMemo(() => {
-    return Array.from({ length: 12 }, (_, i) => ({
-      position: [
+    return Array.from({ length: 8 }, (_, i) => ({
+      basePosition: [
         (Math.random() - 0.5) * 16,
         (Math.random() - 0.5) * 16,
         (Math.random() - 0.5) * 12
       ] as [number, number, number],
       value: Math.random(),
-      label: Math.random() > 0.5 
-        ? `${(Math.random() * 0.4 + 0.6).toFixed(2)}` 
-        : `P=${(Math.random() * 0.3 + 0.7).toFixed(2)}`
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.3 + Math.random() * 0.4
     }));
+  }, []);
+
+  // Generate probability distribution curves
+  const distributionCurves = useMemo(() => {
+    return Array.from({ length: 4 }, () => {
+      const points = [];
+      const centerX = (Math.random() - 0.5) * 14;
+      const centerY = (Math.random() - 0.5) * 14;
+      const centerZ = (Math.random() - 0.5) * 10;
+      
+      // Create a bell curve
+      for (let i = 0; i < 20; i++) {
+        const x = (i - 10) * 0.3;
+        const y = Math.exp(-(x * x) / 2) * 1.5;
+        points.push(centerX + x, centerY + y, centerZ);
+      }
+      return {
+        points: new Float32Array(points),
+        basePosition: [centerX, centerY, centerZ] as [number, number, number],
+        phase: Math.random() * Math.PI * 2
+      };
+    });
   }, []);
 
   // Generate connections between nearby particles
@@ -100,6 +121,24 @@ function ParticleNetwork() {
       const material = linesRef.current.material as THREE.LineBasicMaterial;
       material.opacity = 0.15 + Math.sin(time * 0.5) * 0.1;
     }
+
+    // Animate probability labels to float around
+    probabilityLabels.forEach((label, i) => {
+      const element = state.scene.getObjectByName(`prob-label-${i}`);
+      if (element) {
+        element.position.x = label.basePosition[0] + Math.sin(time * label.speed + label.phase) * 1.5;
+        element.position.y = label.basePosition[1] + Math.cos(time * label.speed * 0.7 + label.phase) * 1.5;
+      }
+    });
+
+    // Rotate distribution curves
+    distributionCurves.forEach((curve, i) => {
+      const element = state.scene.getObjectByName(`dist-curve-${i}`);
+      if (element) {
+        element.rotation.y = time * 0.1 + curve.phase;
+        element.position.y = curve.basePosition[1] + Math.sin(time * 0.3 + curve.phase) * 0.5;
+      }
+    });
   });
 
   return (
@@ -137,15 +176,36 @@ function ParticleNetwork() {
       {probabilityLabels.map((label, i) => (
         <Text
           key={i}
-          position={label.position}
-          fontSize={0.4}
+          name={`prob-label-${i}`}
+          position={label.basePosition}
+          fontSize={0.35}
           color="#67e8f9"
           anchorX="center"
           anchorY="middle"
-          fillOpacity={0.4}
+          fillOpacity={0.5}
         >
-          {label.label}
+          {`P=${(0.7 + label.value * 0.3).toFixed(2)}`}
         </Text>
+      ))}
+
+      {/* Distribution Curves */}
+      {distributionCurves.map((curve, i) => (
+        <line key={`curve-${i}`} name={`dist-curve-${i}`}>
+          <bufferGeometry>
+            <bufferAttribute
+              attach="attributes-position"
+              count={curve.points.length / 3}
+              array={curve.points}
+              itemSize={3}
+            />
+          </bufferGeometry>
+          <lineBasicMaterial
+            color="#67e8f9"
+            transparent
+            opacity={0.3}
+            linewidth={2}
+          />
+        </line>
       ))}
 
       {/* Connection lines - Probabilistic Edges */}
