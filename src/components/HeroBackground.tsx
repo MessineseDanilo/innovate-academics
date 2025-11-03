@@ -29,6 +29,7 @@ function CognitiveNetwork() {
       anomalyStartTime: 0,
       nextAnomalyCheck: Math.random() * 5,
       anomalyShape: 0,
+      isYellowBulb: false, // Whether this anomaly glows yellow
     }))
   );
 
@@ -93,6 +94,7 @@ function CognitiveNetwork() {
             node.isAnomalous = true;
             node.anomalyStartTime = time;
             node.anomalyShape = Math.floor(Math.random() * anomalyGeometries.length);
+            node.isYellowBulb = Math.random() > 0.6; // 40% chance of yellow bulb
           }
           node.nextAnomalyCheck = time + 2 + Math.random() * 3;
         }
@@ -120,9 +122,10 @@ function CognitiveNetwork() {
           m.visible = true;
           m.geometry = anomalyGeometries[node.anomalyShape];
           
-          // Bright illumination like a light bulb
+          // Bright illumination like a light bulb - yellow or cyan
           const intensity = 1.8 + Math.sin(time * 10) * 0.4;
-          mat.emissive.setHex(0x06b6d4);
+          const bulbColor = node.isYellowBulb ? 0xfbbf24 : 0x06b6d4; // Yellow or cyan
+          mat.emissive.setHex(bulbColor);
           mat.emissiveIntensity = intensity;
           mat.opacity = 0.95;
           
