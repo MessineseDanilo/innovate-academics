@@ -19,12 +19,12 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 px-4 md:px-6 overflow-hidden">
       <HeroBackground />
       <div className="container mx-auto relative z-10">
         {/* Floating Topics - Centered at top */}
-        <div className="absolute top-2 left-0 right-0 flex justify-center animate-float">
-          <div className="flex items-center gap-3 text-lg md:text-xl font-medium">
+        <div className="absolute top-1 md:top-2 left-0 right-0 flex justify-center animate-float px-4">
+          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 text-sm md:text-lg lg:text-xl font-medium">
             <span className="text-primary">AI</span>
             <span className="text-muted-foreground">×</span>
             <span className="text-accent">Entrepreneurship</span>
@@ -33,61 +33,61 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-12 items-center mt-16">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center mt-12 md:mt-16">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 animate-fade-in">
-            <div className="space-y-4">
+          <div className="space-y-4 md:space-y-6 animate-fade-in text-center md:text-left">
+            <div className="space-y-3 md:space-y-4">
               {/* Name - Main title */}
-              <h1 className="text-5xl md:text-6xl font-serif font-bold text-foreground leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground leading-tight">
                 Danilo Messinese
               </h1>
-              <p className="text-xl text-muted-foreground max-w-xl">
+              <p className="text-base md:text-xl text-muted-foreground max-w-xl mx-auto md:mx-0">
                 Bridging artificial intelligence, strategic decision-making, and entrepreneurial
                 innovation through rigorous academic research.
               </p>
             </div>
 
-            <div className="space-y-4 pt-4">
-              <p className="text-sm font-medium text-muted-foreground">
+            <div className="space-y-3 md:space-y-4 pt-2 md:pt-4">
+              <p className="text-xs md:text-sm font-medium text-muted-foreground">
                 Navigate to:
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 justify-center md:justify-start">
                 <Button
                   size="lg"
                   onClick={() => scrollToSection("about")}
-                  className="group shadow-elegant hover:shadow-glow"
+                  className="group shadow-elegant hover:shadow-glow w-full sm:w-auto"
                 >
-                  <Users className="mr-2 h-5 w-5" />
+                  <Users className="mr-2 h-4 w-4 md:h-5 md:w-5" />
                   For Researchers
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-smooth" />
+                  <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 group-hover:translate-x-1 transition-smooth" />
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
                   onClick={() => scrollToSection("practitioners")}
-                  className="group"
+                  className="group w-full sm:w-auto"
                 >
-                  <Briefcase className="mr-2 h-5 w-5" />
+                  <Briefcase className="mr-2 h-4 w-4 md:h-5 md:w-5" />
                   For Practitioners
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-smooth" />
+                  <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 group-hover:translate-x-1 transition-smooth" />
                 </Button>
               </div>
             </div>
 
             {/* Quick Links */}
-            <div className="grid grid-cols-2 gap-4 pt-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 gap-3 md:gap-4 pt-4 md:pt-8">
               {quickLinks.map((link, index) => (
                 <Card
                   key={link.id}
-                  className="p-4 cursor-pointer hover:shadow-hover transition-smooth group animate-slide-in"
+                  className="p-3 md:p-4 cursor-pointer hover:shadow-hover transition-smooth group animate-slide-in"
                   style={{ animationDelay: `${index * 100}ms` }}
                   onClick={() => scrollToSection(link.id)}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
-                      <link.icon size={20} />
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <div className="p-1.5 md:p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
+                      <link.icon size={16} className="md:w-5 md:h-5" />
                     </div>
-                    <span className="text-sm font-medium">{link.label}</span>
+                    <span className="text-xs md:text-sm font-medium">{link.label}</span>
                   </div>
                 </Card>
               ))}
@@ -95,13 +95,13 @@ const Hero = () => {
           </div>
 
           {/* Right Column - Image */}
-          <div className="flex justify-center animate-fade-in" style={{ animationDelay: "200ms" }}>
-            <div className="relative">
+          <div className="flex justify-center animate-fade-in order-first md:order-last" style={{ animationDelay: "200ms" }}>
+            <div className="relative w-full max-w-xs md:max-w-md">
               <div className="absolute -inset-4 bg-gradient-academic opacity-20 blur-2xl rounded-full"></div>
               <img
                 src={professorPortrait}
-                alt="Professor Portrait"
-                className="relative rounded-2xl shadow-elegant w-full max-w-md object-cover"
+                alt="Danilo Messinese - Professor Portrait"
+                className="relative rounded-2xl shadow-elegant w-full object-cover"
               />
             </div>
           </div>
