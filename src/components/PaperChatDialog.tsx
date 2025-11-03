@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, Loader2, X } from "lucide-react";
+import { Send, Loader2, X, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 import { Badge } from "@/components/ui/badge";
@@ -105,6 +105,11 @@ const PaperChatDialog = ({ paper, isOpen, onClose }: PaperChatDialogProps) => {
     "What are the practical implications?"
   ];
 
+  const handleBackToQuestions = () => {
+    setMessages([]);
+    setInput("");
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl max-h-[85vh] flex flex-col">
@@ -150,6 +155,17 @@ const PaperChatDialog = ({ paper, isOpen, onClose }: PaperChatDialogProps) => {
             </div>
           ) : (
             <>
+              <div className="flex justify-start mb-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleBackToQuestions}
+                  className="gap-2 text-xs"
+                >
+                  <ArrowLeft className="w-3 h-3" />
+                  Back to questions
+                </Button>
+              </div>
               {messages.map((msg, index) => (
                 <div
                   key={index}
