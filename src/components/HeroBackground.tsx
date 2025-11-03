@@ -77,7 +77,7 @@ function CognitiveNetwork() {
         const shouldBeVisible = pulse > 0.6; // Only visible occasionally
         
         if (shouldBeVisible) {
-          material.opacity = Math.min(0.25, (pulse - 0.6) * 0.6);
+          material.opacity = Math.min(0.5, (pulse - 0.6) * 1.2);
         } else {
           material.opacity *= 0.95; // Smooth fade out
         }
@@ -98,13 +98,12 @@ function CognitiveNetwork() {
           />
         </bufferGeometry>
         <pointsMaterial
-          size={0.15}
-          color="#67e8f9"
+          size={0.2}
+          color="#06b6d4"
           transparent
-          opacity={0.6}
+          opacity={0.85}
           sizeAttenuation={true}
           depthWrite={false}
-          blending={THREE.AdditiveBlending}
         />
       </points>
 
@@ -121,11 +120,10 @@ function CognitiveNetwork() {
               />
             </bufferGeometry>
             <lineBasicMaterial
-              color="#67e8f9"
+              color="#06b6d4"
               transparent
               opacity={0}
               linewidth={1}
-              blending={THREE.AdditiveBlending}
             />
           </line>
         ))}
