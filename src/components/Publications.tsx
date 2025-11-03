@@ -1,4 +1,4 @@
-import { ExternalLink, FileText, X } from "lucide-react";
+import { ExternalLink, FileText, X, MessageCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import paper1 from "@/assets/paper1.jpg";
 import paper2 from "@/assets/paper2.jpg";
 import paper3 from "@/assets/paper3.jpg";
 import { useEffect, useState } from "react";
+import PaperChatDialog from "@/components/PaperChatDialog";
 
 interface Publication {
   title: string;
@@ -27,6 +28,7 @@ interface PublicationsProps {
 
 const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
   const [activeTab, setActiveTab] = useState("publications");
+  const [selectedPaper, setSelectedPaper] = useState<Publication | null>(null);
 
   useEffect(() => {
     if (activeFilter) {
@@ -194,6 +196,15 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
             <p className="text-sm text-muted-foreground">{pub.year}</p>
           </div>
           <div className="flex flex-wrap gap-3 pt-2">
+            <Button
+              variant="default"
+              size="sm"
+              onClick={() => setSelectedPaper(pub)}
+              className="flex items-center gap-2"
+            >
+              <MessageCircle size={16} />
+              Ask AI about this paper
+            </Button>
             {pub.ssrnLink && (
               <Button
                 variant="outline"
@@ -314,6 +325,14 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
           </Tabs>
         </div>
       </div>
+      
+      {selectedPaper && (
+        <PaperChatDialog
+          paper={selectedPaper}
+          isOpen={!!selectedPaper}
+          onClose={() => setSelectedPaper(null)}
+        />
+      )}
     </section>
   );
 };
