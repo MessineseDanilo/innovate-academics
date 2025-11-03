@@ -29,7 +29,8 @@ function CognitiveNetwork() {
       anomalyStartTime: 0,
       nextAnomalyCheck: Math.random() * 5,
       anomalyShape: 0,
-      isYellowBulb: false, // Whether this anomaly glows yellow
+      lightPulse: 0, // Yellow light pulse intensity
+      nextPulseCheck: Math.random() * 3,
     }))
   );
 
@@ -88,13 +89,25 @@ function CognitiveNetwork() {
       for (let i = 0; i < anomalousNodes.length; i++) {
         const node = anomalousNodes[i];
         
+        // Check for yellow light pulse
+        if (time > node.nextPulseCheck) {
+          if (Math.random() > 0.9) { // Random chance for light pulse
+            node.lightPulse = 1.0; // Start pulse
+          }
+          node.nextPulseCheck = time + 1 + Math.random() * 3;
+        }
+        
+        // Decay light pulse
+        if (node.lightPulse > 0) {
+          node.lightPulse *= 0.92; // Fade out quickly
+        }
+        
         // Check if it's time to trigger or end an anomaly
         if (!node.isAnomalous && time > node.nextAnomalyCheck) {
           if (Math.random() > 0.92) { // Random chance
             node.isAnomalous = true;
             node.anomalyStartTime = time;
             node.anomalyShape = Math.floor(Math.random() * anomalyGeometries.length);
-            node.isYellowBulb = Math.random() > 0.6; // 40% chance of yellow bulb
           }
           node.nextAnomalyCheck = time + 2 + Math.random() * 3;
         }
@@ -122,10 +135,9 @@ function CognitiveNetwork() {
           m.visible = true;
           m.geometry = anomalyGeometries[node.anomalyShape];
           
-          // Bright illumination like a light bulb - yellow or cyan
+          // Base cyan illumination
           const intensity = 1.8 + Math.sin(time * 10) * 0.4;
-          const bulbColor = node.isYellowBulb ? 0xfbbf24 : 0x06b6d4; // Yellow or cyan
-          mat.emissive.setHex(bulbColor);
+          mat.emissive.setHex(0x06b6d4);
           mat.emissiveIntensity = intensity;
           mat.opacity = 0.95;
           
@@ -134,6 +146,19 @@ function CognitiveNetwork() {
           m.rotation.y += 0.07;
         } else {
           m.visible = false;
+        }
+        
+        // Add yellow light pulse effect if active
+        if (node.lightPulse > 0.05) {
+          if (!m.visible) m.visible = true;
+          const yellowIntensity = node.lightPulse * 2.5;
+          // Mix yellow light with cyan base
+          mat.emissive.setRGB(
+            0.02 + node.lightPulse * 0.98, // Red channel (yellow)
+            0.71 + node.lightPulse * 0.19, // Green channel 
+            0.83 - node.lightPulse * 0.33  // Blue channel (reduce for yellow)
+          );
+          mat.emissiveIntensity = Math.max(mat.emissiveIntensity, yellowIntensity);
         }
       });
     }
