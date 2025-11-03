@@ -26,6 +26,7 @@ const Hero = () => {
           {/* Left Column - Text Content */}
           <div className="space-y-6 animate-fade-in">
             <div className="space-y-4">
+              <p className="text-lg font-medium text-primary mb-2">Danilo Messinese</p>
               <h1 className="text-5xl md:text-6xl font-serif font-bold text-foreground leading-tight">
                 AI, Entrepreneurship
                 <span className="block text-primary mt-2">& Innovation</span>
