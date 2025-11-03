@@ -3,6 +3,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import paperDesignTheory from "@/assets/paper-design-theory.jpg";
+import paperScientificApproach from "@/assets/paper-scientific-approach.jpg";
 import paper1 from "@/assets/paper1.jpg";
 import paper2 from "@/assets/paper2.jpg";
 import paper3 from "@/assets/paper3.jpg";
@@ -62,7 +64,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       authors: "Gambardella, A., Messinese, D.",
       journal: "Organization Science",
       year: "2025",
-      image: paper1,
+      image: paperDesignTheory,
       categories: ["decisions"],
       journalLink: "https://doi.org/10.1287/orsc.2023.18245",
       status: "Best Paper, AOM 2022, TIM Division",
@@ -73,7 +75,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       authors: "Camuffo, A., Gambardella, A., Messinese, D., Novelli, E., Paolucci, E., & Spina, C.",
       journal: "Strategic Management Journal",
       year: "2024",
-      image: paper2,
+      image: paperScientificApproach,
       categories: ["entrepreneurship", "decisions"],
       journalLink: "https://doi.org/10.1002/smj.3580",
       status: "Best Experimental Paper, 2024 IGL Research Prize",
