@@ -35,11 +35,11 @@ function CognitiveNetwork() {
   );
 
   const anomalyGeometries = useMemo(() => [
-    new THREE.BoxGeometry(0.4, 0.4, 0.4),
-    new THREE.TetrahedronGeometry(0.5),
-    new THREE.OctahedronGeometry(0.5),
-    new THREE.IcosahedronGeometry(0.5),
-    new THREE.TorusGeometry(0.3, 0.12, 8, 12),
+    new THREE.BoxGeometry(0.15, 0.15, 0.15),
+    new THREE.TetrahedronGeometry(0.12),
+    new THREE.OctahedronGeometry(0.12),
+    new THREE.IcosahedronGeometry(0.1),
+    new THREE.TorusGeometry(0.08, 0.04, 8, 16),
   ], []);
 
   // Track connection states for intermittent connections
@@ -89,32 +89,32 @@ function CognitiveNetwork() {
       for (let i = 0; i < anomalousNodes.length; i++) {
         const node = anomalousNodes[i];
         
-        // Check for yellow light pulse
+        // Check for yellow light pulse - more frequent but subtle
         if (time > node.nextPulseCheck) {
-          if (Math.random() > 0.9) { // Random chance for light pulse
-            node.lightPulse = 1.0; // Start pulse
+          if (Math.random() > 0.85) { // More frequent pulses
+            node.lightPulse = 0.8; // Subtle pulse intensity
           }
-          node.nextPulseCheck = time + 1 + Math.random() * 3;
+          node.nextPulseCheck = time + 0.5 + Math.random() * 2;
         }
         
-        // Decay light pulse
+        // Decay light pulse smoothly
         if (node.lightPulse > 0) {
-          node.lightPulse *= 0.92; // Fade out quickly
+          node.lightPulse *= 0.88; // Smooth fade out
         }
         
         // Check if it's time to trigger or end an anomaly
         if (!node.isAnomalous && time > node.nextAnomalyCheck) {
-          if (Math.random() > 0.92) { // Random chance
+          if (Math.random() > 0.94) { // More selective anomalies
             node.isAnomalous = true;
             node.anomalyStartTime = time;
             node.anomalyShape = Math.floor(Math.random() * anomalyGeometries.length);
           }
-          node.nextAnomalyCheck = time + 2 + Math.random() * 3;
+          node.nextAnomalyCheck = time + 3 + Math.random() * 4;
         }
         
         if (node.isAnomalous) {
           const anomalyDuration = time - node.anomalyStartTime;
-          if (anomalyDuration > 1.5 + Math.random() * 1.5) {
+          if (anomalyDuration > 2 + Math.random() * 2) {
             node.isAnomalous = false;
           }
         }
@@ -135,30 +135,31 @@ function CognitiveNetwork() {
           m.visible = true;
           m.geometry = anomalyGeometries[node.anomalyShape];
           
-          // Base cyan illumination
-          const intensity = 1.8 + Math.sin(time * 10) * 0.4;
+          // Elegant, subtle illumination with smooth pulsing
+          const intensity = 1.2 + Math.sin(time * 6) * 0.3;
           mat.emissive.setHex(0x06b6d4);
           mat.emissiveIntensity = intensity;
-          mat.opacity = 0.95;
+          mat.opacity = 0.85;
           
-          // Erratic rotation
-          m.rotation.x += 0.05;
-          m.rotation.y += 0.07;
+          // Smooth, elegant rotation
+          m.rotation.x += 0.02;
+          m.rotation.y += 0.03;
         } else {
           m.visible = false;
         }
         
-        // Add yellow light pulse effect if active
+        // Add subtle yellow light pulse effect if active
         if (node.lightPulse > 0.05) {
           if (!m.visible) m.visible = true;
-          const yellowIntensity = node.lightPulse * 2.5;
-          // Mix yellow light with cyan base
+          const yellowIntensity = node.lightPulse * 1.8; // More subtle
+          // Elegant yellow-cyan gradient pulse
           mat.emissive.setRGB(
-            0.02 + node.lightPulse * 0.98, // Red channel (yellow)
-            0.71 + node.lightPulse * 0.19, // Green channel 
-            0.83 - node.lightPulse * 0.33  // Blue channel (reduce for yellow)
+            0.02 + node.lightPulse * 0.88, // Softer red channel
+            0.71 + node.lightPulse * 0.15, // Subtle green boost
+            0.83 - node.lightPulse * 0.25  // Gentle blue reduction
           );
           mat.emissiveIntensity = Math.max(mat.emissiveIntensity, yellowIntensity);
+          mat.opacity = 0.75 + node.lightPulse * 0.2; // Subtle opacity variation
         }
       });
     }
