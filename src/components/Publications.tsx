@@ -52,11 +52,9 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       // Auto-switch to the tab that has papers with this filter
       const hasInPublications = publications.some(p => p.categories.includes(activeFilter));
       const hasInWorking = workingPapers.some(p => p.categories.includes(activeFilter));
-      const hasInNew = newProjects.some(p => p.categories.includes(activeFilter));
       
       if (hasInPublications) setActiveTab("publications");
       else if (hasInWorking) setActiveTab("working");
-      else if (hasInNew) setActiveTab("new");
     }
   }, [activeFilter]);
   const publications: Publication[] = [
@@ -135,45 +133,6 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       categories: ["ai", "decisions"],
       ssrnLink: "https://ssrn.com/abstract=example6",
       status: "Under Review",
-    },
-  ];
-
-  const newProjects: Publication[] = [
-    {
-      title: "Algorithmic Bias in Entrepreneurial Financing Decisions",
-      authors: "Smith, J., Thompson, L. & Garcia, P.",
-      journal: "Work in Progress",
-      year: "2024",
-      image: paper1,
-      categories: ["ai", "entrepreneurship"],
-      status: "Data Collection",
-    },
-    {
-      title: "AI and the Future of Strategic Planning: A Field Experiment",
-      authors: "Smith, J. & Anderson, M.",
-      journal: "Pilot Study",
-      year: "2024",
-      image: paper2,
-      categories: ["ai", "decisions"],
-      status: "Early Stage",
-    },
-    {
-      title: "Entrepreneurial Learning in AI-Driven Markets",
-      authors: "Smith, J., Kumar, R. & White, D.",
-      journal: "Research Design Phase",
-      year: "2024",
-      image: paper3,
-      categories: ["entrepreneurship", "ai"],
-      status: "Conceptual",
-    },
-    {
-      title: "Decision Automation and Strategic Flexibility",
-      authors: "Smith, J. & Chen, L.",
-      journal: "Data Collection Phase",
-      year: "2024",
-      image: paper1,
-      categories: ["decisions", "ai"],
-      status: "In Progress",
     },
   ];
 
@@ -297,7 +256,6 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
 
   const filteredPublications = filterPublications(publications);
   const filteredWorking = filterPublications(workingPapers);
-  const filteredNew = filterPublications(newProjects);
 
   return (
     <section id="publications" className="py-24 px-6 bg-secondary/30">
@@ -330,15 +288,12 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
           )}
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8 h-auto">
-              <TabsTrigger value="publications" className="text-[10px] sm:text-sm px-1.5 py-3 sm:px-3 sm:py-2.5 h-auto whitespace-normal leading-tight">
+            <TabsList className="grid w-full grid-cols-2 mb-8 h-auto">
+              <TabsTrigger value="publications" className="text-xs sm:text-sm px-2 py-3 sm:px-3 sm:py-2.5 h-auto whitespace-normal leading-tight">
                 Peer-Reviewed Publications {activeFilter && `(${filteredPublications.length})`}
               </TabsTrigger>
-              <TabsTrigger value="working" className="text-[10px] sm:text-sm px-1.5 py-3 sm:px-3 sm:py-2.5 h-auto whitespace-normal leading-tight">
+              <TabsTrigger value="working" className="text-xs sm:text-sm px-2 py-3 sm:px-3 sm:py-2.5 h-auto whitespace-normal leading-tight">
                 Working Papers {activeFilter && `(${filteredWorking.length})`}
-              </TabsTrigger>
-              <TabsTrigger value="new" className="text-[10px] sm:text-sm px-1.5 py-3 sm:px-3 sm:py-2.5 h-auto whitespace-normal leading-tight">
-                Work in Progress {activeFilter && `(${filteredNew.length})`}
               </TabsTrigger>
             </TabsList>
 
@@ -358,16 +313,6 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
               ) : (
                 <p className="text-center text-muted-foreground py-12">
                   No working papers found for this research area.
-                </p>
-              )}
-            </TabsContent>
-
-            <TabsContent value="new" className="space-y-6">
-              {filteredNew.length > 0 ? (
-                filteredNew.map((pub, index) => renderPublicationCard(pub, index))
-              ) : (
-                <p className="text-center text-muted-foreground py-12">
-                  No new projects found for this research area.
                 </p>
               )}
             </TabsContent>
