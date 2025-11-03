@@ -99,9 +99,9 @@ function CognitiveNetwork() {
         </bufferGeometry>
         <pointsMaterial
           size={0.15}
-          color="#ffffff"
+          color="#67e8f9"
           transparent
-          opacity={0.7}
+          opacity={0.6}
           sizeAttenuation={true}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
@@ -121,7 +121,7 @@ function CognitiveNetwork() {
               />
             </bufferGeometry>
             <lineBasicMaterial
-              color="#ffffff"
+              color="#67e8f9"
               transparent
               opacity={0}
               linewidth={1}
@@ -136,7 +136,7 @@ function CognitiveNetwork() {
 
 const HeroBackground = () => {
   return (
-    <div className="absolute inset-0 w-full h-full -z-10 bg-slate-900/95">
+    <div className="absolute inset-0 w-full h-full -z-10 bg-white">
       <Canvas
         camera={{ position: [0, 0, 12], fov: 60 }}
         style={{ background: "transparent" }}
