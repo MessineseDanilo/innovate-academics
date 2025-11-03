@@ -55,8 +55,9 @@ const Hero = () => {
               </div>
               
               <p className="text-base md:text-xl text-muted-foreground max-w-xl mx-auto md:mx-0">
-                Bridging artificial intelligence, strategic decision-making, and entrepreneurial
-                innovation through rigorous academic research.
+                Danilo Messinese is an Assistant Professor of Strategy at IE Business School.
+                His research investigates how data and AI reshape strategic decision-making and innovation, focusing on how humans and algorithms learn and create under uncertainty.
+                His work has been featured in Harvard Business Review and leading academic journals.
               </p>
             </div>
 
