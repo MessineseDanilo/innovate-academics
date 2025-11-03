@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import ResearchAgenda from "@/components/ResearchAgenda";
 import Practitioners from "@/components/Practitioners";
 import Publications from "@/components/Publications";
+import CuratedInsights from "@/components/CuratedInsights";
 import Teaching from "@/components/Teaching";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -27,6 +28,7 @@ const Index = () => {
         <ResearchAgenda onCategoryClick={handleCategoryClick} />
         <Practitioners />
         <Publications activeFilter={activeFilter} onClearFilter={handleClearFilter} />
+        <CuratedInsights />
         <Teaching />
         <Contact />
       </main>
