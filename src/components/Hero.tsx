@@ -34,6 +34,18 @@ const Hero = () => {
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center mt-12 md:mt-16">
+          {/* Right Column - Image (shown first on mobile) */}
+          <div className="flex justify-center animate-fade-in order-first md:order-last -mt-4 md:mt-0" style={{ animationDelay: "200ms" }}>
+            <div className="relative w-full max-w-[280px] sm:max-w-xs md:max-w-md">
+              <div className="absolute -inset-4 bg-gradient-academic opacity-20 blur-2xl rounded-full"></div>
+              <img
+                src={professorPortrait}
+                alt="Danilo Messinese - Professor Portrait"
+                className="relative rounded-2xl shadow-elegant w-full object-cover"
+              />
+            </div>
+          </div>
+          
           {/* Left Column - Text Content */}
           <div className="space-y-4 md:space-y-6 animate-fade-in text-center md:text-left">
             <div className="space-y-3 md:space-y-4">
@@ -74,8 +86,8 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 gap-3 md:gap-4 pt-4 md:pt-8">
+            {/* Quick Links - Centered on mobile */}
+            <div className="flex flex-col sm:grid sm:grid-cols-3 md:grid-cols-2 gap-3 md:gap-4 pt-4 md:pt-8 max-w-sm mx-auto md:mx-0 md:max-w-none">
               {quickLinks.map((link, index) => (
                 <Card
                   key={link.id}
@@ -83,7 +95,7 @@ const Hero = () => {
                   style={{ animationDelay: `${index * 100}ms` }}
                   onClick={() => scrollToSection(link.id)}
                 >
-                  <div className="flex items-center gap-2 md:gap-3">
+                  <div className="flex items-center justify-center md:justify-start gap-2 md:gap-3">
                     <div className="p-1.5 md:p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
                       <link.icon size={16} className="md:w-5 md:h-5" />
                     </div>
@@ -91,18 +103,6 @@ const Hero = () => {
                   </div>
                 </Card>
               ))}
-            </div>
-          </div>
-
-          {/* Right Column - Image */}
-          <div className="flex justify-center animate-fade-in order-first md:order-last" style={{ animationDelay: "200ms" }}>
-            <div className="relative w-full max-w-xs md:max-w-md">
-              <div className="absolute -inset-4 bg-gradient-academic opacity-20 blur-2xl rounded-full"></div>
-              <img
-                src={professorPortrait}
-                alt="Danilo Messinese - Professor Portrait"
-                className="relative rounded-2xl shadow-elegant w-full object-cover"
-              />
             </div>
           </div>
         </div>
