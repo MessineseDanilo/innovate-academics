@@ -24,21 +24,23 @@ const Hero = () => {
       <div className="container mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="space-y-8 animate-fade-in">
-            {/* Distinguished Signature Name */}
-            <div className="space-y-4">
-              <h1 className="font-signature text-5xl md:text-6xl font-light tracking-[0.15em] uppercase" 
-                  style={{ color: 'hsl(220 20% 20%)' }}>
+          <div className="space-y-6 animate-fade-in">
+            <div className="space-y-6">
+              {/* Topics - Fancy and centered */}
+              <div className="text-center space-y-2">
+                <div className="flex items-center justify-center gap-3 text-lg md:text-xl font-medium">
+                  <span className="text-primary">AI</span>
+                  <span className="text-muted-foreground">×</span>
+                  <span className="text-accent">Entrepreneurship</span>
+                  <span className="text-muted-foreground">×</span>
+                  <span className="text-secondary-foreground">Innovation</span>
+                </div>
+              </div>
+              
+              {/* Name - Main title */}
+              <h1 className="text-5xl md:text-6xl font-serif font-bold text-foreground leading-tight">
                 Danilo Messinese
               </h1>
-              <div className="w-32 h-[1px] bg-gradient-to-r from-primary/60 to-transparent"></div>
-            </div>
-            
-            <div className="space-y-4 pt-2">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground leading-tight">
-                AI, Entrepreneurship
-                <span className="block text-primary mt-2">& Innovation</span>
-              </h2>
               <p className="text-xl text-muted-foreground max-w-xl">
                 Bridging artificial intelligence, strategic decision-making, and entrepreneurial
                 innovation through rigorous academic research.
