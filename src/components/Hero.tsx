@@ -33,19 +33,7 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center mt-12 md:mt-16">
-          {/* Right Column - Image (shown first on mobile) */}
-          <div className="flex justify-center animate-fade-in order-first md:order-last -mt-4 md:mt-0" style={{ animationDelay: "200ms" }}>
-            <div className="relative w-full max-w-[280px] sm:max-w-xs md:max-w-md">
-              <div className="absolute -inset-4 bg-gradient-academic opacity-20 blur-2xl rounded-full"></div>
-              <img
-                src={professorPortrait}
-                alt="Danilo Messinese - Professor Portrait"
-                className="relative rounded-2xl shadow-elegant w-full object-cover"
-              />
-            </div>
-          </div>
-          
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start md:items-center mt-12 md:mt-16">
           {/* Left Column - Text Content */}
           <div className="space-y-4 md:space-y-6 animate-fade-in text-center md:text-left">
             <div className="space-y-3 md:space-y-4">
@@ -53,6 +41,19 @@ const Hero = () => {
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground leading-tight">
                 Danilo Messinese
               </h1>
+              
+              {/* Mobile: Image positioned here */}
+              <div className="md:hidden flex justify-center my-4">
+                <div className="relative w-full max-w-[260px]">
+                  <div className="absolute -inset-4 bg-gradient-academic opacity-20 blur-2xl rounded-full"></div>
+                  <img
+                    src={professorPortrait}
+                    alt="Danilo Messinese - Professor Portrait"
+                    className="relative rounded-2xl shadow-elegant w-full object-cover"
+                  />
+                </div>
+              </div>
+              
               <p className="text-base md:text-xl text-muted-foreground max-w-xl mx-auto md:mx-0">
                 Bridging artificial intelligence, strategic decision-making, and entrepreneurial
                 innovation through rigorous academic research.
@@ -86,23 +87,57 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Quick Links - Centered on mobile */}
-            <div className="flex flex-col sm:grid sm:grid-cols-3 md:grid-cols-2 gap-3 md:gap-4 pt-4 md:pt-8 max-w-sm mx-auto md:mx-0 md:max-w-none">
-              {quickLinks.map((link, index) => (
-                <Card
-                  key={link.id}
-                  className="p-3 md:p-4 cursor-pointer hover:shadow-hover transition-smooth group animate-slide-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                  onClick={() => scrollToSection(link.id)}
-                >
-                  <div className="flex items-center justify-center md:justify-start gap-2 md:gap-3">
-                    <div className="p-1.5 md:p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
-                      <link.icon size={16} className="md:w-5 md:h-5" />
+            {/* Quick Links - Different layout for mobile vs desktop */}
+            <div className="pt-4 md:pt-8">
+              {/* Mobile: Horizontal centered layout */}
+              <div className="flex md:hidden justify-center gap-2 px-2">
+                {quickLinks.map((link, index) => (
+                  <Card
+                    key={link.id}
+                    className="flex-1 max-w-[110px] p-2.5 cursor-pointer hover:shadow-hover transition-smooth group animate-slide-in"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                    onClick={() => scrollToSection(link.id)}
+                  >
+                    <div className="flex flex-col items-center gap-1.5 text-center">
+                      <div className="p-1.5 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
+                        <link.icon size={16} />
+                      </div>
+                      <span className="text-[10px] font-medium leading-tight">{link.label}</span>
                     </div>
-                    <span className="text-xs md:text-sm font-medium">{link.label}</span>
-                  </div>
-                </Card>
-              ))}
+                  </Card>
+                ))}
+              </div>
+              
+              {/* Desktop: Grid layout */}
+              <div className="hidden md:grid grid-cols-2 gap-4">
+                {quickLinks.map((link, index) => (
+                  <Card
+                    key={link.id}
+                    className="p-4 cursor-pointer hover:shadow-hover transition-smooth group animate-slide-in"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                    onClick={() => scrollToSection(link.id)}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
+                        <link.icon size={20} />
+                      </div>
+                      <span className="text-sm font-medium">{link.label}</span>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Image (Desktop only) */}
+          <div className="hidden md:flex justify-center animate-fade-in" style={{ animationDelay: "200ms" }}>
+            <div className="relative w-full max-w-md">
+              <div className="absolute -inset-4 bg-gradient-academic opacity-20 blur-2xl rounded-full"></div>
+              <img
+                src={professorPortrait}
+                alt="Danilo Messinese - Professor Portrait"
+                className="relative rounded-2xl shadow-elegant w-full object-cover"
+              />
             </div>
           </div>
         </div>
