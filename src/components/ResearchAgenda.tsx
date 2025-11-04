@@ -39,7 +39,7 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       id: "entrepreneurship",
       icon: Rocket,
       title: "Innovation",
-      summary: "How algorithms and entrepreneurs discover breakthrough opportunities, detect anomalies, and leverage serendipity in digital markets",
+      summary: "How algorithms and humans discover breakthrough opportunities, detect anomalies, and leverage serendipity in digital markets",
       publications: 5,
       color: "bg-emerald-50/50 hover:bg-emerald-50 border-emerald-100 dark:bg-emerald-950/20 dark:hover:bg-emerald-950/30 dark:border-emerald-900/30",
       iconColor: "text-emerald-600 dark:text-emerald-400",
