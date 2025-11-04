@@ -149,20 +149,6 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
             </div>
           </TooltipProvider>
 
-          <div className="relative py-12">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
-            </div>
-            <div className="relative text-center">
-              <div className="inline-block bg-background px-6 py-3 rounded-full border border-primary/30">
-                <p className="text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground">Research at the Intersection:</span> 
-                  {" "}Combining computational methods, behavioral insights, and strategic theory
-                </p>
-              </div>
-            </div>
-          </div>
-
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <Card className="border-none bg-muted/50 hover:shadow-elegant transition-smooth">
               <CardContent className="p-6">
@@ -172,15 +158,15 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <span className="text-primary mt-1">•</span>
-                    <span>Human-AI collaboration in strategic contexts</span>
+                    <span>Human-AI complementarity in discovery and strategic reasoning</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary mt-1">•</span>
-                    <span>Cognitive biases and algorithmic decision support</span>
+                    <span>Causal inference and theory generation from data</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary mt-1">•</span>
-                    <span>Digital transformation and organizational adaptation</span>
+                    <span>Cognitive foundations of entrepreneurial decision-making</span>
                   </li>
                 </ul>
               </CardContent>
@@ -194,15 +180,15 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <span className="text-accent mt-1">•</span>
-                    <span>Large-scale experiments and simulation games</span>
+                    <span>Randomized controlled trials and longitudinal field studies</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent mt-1">•</span>
-                    <span>Machine learning and natural language processing</span>
+                    <span>Causal discovery and machine learning algorithms</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-accent mt-1">•</span>
-                    <span>Longitudinal field studies and archival analysis</span>
+                    <span>Computational modeling and theoretical development</span>
                   </li>
                 </ul>
               </CardContent>
