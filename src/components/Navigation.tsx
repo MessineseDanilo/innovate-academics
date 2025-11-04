@@ -59,7 +59,7 @@ const Navigation = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <button
-            onClick={() => navigate("/")}
+            onClick={() => handleNavigation("home")}
             className="text-xl font-serif font-semibold text-foreground hover:text-primary transition-smooth"
           >
             Danilo Messinese
