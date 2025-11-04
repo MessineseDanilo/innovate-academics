@@ -76,8 +76,8 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       ],
       questions: [
         "How do algorithms and humans discover serendipitous opportunities in digital markets?",
-        "What causal mechanisms drive heterogeneous treatment effects of AI adoption on startups?",
-        "Can we use field experiments to identify latent drivers of innovation performance?"
+        "What does it mean for machines to innovate, and how do data and AI augment human scientific discovery?",
+        "How do humans interpret and leverage machine creativity in the innovation process?"
       ]
     },
   ];
