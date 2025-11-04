@@ -49,23 +49,9 @@ const Hero = () => {
                 </div>
               </div>
               
-              <div className="space-y-4 text-sm md:text-base font-serif text-black max-w-xl mx-auto md:mx-0">
-                <p className="italic text-center md:text-left">
-                  At the intersection of human reasoning, artificial intelligence and innovation
-                </p>
-                
-                <p className="text-justify">
-                  My research investigates how data and artificial intelligence (AI) are reshaping strategic decision-making, innovation, and entrepreneurship—and how, in turn, humans reason, learn, and create under uncertainty. I study how algorithms and human decision-makers complement each other in discovering new ideas, forming strategies, and driving innovation in fast-changing environments.
-                </p>
-                
-                <p className="text-justify">
-                  By combining large-scale experiments with data-driven analysis and theoretical modeling, my work explores how information and AI transform not only what organizations decide, but how they think. This approach connects the cognitive foundations of innovation—how entrepreneurs, scientists, and managers make sense of the unknown—with the transformative potential of predictive and generative technologies.
-                </p>
-                
-                <p className="text-justify">
-                  Through collaborations with tech startups, R&D labs, and established firms, my goal is to develop a behavioral and strategic understanding of AI—one that helps organizations leverage human judgment and algorithmic intelligence together to foster discovery, creativity, and sustainable competitive advantage.
-                </p>
-              </div>
+              <p className="text-sm md:text-base font-serif text-black max-w-xl mx-auto md:mx-0 text-justify">
+                Danilo Messinese is an Assistant Professor of Strategy at IE Business School. His research examines how data and artificial intelligence (AI) shape strategic decision-making, innovation, and entrepreneurship. He combines field and laboratory experiments with computational methods to study how humans and algorithms learn, create, and adapt under uncertainty. His work has been published in leading academic journals and featured in Harvard Business Review. Before academia, Danilo worked at Bain & Company and UniCredit Group. Danilo earned his bachelor's degree in Physics and master's degrees in Theoretical Physics and Mathematical Finance from the University of Bologna, and his Ph.D. in Management from Bocconi University.
+              </p>
             </div>
 
 

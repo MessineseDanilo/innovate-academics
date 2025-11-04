@@ -66,23 +66,19 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
             <h2 className="text-4xl font-serif font-bold text-foreground mb-4">
               About My Research
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              At the intersection of cutting-edge technology and strategic thinking
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto italic">
+              At the intersection of human reasoning, artificial intelligence and innovation
             </p>
           </div>
           <div className="space-y-6 text-muted-foreground">
-            <p className="text-center leading-relaxed">
-              My research explores how artificial intelligence is reshaping the landscape of strategic
-              decision-making and entrepreneurship. By combining rigorous quantitative methods with
-              deep qualitative insights, I investigate how organizations and entrepreneurs navigate
-              uncertainty, leverage AI capabilities, and make critical strategic choices in rapidly
-              evolving markets.
+            <p className="text-justify leading-relaxed">
+              My research investigates how data and artificial intelligence (AI) are reshaping strategic decision-making, innovation, and entrepreneurship—and how, in turn, humans reason, learn, and create under uncertainty. I study how algorithms and human decision-makers complement each other in discovering new ideas, forming strategies, and driving innovation in fast-changing environments.
             </p>
-            <p className="text-center leading-relaxed">
-              Through both theoretical development and empirical validation, my work bridges the gap
-              between technological innovation and strategic management, contributing to leading
-              academic journals while maintaining practical relevance for business leaders and
-              policymakers.
+            <p className="text-justify leading-relaxed">
+              By combining large-scale experiments with data-driven analysis and theoretical modeling, my work explores how information and AI transform not only what organizations decide, but how they think. This approach connects the cognitive foundations of innovation—how entrepreneurs, scientists, and managers make sense of the unknown—with the transformative potential of predictive and generative technologies.
+            </p>
+            <p className="text-justify leading-relaxed">
+              Through collaborations with tech startups, R&D labs, and established firms, my goal is to develop a behavioral and strategic understanding of AI—one that helps organizations leverage human judgment and algorithmic intelligence together to foster discovery, creativity, and sustainable competitive advantage.
             </p>
           </div>
         </div>
