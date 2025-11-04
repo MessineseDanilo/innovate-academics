@@ -82,63 +82,6 @@ function CognitiveNetwork() {
     return conns;
   }, [points]);
 
-  // Handle click interactions
-  const handleClick = (event: MouseEvent) => {
-    const rect = gl.domElement.getBoundingClientRect();
-    const mouse = new THREE.Vector2(
-      ((event.clientX - rect.left) / rect.width) * 2 - 1,
-      -((event.clientY - rect.top) / rect.height) * 2 + 1
-    );
-
-    raycaster.setFromCamera(mouse, camera);
-    
-    if (anomalyNodesRef.current) {
-      const intersects = raycaster.intersectObjects(anomalyNodesRef.current.children);
-      
-      if (intersects.length > 0) {
-        const clickedIndex = anomalyNodesRef.current.children.indexOf(intersects[0].object);
-        if (clickedIndex >= 0) {
-          const node = anomalousNodes[clickedIndex];
-          const time = performance.now() / 1000;
-          
-          // Random effect
-          node.clickEffect = Math.floor(Math.random() * 4) + 1;
-          node.clickStartTime = time;
-          node.isAnomalous = true;
-          node.anomalyStartTime = time;
-          
-          // Set velocity for explosion effect
-          if (node.clickEffect === 1) {
-            node.clickVelocity.set(
-              (Math.random() - 0.5) * 2,
-              (Math.random() - 0.5) * 2,
-              (Math.random() - 0.5) * 2
-            );
-            node.originalPosition.set(
-              points[clickedIndex * 3],
-              points[clickedIndex * 3 + 1],
-              points[clickedIndex * 3 + 2]
-            );
-          }
-          
-          // Trigger wave effect on nearby connections
-          if (node.clickEffect === 4) {
-            connectionStates.forEach((conn, i) => {
-              conn.targetOpacity = 1;
-              conn.phase = time + i * 0.1;
-            });
-          }
-        }
-      }
-    }
-  };
-
-  // Add click listener
-  useMemo(() => {
-    gl.domElement.addEventListener('click', handleClick);
-    return () => gl.domElement.removeEventListener('click', handleClick);
-  }, [gl, camera, anomalousNodes]);
-
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
 
@@ -249,29 +192,19 @@ function CognitiveNetwork() {
           }
         }
         
-        if (node.isAnomalous) {
-          m.visible = true;
-          if (node.clickEffect === 0) {
-            m.geometry = anomalyGeometries[node.anomalyShape];
-          } else {
-            m.geometry = anomalyGeometries[node.anomalyShape];
-          }
-          
-          // Elegant, subtle illumination with smooth pulsing
-          if (node.clickEffect === 0) {
-            const intensity = 1.2 + Math.sin(time * 6) * 0.3;
-            mat.emissive.setHex(0x06b6d4);
-            mat.emissiveIntensity = intensity;
-            mat.opacity = 0.85;
-            
-            // Smooth, elegant rotation
-            m.rotation.x += 0.02;
-            m.rotation.y += 0.03;
-          }
-        } else {
-          if (node.clickEffect === 0) {
-            m.visible = false;
-          }
+        if (node.isAnomalous && node.clickEffect === 0) {
+          m.geometry = anomalyGeometries[node.anomalyShape];
+          const intensity = 1.2 + Math.sin(time * 6) * 0.3;
+          mat.emissive.setHex(0x06b6d4);
+          mat.emissiveIntensity = intensity;
+          mat.opacity = 0.85;
+          m.rotation.x += 0.02;
+          m.rotation.y += 0.03;
+        } else if (node.clickEffect === 0) {
+          // Default state - small sphere
+          mat.emissive.setHex(0x06b6d4);
+          mat.emissiveIntensity = 0.3;
+          mat.opacity = 0.6;
         }
         
         // Add subtle yellow light pulse effect if active
@@ -345,15 +278,39 @@ function CognitiveNetwork() {
             <mesh 
               key={i} 
               position={[points[i * 3], points[i * 3 + 1], points[i * 3 + 2]]}
-              visible={false}
+              visible={true}
+              onClick={() => {
+                const node = anomalousNodes[i];
+                const time = performance.now() / 1000;
+                
+                node.clickEffect = Math.floor(Math.random() * 4) + 1;
+                node.clickStartTime = time;
+                node.isAnomalous = true;
+                node.anomalyStartTime = time;
+                
+                if (node.clickEffect === 1) {
+                  node.clickVelocity.set(
+                    (Math.random() - 0.5) * 2,
+                    (Math.random() - 0.5) * 2,
+                    (Math.random() - 0.5) * 2
+                  );
+                }
+                
+                if (node.clickEffect === 4) {
+                  connectionStates.forEach((conn, j) => {
+                    conn.targetOpacity = 1;
+                    conn.phase = time + j * 0.1;
+                  });
+                }
+              }}
             >
-              <boxGeometry args={[0.4, 0.4, 0.4]} />
+              <sphereGeometry args={[0.25, 16, 16]} />
               <meshStandardMaterial
                 color="#06b6d4"
                 transparent
-                opacity={0.95}
-                emissive="#000000"
-                emissiveIntensity={0}
+                opacity={0.6}
+                emissive="#06b6d4"
+                emissiveIntensity={0.3}
                 metalness={0.9}
                 roughness={0.1}
               />
