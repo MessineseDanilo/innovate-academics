@@ -10,6 +10,28 @@ const CuratedInsights = () => {
 
   const insights = [
     {
+      type: "article",
+      icon: Newspaper,
+      title: "Hypotheses devised by AI could find 'blind spots' in research",
+      description: "Explores how AI systems can generate novel scientific hypotheses and identify overlooked patterns in research, potentially revolutionizing scientific discovery.",
+      author: "Matthew Hutson, Nature",
+      link: "#",
+      color: "text-emerald-600",
+      badge: "Practitioner-oriented article",
+      topics: ["AI", "Innovation"],
+    },
+    {
+      type: "paper",
+      icon: FileText,
+      title: "Modeling the Change of Paradigm: Non-Bayesian Reactions to Unexpected News",
+      description: "Examines how individuals update their beliefs when confronted with unexpected information, proposing a model of non-Bayesian learning that captures paradigm shifts in thinking.",
+      author: "Pietro Ortoleva, AER 2012",
+      link: "#",
+      color: "text-primary",
+      badge: "Research Paper",
+      topics: ["Innovation", "Entrepreneurship"],
+    },
+    {
       type: "paper",
       icon: FileText,
       title: "The Impact of AI on Organizational Decision-Making",
