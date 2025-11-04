@@ -25,11 +25,11 @@ const Hero = () => {
         {/* Header Text - Centered between navbar and content */}
         <div className="absolute -top-36 md:-top-40 left-0 right-0 flex justify-center px-4">
           <div className="text-center">
-            <p className="text-base md:text-lg text-foreground/80">Research on</p>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-primary">
+            <p className="text-sm md:text-lg text-foreground/80">Research on</p>
+            <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold text-primary">
               Algorithmic Exploration
             </h2>
-            <p className="text-base md:text-lg text-foreground/80 italic mt-2">When Machines Inspire Prepared Minds</p>
+            <p className="text-sm md:text-lg text-foreground/80 italic mt-2">When Machines Inspire Prepared Minds</p>
           </div>
         </div>
         
