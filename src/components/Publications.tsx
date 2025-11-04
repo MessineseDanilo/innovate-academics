@@ -15,6 +15,7 @@ import paper1 from "@/assets/paper1.jpg";
 import paper2 from "@/assets/paper2.jpg";
 import paper3 from "@/assets/paper3.jpg";
 import podcastScientificApproach from "@/assets/podcast-scientific-approach.m4a";
+import podcastDesignTheory from "@/assets/podcast-design-theory.m4a";
 import { useEffect, useState } from "react";
 import PaperChatDialog from "@/components/PaperChatDialog";
 
@@ -91,6 +92,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       journalLink: "https://doi.org/10.1287/orsc.2023.18245",
       status: "Best Paper, AOM 2022, TIM Division",
       abstract: "We develop a unified framework to examine the implications of two primary approaches to strategic decision making under uncertainty: designing and shaping future scenarios vis-à-vis testing theories about future scenarios. We conducted a three-arm randomized controlled trial involving 308 early stage entrepreneurs, dividing them into three groups—design-based training, theory-based training, and a control group—and tracked them over approximately 1.5 years. Our findings reveal that both approaches reduce the need for information in decision making and lead to higher commitment rates. The design-based approach encourages action despite negative beliefs, resulting in less frequent and later project termination. In contrast, the theory-based approach promotes a more conservative termination rule, leading to earlier and more frequent project abandonment. Although the theory-based approach is associated with higher average performance upon survival, the design-based approach fosters breakthroughs for decision makers. In sum, the design-based approach is well-suited for innovative ventures that gather information to shape their environment, whereas the theory-based approach is optimal for pursuing high performance under lower degrees of uncertainty.",
+      podcastUrl: podcastDesignTheory,
     },
     {
       title: "A Scientific Approach to Entrepreneurial Decision Making: Large Scale Replication and Extension",
