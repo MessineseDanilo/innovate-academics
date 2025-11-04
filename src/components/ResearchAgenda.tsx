@@ -20,6 +20,11 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       connections: [
         { area: "decisions", count: 1, label: "Entrepreneurial Strategy" },
         { area: "entrepreneurship", count: 4, label: "Innovation" }
+      ],
+      questions: [
+        "How can firms strategically acquire and leverage data to innovate?",
+        "How can firms navigate a noisy information world?",
+        "What role does AI play in strategic decision-making?"
       ]
     },
     {
@@ -33,6 +38,10 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       connections: [
         { area: "ai", count: 1, label: "AI" },
         { area: "entrepreneurship", count: 2, label: "Innovation" }
+      ],
+      questions: [
+        "What are the implications of adopting different strategies?",
+        "To what extent do entrepreneurs predict or shape the market?"
       ]
     },
     {
@@ -46,6 +55,10 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
       connections: [
         { area: "ai", count: 4, label: "AI" },
         { area: "decisions", count: 2, label: "Entrepreneurial Strategy" }
+      ],
+      questions: [
+        "How do field experiments reveal new insights in strategy?",
+        "What methodologies work best for studying innovation?"
       ]
     },
   ];
@@ -104,6 +117,24 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
                       <p className="text-sm text-muted-foreground leading-relaxed min-h-[60px]">
                         {area.summary}
                       </p>
+                      
+                      {/* Research Questions */}
+                      {area.questions && (
+                        <div className="w-full space-y-2 pt-3 border-t border-border/50">
+                          <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide">
+                            Key Questions
+                          </p>
+                          <ul className="space-y-1.5 text-left">
+                            {area.questions.map((question, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                <span className={`${area.iconColor} mt-0.5 text-[10px]`}>•</span>
+                                <span className="leading-relaxed">{question}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      
                       <Badge variant="secondary" className="mt-2">
                         {area.publications} Publications
                       </Badge>
