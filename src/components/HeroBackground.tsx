@@ -41,13 +41,9 @@ function CognitiveNetwork() {
     }))
   );
 
-  const anomalyGeometries = useMemo(() => [
-    new THREE.BoxGeometry(0.15, 0.15, 0.15),
-    new THREE.TetrahedronGeometry(0.12),
-    new THREE.OctahedronGeometry(0.12),
-    new THREE.IcosahedronGeometry(0.1),
-    new THREE.TorusGeometry(0.08, 0.04, 8, 16),
-  ], []);
+  const anomalyGeometry = useMemo(() => 
+    new THREE.BoxGeometry(0.15, 0.15, 0.15)
+  , []);
 
   // Track connection states for intermittent connections
   const connectionStates = useMemo(() => {
@@ -114,7 +110,7 @@ function CognitiveNetwork() {
           if (Math.random() > 0.94) { // More selective anomalies
             node.isAnomalous = true;
             node.anomalyStartTime = time;
-            node.anomalyShape = Math.floor(Math.random() * anomalyGeometries.length);
+            node.anomalyShape = 0;
           }
           node.nextAnomalyCheck = time + 3 + Math.random() * 4;
         }
@@ -168,10 +164,8 @@ function CognitiveNetwork() {
               }
               break;
               
-            case 3: // Rapid shape morphing
+            case 3: // Rapid rotation
               if (clickDuration < 2) {
-                const morphSpeed = clickDuration * 8;
-                node.anomalyShape = Math.floor(morphSpeed) % anomalyGeometries.length;
                 m.rotation.x += 0.15;
                 m.rotation.y += 0.15;
               } else {
@@ -193,7 +187,7 @@ function CognitiveNetwork() {
         }
         
         if (node.isAnomalous && node.clickEffect === 0) {
-          m.geometry = anomalyGeometries[node.anomalyShape];
+          m.geometry = anomalyGeometry;
           const intensity = 1.2 + Math.sin(time * 6) * 0.3;
           mat.emissive.setHex(0x06b6d4);
           mat.emissiveIntensity = intensity;
@@ -201,7 +195,7 @@ function CognitiveNetwork() {
           m.rotation.x += 0.02;
           m.rotation.y += 0.03;
         } else if (node.clickEffect === 0) {
-          // Default state - small sphere
+          // Default state - small box
           mat.emissive.setHex(0x06b6d4);
           mat.emissiveIntensity = 0.3;
           mat.opacity = 0.6;
@@ -313,7 +307,7 @@ function CognitiveNetwork() {
                 document.body.style.cursor = 'default';
               }}
             >
-              <sphereGeometry args={[0.25, 16, 16]} />
+              <boxGeometry args={[0.15, 0.15, 0.15]} />
               <meshStandardMaterial
                 color="#06b6d4"
                 transparent
