@@ -23,7 +23,7 @@ const Hero = () => {
       <HeroBackground />
       <div className="container mx-auto relative z-10">
         {/* Header Text - Centered between navbar and content */}
-        <div className="absolute -top-8 md:-top-10 left-0 right-0 flex justify-center px-4">
+        <div className="absolute -top-20 md:-top-24 left-0 right-0 flex justify-center px-4">
           <h2 className="text-base md:text-xl lg:text-2xl font-bold text-center text-foreground">
             Ongoing Research on How Humans and AI Explore the Unknown
           </h2>
