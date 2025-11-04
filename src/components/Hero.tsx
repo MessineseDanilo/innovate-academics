@@ -22,15 +22,11 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 px-4 md:px-6 overflow-hidden">
       <HeroBackground />
       <div className="container mx-auto relative z-10">
-        {/* Floating Topics - Centered at top */}
-        <div className="absolute top-1 md:top-2 left-0 right-0 flex justify-center animate-float px-4">
-          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 text-sm md:text-lg lg:text-xl font-medium">
-            <span className="text-primary">AI</span>
-            <span className="text-muted-foreground">×</span>
-            <span className="text-accent">Entrepreneurship</span>
-            <span className="text-muted-foreground">×</span>
-            <span className="text-foreground">Innovation</span>
-          </div>
+        {/* Header Text - Centered at top */}
+        <div className="absolute top-1 md:top-2 left-0 right-0 flex justify-center px-4">
+          <h2 className="text-sm md:text-lg lg:text-xl font-medium text-center text-foreground">
+            Ongoing Research on How Humans and AI Explore the Unknown
+          </h2>
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mt-12 md:mt-16">
