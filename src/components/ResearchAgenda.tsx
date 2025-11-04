@@ -67,7 +67,7 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
               About My Research
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto italic">
-              At the intersection of strategic thinking, artificial intelligence and innovation
+              At the intersection of strategic thinking and artificial intelligence in innovation and entrepreneurship
             </p>
           </div>
           <div className="space-y-6 text-muted-foreground">
