@@ -7,19 +7,19 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "professor@university.edu",
-      link: "mailto:professor@university.edu",
+      value: "danilo.messinese@ie.edu",
+      link: "mailto:danilo.messinese@ie.edu",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
       value: "Connect on LinkedIn",
-      link: "https://linkedin.com/in/professor",
+      link: "https://www.linkedin.com/in/danilomessinese/",
     },
     {
       icon: Building2,
       label: "Office",
-      value: "Baker Library, Room 265",
+      value: "IE Tower, Madrid, Office 22.09",
       link: null,
     },
   ];
@@ -76,8 +76,8 @@ const Contact = () => {
           </div>
 
           <div className="text-center pt-8 text-sm text-muted-foreground animate-fade-in" style={{ animationDelay: "400ms" }}>
-            <p>Harvard Business School</p>
-            <p>Boston, MA 02163</p>
+            <p>IE Business School</p>
+            <p>Madrid, Spain</p>
           </div>
         </div>
       </div>
