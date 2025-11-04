@@ -1,11 +1,14 @@
 import { useRef, useMemo, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 function CognitiveNetwork() {
   const pointsRef = useRef<THREE.Points>(null);
   const linesRef = useRef<THREE.Group>(null);
   const anomalyNodesRef = useRef<THREE.Group>(null);
+  const { camera, gl } = useThree();
+  const raycaster = useMemo(() => new THREE.Raycaster(), []);
+  raycaster.params.Points = { threshold: 0.3 };
 
   // Generate fewer points for minimalist approach
   const points = useMemo(() => {
@@ -29,8 +32,12 @@ function CognitiveNetwork() {
       anomalyStartTime: 0,
       nextAnomalyCheck: Math.random() * 5,
       anomalyShape: 0,
-      lightPulse: 0, // Yellow light pulse intensity
+      lightPulse: 0,
       nextPulseCheck: Math.random() * 3,
+      clickEffect: 0, // 0=none, 1=explode, 2=light, 3=shape, 4=wave
+      clickStartTime: 0,
+      clickVelocity: new THREE.Vector3(),
+      originalPosition: new THREE.Vector3(),
     }))
   );
 
@@ -74,6 +81,63 @@ function CognitiveNetwork() {
     }
     return conns;
   }, [points]);
+
+  // Handle click interactions
+  const handleClick = (event: MouseEvent) => {
+    const rect = gl.domElement.getBoundingClientRect();
+    const mouse = new THREE.Vector2(
+      ((event.clientX - rect.left) / rect.width) * 2 - 1,
+      -((event.clientY - rect.top) / rect.height) * 2 + 1
+    );
+
+    raycaster.setFromCamera(mouse, camera);
+    
+    if (anomalyNodesRef.current) {
+      const intersects = raycaster.intersectObjects(anomalyNodesRef.current.children);
+      
+      if (intersects.length > 0) {
+        const clickedIndex = anomalyNodesRef.current.children.indexOf(intersects[0].object);
+        if (clickedIndex >= 0) {
+          const node = anomalousNodes[clickedIndex];
+          const time = performance.now() / 1000;
+          
+          // Random effect
+          node.clickEffect = Math.floor(Math.random() * 4) + 1;
+          node.clickStartTime = time;
+          node.isAnomalous = true;
+          node.anomalyStartTime = time;
+          
+          // Set velocity for explosion effect
+          if (node.clickEffect === 1) {
+            node.clickVelocity.set(
+              (Math.random() - 0.5) * 2,
+              (Math.random() - 0.5) * 2,
+              (Math.random() - 0.5) * 2
+            );
+            node.originalPosition.set(
+              points[clickedIndex * 3],
+              points[clickedIndex * 3 + 1],
+              points[clickedIndex * 3 + 2]
+            );
+          }
+          
+          // Trigger wave effect on nearby connections
+          if (node.clickEffect === 4) {
+            connectionStates.forEach((conn, i) => {
+              conn.targetOpacity = 1;
+              conn.phase = time + i * 0.1;
+            });
+          }
+        }
+      }
+    }
+  };
+
+  // Add click listener
+  useMemo(() => {
+    gl.domElement.addEventListener('click', handleClick);
+    return () => gl.domElement.removeEventListener('click', handleClick);
+  }, [gl, camera, anomalousNodes]);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
@@ -131,35 +195,96 @@ function CognitiveNetwork() {
         const m = mesh as THREE.Mesh;
         const mat = m.material as THREE.MeshStandardMaterial;
         
+        // Handle click effects
+        if (node.clickEffect > 0) {
+          const clickDuration = time - node.clickStartTime;
+          
+          switch (node.clickEffect) {
+            case 1: // Explosion effect
+              if (clickDuration < 1.5) {
+                const explosionFactor = Math.sin(clickDuration * Math.PI);
+                m.position.x = node.originalPosition.x + node.clickVelocity.x * explosionFactor * 3;
+                m.position.y = node.originalPosition.y + node.clickVelocity.y * explosionFactor * 3;
+                m.position.z = node.originalPosition.z + node.clickVelocity.z * explosionFactor * 3;
+                m.scale.setScalar(1 + explosionFactor * 2);
+              } else {
+                m.position.copy(node.originalPosition);
+                m.scale.setScalar(1);
+                node.clickEffect = 0;
+              }
+              break;
+              
+            case 2: // Intense light burst
+              if (clickDuration < 2) {
+                const lightIntensity = Math.max(0, 1 - clickDuration / 2);
+                mat.emissive.setHex(0xffff00);
+                mat.emissiveIntensity = 5 * lightIntensity;
+                m.scale.setScalar(1 + lightIntensity * 0.5);
+              } else {
+                node.clickEffect = 0;
+              }
+              break;
+              
+            case 3: // Rapid shape morphing
+              if (clickDuration < 2) {
+                const morphSpeed = clickDuration * 8;
+                node.anomalyShape = Math.floor(morphSpeed) % anomalyGeometries.length;
+                m.rotation.x += 0.15;
+                m.rotation.y += 0.15;
+              } else {
+                node.clickEffect = 0;
+              }
+              break;
+              
+            case 4: // Connection wave
+              if (clickDuration < 1.5) {
+                const pulse = Math.sin(clickDuration * Math.PI * 4);
+                mat.emissive.setRGB(0.02, 0.71 + pulse * 0.2, 0.83);
+                mat.emissiveIntensity = 2 + pulse * 2;
+                m.scale.setScalar(1 + Math.abs(pulse) * 0.3);
+              } else {
+                node.clickEffect = 0;
+              }
+              break;
+          }
+        }
+        
         if (node.isAnomalous) {
           m.visible = true;
-          m.geometry = anomalyGeometries[node.anomalyShape];
+          if (node.clickEffect === 0) {
+            m.geometry = anomalyGeometries[node.anomalyShape];
+          } else {
+            m.geometry = anomalyGeometries[node.anomalyShape];
+          }
           
           // Elegant, subtle illumination with smooth pulsing
-          const intensity = 1.2 + Math.sin(time * 6) * 0.3;
-          mat.emissive.setHex(0x06b6d4);
-          mat.emissiveIntensity = intensity;
-          mat.opacity = 0.85;
-          
-          // Smooth, elegant rotation
-          m.rotation.x += 0.02;
-          m.rotation.y += 0.03;
+          if (node.clickEffect === 0) {
+            const intensity = 1.2 + Math.sin(time * 6) * 0.3;
+            mat.emissive.setHex(0x06b6d4);
+            mat.emissiveIntensity = intensity;
+            mat.opacity = 0.85;
+            
+            // Smooth, elegant rotation
+            m.rotation.x += 0.02;
+            m.rotation.y += 0.03;
+          }
         } else {
-          m.visible = false;
+          if (node.clickEffect === 0) {
+            m.visible = false;
+          }
         }
         
         // Add subtle yellow light pulse effect if active
-        if (node.lightPulse > 0.05) {
+        if (node.lightPulse > 0.05 && node.clickEffect === 0) {
           if (!m.visible) m.visible = true;
-          const yellowIntensity = node.lightPulse * 1.8; // More subtle
-          // Elegant yellow-cyan gradient pulse
+          const yellowIntensity = node.lightPulse * 1.8;
           mat.emissive.setRGB(
-            0.02 + node.lightPulse * 0.88, // Softer red channel
-            0.71 + node.lightPulse * 0.15, // Subtle green boost
-            0.83 - node.lightPulse * 0.25  // Gentle blue reduction
+            0.02 + node.lightPulse * 0.88,
+            0.71 + node.lightPulse * 0.15,
+            0.83 - node.lightPulse * 0.25
           );
           mat.emissiveIntensity = Math.max(mat.emissiveIntensity, yellowIntensity);
-          mat.opacity = 0.75 + node.lightPulse * 0.2; // Subtle opacity variation
+          mat.opacity = 0.75 + node.lightPulse * 0.2;
         }
       });
     }
@@ -210,24 +335,31 @@ function CognitiveNetwork() {
 
       {/* Anomaly Node Transformations */}
       <group ref={anomalyNodesRef}>
-        {Array.from({ length: 25 }).map((_, i) => (
-          <mesh 
-            key={i} 
-            position={[points[i * 3], points[i * 3 + 1], points[i * 3 + 2]]}
-            visible={false}
-          >
-            <boxGeometry args={[0.4, 0.4, 0.4]} />
-            <meshStandardMaterial
-              color="#06b6d4"
-              transparent
-              opacity={0.95}
-              emissive="#000000"
-              emissiveIntensity={0}
-              metalness={0.9}
-              roughness={0.1}
-            />
-          </mesh>
-        ))}
+        {Array.from({ length: 25 }).map((_, i) => {
+          anomalousNodes[i].originalPosition = new THREE.Vector3(
+            points[i * 3],
+            points[i * 3 + 1],
+            points[i * 3 + 2]
+          );
+          return (
+            <mesh 
+              key={i} 
+              position={[points[i * 3], points[i * 3 + 1], points[i * 3 + 2]]}
+              visible={false}
+            >
+              <boxGeometry args={[0.4, 0.4, 0.4]} />
+              <meshStandardMaterial
+                color="#06b6d4"
+                transparent
+                opacity={0.95}
+                emissive="#000000"
+                emissiveIntensity={0}
+                metalness={0.9}
+                roughness={0.1}
+              />
+            </mesh>
+          );
+        })}
       </group>
 
       {/* Intermittent Connections */}
