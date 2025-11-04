@@ -44,7 +44,6 @@ const Navigation = () => {
     { label: "Home", id: "home" },
     { label: "Research", id: "about" },
     { label: "Publications", id: "publications" },
-    { label: "Teaching", id: "teaching" },
     { label: "Insights", id: "insights", isPage: true },
     { label: "Contact", id: "contact" },
   ];
