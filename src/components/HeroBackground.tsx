@@ -279,7 +279,8 @@ function CognitiveNetwork() {
               key={i} 
               position={[points[i * 3], points[i * 3 + 1], points[i * 3 + 2]]}
               visible={true}
-              onClick={() => {
+              onPointerDown={(e) => {
+                e.stopPropagation();
                 const node = anomalousNodes[i];
                 const time = performance.now() / 1000;
                 
@@ -302,6 +303,14 @@ function CognitiveNetwork() {
                     conn.phase = time + j * 0.1;
                   });
                 }
+              }}
+              onPointerOver={(e) => {
+                e.stopPropagation();
+                document.body.style.cursor = 'pointer';
+              }}
+              onPointerOut={(e) => {
+                e.stopPropagation();
+                document.body.style.cursor = 'default';
               }}
             >
               <sphereGeometry args={[0.25, 16, 16]} />
@@ -346,7 +355,7 @@ function CognitiveNetwork() {
 
 const HeroBackground = () => {
   return (
-    <div className="absolute inset-0 w-full h-full -z-10 bg-white">
+    <div className="absolute inset-0 w-full h-full -z-10 bg-white pointer-events-auto">
       <Canvas
         camera={{ position: [0, 0, 12], fov: 60 }}
         style={{ background: "transparent" }}
