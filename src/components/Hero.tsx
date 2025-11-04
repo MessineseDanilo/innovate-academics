@@ -29,7 +29,7 @@ const Hero = () => {
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-primary">
               Algorithmic Exploration
             </h2>
-            <p className="text-base md:text-lg text-foreground/80 italic mt-2">Prepared Minds</p>
+            <p className="text-base md:text-lg text-foreground/80 italic mt-2">When Machines Inspire Prepared Minds</p>
           </div>
         </div>
         
