@@ -17,7 +17,7 @@ const CuratedInsights = () => {
       author: "Smith et al., 2024",
       link: "#",
       color: "text-primary",
-      badge: "Paper",
+      badge: "Research Paper",
       topics: ["AI", "Innovation"],
     },
     {
@@ -50,7 +50,7 @@ const CuratedInsights = () => {
       author: "Johnson & Lee, 2024",
       link: "#",
       color: "text-primary",
-      badge: "Paper",
+      badge: "Research Paper",
       topics: ["AI", "Innovation"],
     },
     {
@@ -78,7 +78,7 @@ const CuratedInsights = () => {
   ];
 
   const types = [
-    { value: "paper", label: "Paper", icon: FileText },
+    { value: "paper", label: "Research Paper", icon: FileText },
     { value: "podcast", label: "Podcast", icon: Podcast },
     { value: "article", label: "Practitioner-oriented article", icon: Newspaper },
   ];
