@@ -1,13 +1,29 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Brain, Target, Rocket, ArrowRight, Link2 } from "lucide-react";
+import { Brain, Target, Rocket, ArrowRight, Link2, ChevronDown, ChevronUp } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 interface ResearchAgendaProps {
   onCategoryClick: (category: string) => void;
 }
 
 const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
+  const [expandedQuestions, setExpandedQuestions] = useState<Set<string>>(new Set());
+
+  const toggleQuestions = (id: string) => {
+    setExpandedQuestions(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
+
   const researchAreas = [
     {
       id: "ai",
@@ -22,9 +38,10 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
         { area: "entrepreneurship", count: 4, label: "Innovation" }
       ],
       questions: [
-        "How can firms strategically acquire and leverage data to innovate?",
-        "How can firms navigate a noisy information world?",
-        "What role does AI play in strategic decision-making?"
+        "How do AI tools reshape technology portfolios and enable breakthrough innovation?",
+        "Can machine learning detect anomalies that signal novel opportunities beyond trend extrapolation?",
+        "How can AI act as an epistemic partner in causal discovery and theory generation?",
+        "What is the role of computational creativity in scientific discovery?"
       ]
     },
     {
@@ -40,8 +57,9 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
         { area: "entrepreneurship", count: 2, label: "Innovation" }
       ],
       questions: [
-        "What are the implications of adopting different strategies?",
-        "To what extent do entrepreneurs predict or shape the market?"
+        "How do design-based vs. theory-based reasoning affect strategic commitment and pivoting?",
+        "What cognitive mechanisms explain how entrepreneurs update beliefs under uncertainty?",
+        "How do different reasoning logics shape forecast accuracy and business model revision?"
       ]
     },
     {
@@ -57,8 +75,9 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
         { area: "decisions", count: 2, label: "Entrepreneurial Strategy" }
       ],
       questions: [
-        "How do field experiments reveal new insights in strategy?",
-        "What methodologies work best for studying innovation?"
+        "How do algorithms and humans discover serendipitous opportunities in digital markets?",
+        "What causal mechanisms drive heterogeneous treatment effects of AI adoption on startups?",
+        "Can we use field experiments to identify latent drivers of innovation performance?"
       ]
     },
   ];
@@ -118,20 +137,35 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
                         {area.summary}
                       </p>
                       
-                      {/* Research Questions */}
+                      {/* Research Questions - Collapsible */}
                       {area.questions && (
-                        <div className="w-full space-y-2 pt-3 border-t border-border/50">
-                          <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wide">
-                            Key Questions
-                          </p>
-                          <ul className="space-y-1.5 text-left">
-                            {area.questions.map((question, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-xs text-muted-foreground">
-                                <span className={`${area.iconColor} mt-0.5 text-[10px]`}>•</span>
-                                <span className="leading-relaxed">{question}</span>
-                              </li>
-                            ))}
-                          </ul>
+                        <div className="w-full pt-3">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleQuestions(area.id);
+                            }}
+                            className="w-full flex items-center justify-between gap-2 h-8 px-3 text-xs font-semibold text-foreground/70 hover:text-foreground hover:bg-muted/50"
+                          >
+                            <span className="uppercase tracking-wide">Key Questions</span>
+                            {expandedQuestions.has(area.id) ? (
+                              <ChevronUp size={14} />
+                            ) : (
+                              <ChevronDown size={14} />
+                            )}
+                          </Button>
+                          {expandedQuestions.has(area.id) && (
+                            <ul className="space-y-1.5 text-left mt-3 animate-fade-in">
+                              {area.questions.map((question, idx) => (
+                                <li key={idx} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                  <span className={`${area.iconColor} mt-0.5 text-[10px]`}>•</span>
+                                  <span className="leading-relaxed">{question}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </div>
                       )}
                       
