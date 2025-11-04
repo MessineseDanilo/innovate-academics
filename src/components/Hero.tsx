@@ -22,8 +22,8 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 px-4 md:px-6 overflow-hidden">
       <HeroBackground />
       <div className="container mx-auto relative z-10">
-        {/* Header Text - Centered at top */}
-        <div className="absolute top-0 left-0 right-0 flex justify-center px-4">
+        {/* Header Text - Centered between navbar and content */}
+        <div className="absolute -top-8 md:-top-10 left-0 right-0 flex justify-center px-4">
           <h2 className="text-base md:text-xl lg:text-2xl font-bold text-center text-foreground">
             Ongoing Research on How Humans and AI Explore the Unknown
           </h2>
