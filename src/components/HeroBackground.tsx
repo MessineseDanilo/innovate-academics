@@ -189,16 +189,16 @@ function CognitiveNetwork() {
         if (node.isAnomalous && node.clickEffect === 0) {
           m.geometry = anomalyGeometry;
           const intensity = 1.2 + Math.sin(time * 6) * 0.3;
-          mat.emissive.setHex(0x06b6d4);
+          mat.emissive.setHex(0x7dd3fc);
           mat.emissiveIntensity = intensity;
-          mat.opacity = 0.85;
+          mat.opacity = 0.9;
           m.rotation.x += 0.02;
           m.rotation.y += 0.03;
         } else if (node.clickEffect === 0) {
           // Default state - small box
-          mat.emissive.setHex(0x06b6d4);
-          mat.emissiveIntensity = 0.3;
-          mat.opacity = 0.6;
+          mat.emissive.setHex(0x7dd3fc);
+          mat.emissiveIntensity = 0.4;
+          mat.opacity = 0.7;
         }
         
         // Add subtle yellow light pulse effect if active
@@ -252,7 +252,7 @@ function CognitiveNetwork() {
         </bufferGeometry>
         <pointsMaterial
           size={0.2}
-          color="#06b6d4"
+          color="#7dd3fc"
           transparent
           opacity={0.85}
           sizeAttenuation={true}
@@ -309,11 +309,11 @@ function CognitiveNetwork() {
             >
               <boxGeometry args={[0.15, 0.15, 0.15]} />
               <meshStandardMaterial
-                color="#06b6d4"
+                color="#7dd3fc"
                 transparent
-                opacity={0.6}
-                emissive="#06b6d4"
-                emissiveIntensity={0.3}
+                opacity={0.7}
+                emissive="#7dd3fc"
+                emissiveIntensity={0.4}
                 metalness={0.9}
                 roughness={0.1}
               />
@@ -335,7 +335,7 @@ function CognitiveNetwork() {
               />
             </bufferGeometry>
             <lineBasicMaterial
-              color="#06b6d4"
+              color="#7dd3fc"
               transparent
               opacity={0}
               linewidth={1}
