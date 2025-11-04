@@ -101,7 +101,6 @@ const PaperChatDialog = ({ paper, isOpen, onClose }: PaperChatDialogProps) => {
   const suggestedQuestions = [
     "What is this paper about?",
     "What are the main contributions?",
-    "How does this relate to other work?",
     "What are the practical implications?"
   ];
 
