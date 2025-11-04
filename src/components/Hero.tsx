@@ -24,9 +24,12 @@ const Hero = () => {
       <div className="container mx-auto relative z-10">
         {/* Header Text - Centered between navbar and content */}
         <div className="absolute -top-20 md:-top-24 left-0 right-0 flex justify-center px-4">
-          <h2 className="text-base md:text-xl lg:text-2xl font-bold text-center text-foreground">
-            Ongoing Research on How Humans and AI Explore the Unknown
-          </h2>
+          <div className="text-center">
+            <p className="text-xs md:text-sm text-foreground/80">Research on</p>
+            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-primary">
+              Human–AI Discovery
+            </h2>
+          </div>
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mt-12 md:mt-16">
