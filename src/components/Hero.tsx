@@ -50,7 +50,7 @@ const Hero = () => {
               </div>
               
               <p className="text-sm md:text-base font-serif text-black max-w-xl mx-auto md:mx-0">
-                Danilo Messinese is an Assistant Professor of Strategy at IE Business School. His research examines how data and artificial intelligence (AI) shape strategic decision-making, innovation, and entrepreneurship. He combines field and laboratory experiments with computational methods to study how humans and algorithms learn, create, and adapt under uncertainty. His work has been published in leading academic journals and featured in Harvard Business Review. Before academia, Danilo worked at Bain & Company and UniCredit Group.
+                Danilo Messinese is an Assistant Professor of Strategy at IE Business School. His research examines how data and artificial intelligence (AI) shape strategic decision-making, innovation, and entrepreneurship. He combines field and laboratory experiments with computational methods to study how humans and algorithms learn, create, and adapt under uncertainty. His work has been published in leading academic journals and featured in Harvard Business Review. Before academia, Danilo worked at Bain & Company and UniCredit Group. Danilo earned his bachelor's degree in Physics and master's degrees in Theoretical Physics and Mathematical Finance from the University of Bologna, and his Ph.D. in Management from Bocconi University.
               </p>
             </div>
 
