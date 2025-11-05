@@ -5,6 +5,13 @@ import { ExternalLink, Podcast, FileText, Newspaper, Filter, ChevronDown, Chevro
 import { useState } from "react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { format } from "date-fns";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const CuratedInsights = () => {
   const [selectedType, setSelectedType] = useState<string | null>(null);
@@ -53,7 +60,7 @@ const CuratedInsights = () => {
       color: "text-purple-600",
       badge: "Podcast",
       source: "Apple Podcasts",
-      topics: ["AI", "Innovation"],
+      topics: ["AI", "Psychology"],
     },
     {
       type: "podcast",
@@ -80,20 +87,7 @@ const CuratedInsights = () => {
       link: "https://www.nature.com/articles/s42256-020-0218-x",
       color: "text-primary",
       badge: "Research Paper",
-      topics: ["AI", "Innovation"],
-    },
-    {
-      type: "paper",
-      icon: FileText,
-      title: "Generating Creative Chess Puzzles",
-      description: "Presents a reinforcement learning framework for generating creative, counter-intuitive chess puzzles using AI, achieving results that surpass existing datasets and are acknowledged by world-renowned experts.",
-      abstract: "While Generative AI rapidly advances in various domains, generating truly creative, aesthetic, and counter-intuitive outputs remains a challenge. This paper presents an approach to tackle these difficulties in the domain of chess puzzles using an RL framework with novel rewards based on chess engine search statistics. The rewards enhance a puzzle's uniqueness, counter-intuitiveness, diversity, and realism. The approach dramatically increases counter-intuitive puzzle generation by 10x, from 0.22% to 2.5%, surpassing existing dataset rates and producing puzzles rated by human experts as more creative, enjoyable, and counter-intuitive than composed book puzzles.",
-      author: "Xidong Feng et al., Google DeepMind",
-      date: new Date("2025-10-27"),
-      link: "https://arxiv.org/pdf/2510.23881",
-      color: "text-primary",
-      badge: "Research Paper",
-      topics: ["AI", "Innovation"],
+      topics: ["AI", "Mathematics"],
     },
     {
       type: "paper",
@@ -106,7 +100,7 @@ const CuratedInsights = () => {
       link: "https://www.nber.org/system/files/chapters/c15321/c15321.pdf",
       color: "text-primary",
       badge: "Research Paper",
-      topics: ["AI", "Innovation"],
+      topics: ["AI", "Innovation", "Economics"],
     },
     {
       type: "paper",
@@ -119,7 +113,7 @@ const CuratedInsights = () => {
       link: "https://media.licdn.com/dms/document/media/v2/D4D1FAQFA_wTO97jSHw/feedshare-document-pdf-analyzed/B4DZmlCv85IEAY-/0/1759410589502",
       color: "text-primary",
       badge: "Research Paper",
-      topics: ["AI", "Innovation"],
+      topics: ["AI", "Psychology"],
     },
     {
       type: "paper",
@@ -132,7 +126,7 @@ const CuratedInsights = () => {
       link: "https://www.nber.org/system/files/working_papers/w32422/w32422.pdf",
       color: "text-primary",
       badge: "Research Paper",
-      topics: ["AI", "Innovation"],
+      topics: ["AI", "Economics"],
     },
     {
       type: "article",
@@ -158,7 +152,7 @@ const CuratedInsights = () => {
       link: "https://hbr.org/2025/07/research-executives-who-used-gen-ai-made-worse-predictions",
       color: "text-emerald-600",
       badge: "Practitioner-oriented article",
-      topics: ["AI", "Innovation", "Entrepreneurship"],
+      topics: ["AI", "Decision Theory", "Entrepreneurship"],
     },
     {
       type: "paper",
@@ -194,7 +188,7 @@ const CuratedInsights = () => {
     { value: "article", label: "Practitioner-oriented article", icon: Newspaper },
   ];
 
-  const topics = ["AI", "Entrepreneurship", "Innovation"];
+  const topics = ["AI", "Decision Theory", "Economics", "Entrepreneurship", "Innovation", "Mathematics", "Psychology"];
 
   const filteredInsights = insights
     .filter((insight) => {
@@ -253,29 +247,26 @@ const CuratedInsights = () => {
           </div>
 
           {/* Topic Filter */}
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center gap-2">
             <Filter size={16} className="text-muted-foreground hidden sm:block" />
             <Filter size={14} className="text-muted-foreground sm:hidden" />
             <span className="text-xs sm:text-sm font-medium text-foreground">Topic:</span>
-            <Button
-              variant={selectedTopic === null ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedTopic(null)}
-              className="h-7 sm:h-8 text-xs px-2 sm:px-3"
+            <Select
+              value={selectedTopic || "all"}
+              onValueChange={(value) => setSelectedTopic(value === "all" ? null : value)}
             >
-              All
-            </Button>
-            {topics.map((topic) => (
-              <Button
-                key={topic}
-                variant={selectedTopic === topic ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedTopic(topic)}
-                className="h-7 sm:h-8 text-xs px-2 sm:px-3"
-              >
-                {topic}
-              </Button>
-            ))}
+              <SelectTrigger className="w-[180px] h-7 sm:h-8 text-xs sm:text-sm bg-background">
+                <SelectValue placeholder="All topics" />
+              </SelectTrigger>
+              <SelectContent className="bg-background z-50">
+                <SelectItem value="all">All topics</SelectItem>
+                {topics.map((topic) => (
+                  <SelectItem key={topic} value={topic}>
+                    {topic}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           {/* Sort Order Filter */}
