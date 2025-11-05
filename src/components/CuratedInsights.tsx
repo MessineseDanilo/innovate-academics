@@ -178,7 +178,21 @@ const CuratedInsights = () => {
       link: "#",
       color: "text-primary",
       badge: "Research Paper",
-      topics: ["Innovation", "Entrepreneurship"],
+      topics: ["Decision Theory", "Economics"],
+    },
+    {
+      type: "podcast",
+      icon: Podcast,
+      title: "Thomas Kuhn's Structure of Scientific Revolutions",
+      description: "Eric Hsu and Louis Everuss discuss Thomas Kuhn's provocative theory of how scientific knowledge develops through paradigm shifts and revolutionary changes.",
+      abstract: "In this episode, Eric Hsu and Louis Everuss discuss Thomas Kuhn's noted work, the Structure of Scientific Revolutions. Kuhn puts forward a provocative theory of how scientific knowledge develops. While Eric and Louis ditch their old cheaply assembled recording setup for new microphones and an upgraded soundmixer, they try to preserve the essence of their sociology podcast by laughing too hard at their own jokes and and by continuing to do bad celebrity impersonations.",
+      author: "Eric Hsu & Louis Everuss, The Sociology of Everything Podcast",
+      date: new Date("2022-08-15"),
+      link: "https://open.spotify.com/episode/3rhR9IE0mShiXxJNWez0r3?si=6016df05159642c0",
+      color: "text-purple-600",
+      badge: "Podcast",
+      source: "Spotify",
+      topics: ["Sociology", "Innovation"],
     },
   ];
 
@@ -188,7 +202,7 @@ const CuratedInsights = () => {
     { value: "article", label: "Practitioner-oriented article", icon: Newspaper },
   ];
 
-  const topics = ["AI", "Decision Theory", "Economics", "Entrepreneurship", "Innovation", "Mathematics", "Psychology"];
+  const topics = ["AI", "Decision Theory", "Economics", "Entrepreneurship", "Innovation", "Mathematics", "Psychology", "Sociology"];
 
   const filteredInsights = insights
     .filter((insight) => {
