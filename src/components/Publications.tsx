@@ -9,7 +9,6 @@ import paperAiStartups from "@/assets/paper-ai-startups.jpg";
 import paperCausalAi from "@/assets/paper-causal-ai.jpg";
 import paperUnsupervisedCausal from "@/assets/paper-unsupervised-causal.jpg";
 import paperBoundedCreativity from "@/assets/paper-bounded-creativity.jpg";
-import paperSerendipityMachines from "@/assets/paper-serendipity-machines.jpg";
 import paperReasoningLogics from "@/assets/paper-reasoning-logics.jpg";
 import paper1 from "@/assets/paper1.jpg";
 import paper2 from "@/assets/paper2.jpg";
@@ -133,15 +132,6 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
   ];
 
   const newProjects: Publication[] = [
-    {
-      title: "Serendipity Machines: Evidence from Alphafold2",
-      authors: "Messinese, D. & Tranchero, M.",
-      journal: "Work in Progress",
-      year: "2025",
-      image: paperSerendipityMachines,
-      categories: ["ai", "entrepreneurship"],
-      hideAiChat: true,
-    },
     {
       title: "Causal Explanations and Theory Generation with AI",
       authors: "Messinese, D.",
