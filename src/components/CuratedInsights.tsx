@@ -23,6 +23,7 @@ const CuratedInsights = () => {
       link: "https://open.spotify.com/episode/0L59200BXdjwEHjXteAUPj?si=c9356eecd5c542f8",
       color: "text-purple-600",
       badge: "Podcast",
+      source: "Spotify",
       topics: ["AI", "Innovation", "Entrepreneurship"],
     },
     {
@@ -36,6 +37,7 @@ const CuratedInsights = () => {
       link: "https://open.spotify.com/episode/73f4TiGhDcqRRms87aA560?si=49618cba6f714820",
       color: "text-purple-600",
       badge: "Podcast",
+      source: "Spotify",
       topics: ["AI", "Innovation"],
     },
     {
@@ -49,6 +51,7 @@ const CuratedInsights = () => {
       link: "https://podcasts.apple.com/es/podcast/humans-bridging-iq-and-eq-in-machine-learning-with/id1668002688?i=1000730965998",
       color: "text-purple-600",
       badge: "Podcast",
+      source: "Apple Podcasts",
       topics: ["AI", "Innovation"],
     },
     {
@@ -62,6 +65,7 @@ const CuratedInsights = () => {
       link: "https://podcasts.apple.com/gb/podcast/start-small-think-big-making-ai-stick/id1801560422?i=1000727312539",
       color: "text-purple-600",
       badge: "Podcast",
+      source: "Apple Podcasts",
       topics: ["AI", "Innovation"],
     },
     {
@@ -236,9 +240,16 @@ const CuratedInsights = () => {
                     <div className={`p-2 rounded-lg bg-background ${item.color}`}>
                       <item.icon size={20} />
                     </div>
-                    <Badge variant="secondary" className="text-xs">
-                      {item.badge}
-                    </Badge>
+                    <div className="flex flex-col items-end gap-1">
+                      <Badge variant="secondary" className="text-xs">
+                        {item.badge}
+                      </Badge>
+                      {item.source && (
+                        <Badge variant="outline" className="text-xs">
+                          {item.source}
+                        </Badge>
+                      )}
+                    </div>
                   </div>
                   
                   <div className="space-y-2">
