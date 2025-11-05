@@ -262,20 +262,20 @@ const CuratedInsights = () => {
           {/* Sort Order Filter */}
           <div className="flex flex-wrap items-center gap-2">
             <Calendar size={18} className="text-muted-foreground" />
-            <span className="text-sm font-medium text-foreground">Ordina per:</span>
+            <span className="text-sm font-medium text-foreground">Sort by:</span>
             <Button
               variant={sortOrder === "newest" ? "default" : "outline"}
               size="sm"
               onClick={() => setSortOrder("newest")}
             >
-              Più recente
+              Newest
             </Button>
             <Button
               variant={sortOrder === "oldest" ? "default" : "outline"}
               size="sm"
               onClick={() => setSortOrder("oldest")}
             >
-              Meno recente
+              Oldest
             </Button>
           </div>
         </div>
