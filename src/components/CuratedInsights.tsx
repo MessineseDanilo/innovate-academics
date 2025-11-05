@@ -10,6 +10,7 @@ const CuratedInsights = () => {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [expandedAbstracts, setExpandedAbstracts] = useState<Set<number>>(new Set());
+  const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
 
   const insights = [
     {
@@ -182,11 +183,19 @@ const CuratedInsights = () => {
 
   const topics = ["AI", "Entrepreneurship", "Innovation"];
 
-  const filteredInsights = insights.filter((insight) => {
-    const typeMatch = !selectedType || insight.type === selectedType;
-    const topicMatch = !selectedTopic || insight.topics.includes(selectedTopic);
-    return typeMatch && topicMatch;
-  });
+  const filteredInsights = insights
+    .filter((insight) => {
+      const typeMatch = !selectedType || insight.type === selectedType;
+      const topicMatch = !selectedTopic || insight.topics.includes(selectedTopic);
+      return typeMatch && topicMatch;
+    })
+    .sort((a, b) => {
+      if (sortOrder === "newest") {
+        return b.date.getTime() - a.date.getTime();
+      } else {
+        return a.date.getTime() - b.date.getTime();
+      }
+    });
 
   return (
     <section id="curated-insights" className="py-24 bg-secondary/20">
@@ -248,6 +257,26 @@ const CuratedInsights = () => {
                 {topic}
               </Button>
             ))}
+          </div>
+
+          {/* Sort Order Filter */}
+          <div className="flex flex-wrap items-center gap-2">
+            <Calendar size={18} className="text-muted-foreground" />
+            <span className="text-sm font-medium text-foreground">Ordina per:</span>
+            <Button
+              variant={sortOrder === "newest" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setSortOrder("newest")}
+            >
+              Più recente
+            </Button>
+            <Button
+              variant={sortOrder === "oldest" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setSortOrder("oldest")}
+            >
+              Meno recente
+            </Button>
           </div>
         </div>
 
