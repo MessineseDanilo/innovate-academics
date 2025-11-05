@@ -234,7 +234,7 @@ const CuratedInsights = () => {
               >
                 <type.icon size={12} className="sm:w-3.5 sm:h-3.5" />
                 <span className="hidden sm:inline">{type.label}</span>
-                <span className="sm:hidden">{type.value === "paper" ? "Paper" : type.value === "podcast" ? "Pod" : "Art"}</span>
+                <span className="sm:hidden">{type.value === "paper" ? "Paper" : type.value === "podcast" ? "Podcast" : "Article"}</span>
               </Button>
             ))}
           </div>
