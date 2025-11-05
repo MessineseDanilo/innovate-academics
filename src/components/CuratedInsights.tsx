@@ -35,6 +35,18 @@ const CuratedInsights = () => {
       badge: "Research Paper",
       topics: ["Innovation", "Entrepreneurship"],
     },
+    {
+      type: "paper",
+      icon: FileText,
+      title: "Generating Creative Chess Puzzles",
+      description: "Presents a reinforcement learning framework for generating creative, counter-intuitive chess puzzles using AI, achieving results that surpass existing datasets and are acknowledged by world-renowned experts.",
+      abstract: "While Generative AI rapidly advances in various domains, generating truly creative, aesthetic, and counter-intuitive outputs remains a challenge. This paper presents an approach to tackle these difficulties in the domain of chess puzzles using an RL framework with novel rewards based on chess engine search statistics. The rewards enhance a puzzle's uniqueness, counter-intuitiveness, diversity, and realism. The approach dramatically increases counter-intuitive puzzle generation by 10x, from 0.22% to 2.5%, surpassing existing dataset rates and producing puzzles rated by human experts as more creative, enjoyable, and counter-intuitive than composed book puzzles.",
+      author: "Xidong Feng et al., Google DeepMind",
+      link: "https://arxiv.org/pdf/2510.23881",
+      color: "text-primary",
+      badge: "Research Paper",
+      topics: ["AI", "Innovation"],
+    },
   ];
 
   const types = [
