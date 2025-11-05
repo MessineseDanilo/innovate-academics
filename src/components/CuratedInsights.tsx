@@ -192,7 +192,7 @@ const CuratedInsights = () => {
       color: "text-purple-600",
       badge: "Podcast",
       source: "Spotify",
-      topics: ["Sociology", "Innovation"],
+      topics: ["Philosophy of Science", "Innovation"],
     },
   ];
 
@@ -202,7 +202,7 @@ const CuratedInsights = () => {
     { value: "article", label: "Practitioner-oriented article", icon: Newspaper },
   ];
 
-  const topics = ["AI", "Decision Theory", "Economics", "Entrepreneurship", "Innovation", "Mathematics", "Psychology", "Sociology"];
+  const topics = ["AI", "Decision Theory", "Economics", "Entrepreneurship", "Innovation", "Mathematics", "Philosophy of Science", "Psychology"];
 
   const filteredInsights = insights
     .filter((insight) => {
