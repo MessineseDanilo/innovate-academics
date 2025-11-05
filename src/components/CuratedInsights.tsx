@@ -13,6 +13,19 @@ const CuratedInsights = () => {
 
   const insights = [
     {
+      type: "podcast",
+      icon: Podcast,
+      title: "Humans&: Bridging IQ and EQ in Machine Learning with Eric Zelikman",
+      description: "Explores the opportunity to shift AI development focus from pure IQ to emotional intelligence, discussing how to build machine learning systems that bridge both dimensions.",
+      abstract: "The AI industry is obsessed with making models smarter. But what if they're building the wrong kind of intelligence? In launching his new venture, humans&, Eric Zelikman sees an opportunity to shift the focus from pure IQ to emotional intelligence in machine learning. This conversation explores how bridging IQ and EQ can create more effective AI systems that better understand and interact with humans, challenging the conventional wisdom about what makes AI truly intelligent.",
+      author: "Eric Zelikman, No Priors Podcast",
+      date: new Date("2024-10-09"),
+      link: "https://podcasts.apple.com/es/podcast/humans-bridging-iq-and-eq-in-machine-learning-with/id1668002688?i=1000730965998",
+      color: "text-purple-600",
+      badge: "Podcast",
+      topics: ["AI", "Innovation"],
+    },
+    {
       type: "paper",
       icon: FileText,
       title: "Generating Creative Chess Puzzles",
