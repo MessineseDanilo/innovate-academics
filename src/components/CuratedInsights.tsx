@@ -152,7 +152,7 @@ const CuratedInsights = () => {
       link: "https://hbr.org/2025/07/research-executives-who-used-gen-ai-made-worse-predictions",
       color: "text-emerald-600",
       badge: "Practitioner-oriented article",
-      topics: ["AI", "Decision Theory", "Entrepreneurship"],
+      topics: ["AI"],
     },
     {
       type: "paper",
