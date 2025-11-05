@@ -59,6 +59,18 @@ const CuratedInsights = () => {
       badge: "Research Paper",
       topics: ["AI", "Innovation"],
     },
+    {
+      type: "paper",
+      icon: FileText,
+      title: "Aligning generalization between humans and machines",
+      description: "Identifies key commonalities and differences in how humans and machines generalize, proposing interdisciplinary challenges for effective alignment in human-AI teaming scenarios.",
+      abstract: "Recent advances in artificial intelligence (AI)—including generative approaches—have resulted in technology that can support humans in scientific discovery and forming decisions. A crucial yet often overlooked aspect of human-AI interactions is the different ways in which humans and machines generalize. In cognitive science, human generalization commonly involves abstraction and concept learning. By contrast, AI generalization encompasses out-of-domain generalization in machine learning, rule-based reasoning in symbolic AI, and abstraction in neurosymbolic AI. This paper combines insights from AI and cognitive science to identify key commonalities and differences across three dimensions: notions of, methods for, and evaluation of generalization, mapping different conceptualizations and considering their role for alignment in human-AI teaming.",
+      author: "Filip Ilievski et al., Nature Machine Intelligence",
+      link: "https://media.licdn.com/dms/document/media/v2/D4D1FAQFA_wTO97jSHw/feedshare-document-pdf-analyzed/B4DZmlCv85IEAY-/0/1759410589502",
+      color: "text-primary",
+      badge: "Research Paper",
+      topics: ["AI", "Innovation"],
+    },
   ];
 
   const types = [
