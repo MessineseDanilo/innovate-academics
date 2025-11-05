@@ -95,7 +95,7 @@ const CuratedInsights = () => {
             Curated Insights
           </h2>
           <p className="text-lg text-muted-foreground italic">
-            A personal selection of ideas, papers, and conversations I found inspiring.
+            A personal selection of ideas, papers, and conversations outside my field that I've found inspiring.
           </p>
         </div>
 
