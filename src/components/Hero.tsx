@@ -19,25 +19,27 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 px-4 md:px-6 overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 px-4 md:px-6 overflow-hidden"
+    >
       <HeroBackground />
       <div className="container mx-auto relative z-10">
         {/* Header Text - Centered between navbar and content */}
         <div className="absolute -top-36 md:-top-40 left-0 right-0 flex justify-center px-4">
           <div className="text-center">
             <p className="text-sm md:text-lg text-foreground/80">Research on</p>
-            <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold text-primary">
-              Algorithmic Exploration
-            </h2>
-            <p className="text-sm md:text-lg text-foreground/80 italic mt-2">When Machines Inspire Prepared Minds</p>
+            <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold text-primary">Algorithmic Exploration</h2>
+            <p className="text-sm md:text-lg text-foreground/80 italic mt-2">
+              When Data and Machines Inspire Prepared Minds
+            </p>
           </div>
         </div>
-        
+
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mt-12 md:mt-16">
           {/* Left Column - Text Content */}
           <div className="space-y-4 md:space-y-6 animate-fade-in text-center md:text-left">
             <div className="space-y-3 md:space-y-4">
-              
               {/* Mobile: Image positioned here */}
               <div className="md:hidden flex justify-center my-4">
                 <div className="relative w-full max-w-[260px]">
@@ -49,12 +51,18 @@ const Hero = () => {
                   />
                 </div>
               </div>
-              
+
               <p className="text-sm md:text-base font-serif text-black max-w-xl mx-auto md:mx-0 text-justify">
-                Danilo Messinese is an Assistant Professor of Strategy at IE Business School. His research examines how data and artificial intelligence (AI) shape strategic decision-making, innovation, and entrepreneurship. He combines field and laboratory experiments with computational methods to study how humans and algorithms learn, create, and adapt under uncertainty. His work has been published in leading academic journals and featured in Harvard Business Review. Before academia, Danilo worked at Bain & Company and UniCredit Group. Danilo earned his bachelor's degree in Physics and master's degrees in Theoretical Physics and Mathematical Finance from the University of Bologna, and his Ph.D. in Management from Bocconi University.
+                Danilo Messinese is an Assistant Professor of Strategy at IE Business School. His research examines how
+                data and artificial intelligence (AI) shape strategic decision-making, innovation, and entrepreneurship.
+                He combines field and laboratory experiments with computational methods to study how humans and
+                algorithms learn, create, and adapt under uncertainty. His work has been published in leading academic
+                journals and featured in Harvard Business Review. Before academia, Danilo worked at Bain & Company and
+                UniCredit Group. Danilo earned his bachelor's degree in Physics and master's degrees in Theoretical
+                Physics and Mathematical Finance from the University of Bologna, and his Ph.D. in Management from
+                Bocconi University.
               </p>
             </div>
-
 
             {/* Quick Links - Different layout for mobile vs desktop */}
             <div className="pt-4 md:pt-8">
@@ -76,7 +84,7 @@ const Hero = () => {
                   </Card>
                 ))}
               </div>
-              
+
               {/* Desktop: Grid layout */}
               <div className="hidden md:grid grid-cols-2 gap-4">
                 {quickLinks.map((link, index) => (
