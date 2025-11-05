@@ -1,9 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Podcast, FileText, Newspaper, Filter, ChevronDown, ChevronUp } from "lucide-react";
+import { ExternalLink, Podcast, FileText, Newspaper, Filter, ChevronDown, ChevronUp, Calendar } from "lucide-react";
 import { useState } from "react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { format } from "date-fns";
 
 const CuratedInsights = () => {
   const [selectedType, setSelectedType] = useState<string | null>(null);
@@ -18,6 +19,7 @@ const CuratedInsights = () => {
       description: "Explores how AI systems can generate novel scientific hypotheses and identify overlooked patterns in research, potentially revolutionizing scientific discovery.",
       abstract: "Scientists are exploring the use of AI systems to automatically generate scientific hypotheses, potentially identifying overlooked patterns and 'blind spots' in research. These AI tools analyze vast amounts of scientific literature and data to propose novel hypotheses that human researchers might miss, offering a new approach to accelerate scientific discovery and address biases in research focus.",
       author: "Matthew Hutson, Nature",
+      date: new Date("2024-01-15"),
       link: "#",
       color: "text-emerald-600",
       badge: "Practitioner-oriented article",
@@ -30,6 +32,7 @@ const CuratedInsights = () => {
       description: "Examines how individuals update their beliefs when confronted with unexpected information, proposing a model of non-Bayesian learning that captures paradigm shifts in thinking.",
       abstract: "This paper proposes a model of non-Bayesian learning to capture how individuals update their beliefs when confronted with unexpected information. The model shows that individuals may exhibit paradigm shifts in their thinking, radically changing their beliefs in response to surprising evidence. This framework provides insights into phenomena such as scientific revolutions, political realignments, and market crashes, where conventional Bayesian updating fails to explain observed behavior.",
       author: "Pietro Ortoleva, AER 2012",
+      date: new Date("2012-06-01"),
       link: "#",
       color: "text-primary",
       badge: "Research Paper",
@@ -42,6 +45,7 @@ const CuratedInsights = () => {
       description: "Presents a reinforcement learning framework for generating creative, counter-intuitive chess puzzles using AI, achieving results that surpass existing datasets and are acknowledged by world-renowned experts.",
       abstract: "While Generative AI rapidly advances in various domains, generating truly creative, aesthetic, and counter-intuitive outputs remains a challenge. This paper presents an approach to tackle these difficulties in the domain of chess puzzles using an RL framework with novel rewards based on chess engine search statistics. The rewards enhance a puzzle's uniqueness, counter-intuitiveness, diversity, and realism. The approach dramatically increases counter-intuitive puzzle generation by 10x, from 0.22% to 2.5%, surpassing existing dataset rates and producing puzzles rated by human experts as more creative, enjoyable, and counter-intuitive than composed book puzzles.",
       author: "Xidong Feng et al., Google DeepMind",
+      date: new Date("2025-10-27"),
       link: "https://arxiv.org/pdf/2510.23881",
       color: "text-primary",
       badge: "Research Paper",
@@ -54,6 +58,7 @@ const CuratedInsights = () => {
       description: "Explores how algorithms will fundamentally reorganize scientific practice, formalizing off-screen processes like idea generation and enabling new modes of theorizing, especially in patchwork sciences.",
       abstract: "Algorithms will not simply contribute to science; they will reorganize it. We sketch how science will look in the near future. Notably, algorithms will formalize crucial parts of science that currently happen off screen — such as new idea generation or intuitions about what theories matter. They will enable fundamentally different modes of theorizing. These changes will most affect what we call the 'patchwork sciences,' which includes fields such as economics, chemistry, biology, medicine and psychology. In short, we argue that the methods of science will look very different in a world where algorithms can process data, reason and form their own models of the world.",
       author: "Sendhil Mullainathan & Ashesh Rambachan, MIT & NBER",
+      date: new Date("2025-10-10"),
       link: "https://www.nber.org/system/files/chapters/c15321/c15321.pdf",
       color: "text-primary",
       badge: "Research Paper",
@@ -66,6 +71,7 @@ const CuratedInsights = () => {
       description: "Identifies key commonalities and differences in how humans and machines generalize, proposing interdisciplinary challenges for effective alignment in human-AI teaming scenarios.",
       abstract: "Recent advances in artificial intelligence (AI)—including generative approaches—have resulted in technology that can support humans in scientific discovery and forming decisions. A crucial yet often overlooked aspect of human-AI interactions is the different ways in which humans and machines generalize. In cognitive science, human generalization commonly involves abstraction and concept learning. By contrast, AI generalization encompasses out-of-domain generalization in machine learning, rule-based reasoning in symbolic AI, and abstraction in neurosymbolic AI. This paper combines insights from AI and cognitive science to identify key commonalities and differences across three dimensions: notions of, methods for, and evaluation of generalization, mapping different conceptualizations and considering their role for alignment in human-AI teaming.",
       author: "Filip Ilievski et al., Nature Machine Intelligence",
+      date: new Date("2025-09-15"),
       link: "https://media.licdn.com/dms/document/media/v2/D4D1FAQFA_wTO97jSHw/feedshare-document-pdf-analyzed/B4DZmlCv85IEAY-/0/1759410589502",
       color: "text-primary",
       badge: "Research Paper",
@@ -207,21 +213,29 @@ const CuratedInsights = () => {
                     </CollapsibleContent>
                   </Collapsible>
 
-                  <div className="flex items-center justify-between pt-2 border-t border-border/30">
-                    <p className="text-xs text-muted-foreground font-medium">
-                      {item.author}
-                    </p>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-auto p-0 hover:bg-transparent"
-                      onClick={() => window.open(item.link, '_blank')}
-                    >
-                      <ExternalLink 
-                        size={16} 
-                        className="text-muted-foreground group-hover:text-primary transition-smooth" 
-                      />
-                    </Button>
+                  <div className="flex flex-col gap-2 pt-2 border-t border-border/30">
+                    <div className="flex items-center gap-2">
+                      <Calendar size={12} className="text-muted-foreground" />
+                      <p className="text-xs text-muted-foreground">
+                        {format(item.date, "MMMM d, yyyy")}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <p className="text-xs text-muted-foreground font-medium">
+                        {item.author}
+                      </p>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-auto p-0 hover:bg-transparent"
+                        onClick={() => window.open(item.link, '_blank')}
+                      >
+                        <ExternalLink 
+                          size={16} 
+                          className="text-muted-foreground group-hover:text-primary transition-smooth" 
+                        />
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
