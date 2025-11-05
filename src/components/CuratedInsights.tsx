@@ -47,6 +47,18 @@ const CuratedInsights = () => {
       badge: "Research Paper",
       topics: ["AI", "Innovation"],
     },
+    {
+      type: "paper",
+      icon: FileText,
+      title: "Science in the Age of Algorithms",
+      description: "Explores how algorithms will fundamentally reorganize scientific practice, formalizing off-screen processes like idea generation and enabling new modes of theorizing, especially in patchwork sciences.",
+      abstract: "Algorithms will not simply contribute to science; they will reorganize it. We sketch how science will look in the near future. Notably, algorithms will formalize crucial parts of science that currently happen off screen — such as new idea generation or intuitions about what theories matter. They will enable fundamentally different modes of theorizing. These changes will most affect what we call the 'patchwork sciences,' which includes fields such as economics, chemistry, biology, medicine and psychology. In short, we argue that the methods of science will look very different in a world where algorithms can process data, reason and form their own models of the world.",
+      author: "Sendhil Mullainathan & Ashesh Rambachan, MIT & NBER",
+      link: "https://www.nber.org/system/files/chapters/c15321/c15321.pdf",
+      color: "text-primary",
+      badge: "Research Paper",
+      topics: ["AI", "Innovation"],
+    },
   ];
 
   const types = [
