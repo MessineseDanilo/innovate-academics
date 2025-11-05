@@ -69,9 +69,11 @@ const Contact = () => {
           </div>
 
           <div className="pt-8 flex justify-center animate-fade-in" style={{ animationDelay: "300ms" }}>
-            <Button size="lg" variant="outline" className="group">
-              <FileDown className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-smooth" />
-              Download CV (PDF)
+            <Button size="lg" variant="outline" className="group" asChild>
+              <a href="/Messinese_Danilo_Academic_cv.pdf" download>
+                <FileDown className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-smooth" />
+                Download CV (PDF)
+              </a>
             </Button>
           </div>
 
