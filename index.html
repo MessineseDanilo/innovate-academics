@@ -46,5 +46,16 @@
 
   <body>
     <div id="root"></div>
+    <script>
+      (function () {
+        const redirect = sessionStorage.redirect;
+        if (redirect) {
+          delete sessionStorage.redirect;
+          const url = new URL(redirect);
+          // Ripristina il path originale (es. /insights) dopo il redirect
+          history.replaceState(null, "", url.pathname + url.search + url.hash);
+        }
+      })();
+    </script>    
   </body>
 </html>
