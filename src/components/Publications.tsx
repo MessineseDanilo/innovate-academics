@@ -125,7 +125,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
     {
       title: "How Entrepreneurs Respond to New Information under Different Reasoning Logics",
       authors: "Camuffo, A., Gambardella, A., & Messinese, D.",
-      journal: "Ready for Submission",
+      journal: "Under Review",
       year: "2025",
       image: paperReasoningLogics,
       categories: ["decisions", "entrepreneurship"],
