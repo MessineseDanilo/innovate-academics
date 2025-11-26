@@ -2,3 +2,21 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.danilomessinese.com/sitemap.xml
+
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_rYvLoi8DxpGrlPm
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_LW6XJVBooYKy7fz
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_M4ydJukaqZ40Zqv
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_AkJKsGMvAIHkNqA
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_soKXLCXyFIUh3Dd
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_F5X8JKCP318GCPo
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_qrr7JWt49CTKP2q
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_xXQFrqBMGxdwoPd
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_BbAKeBY1Du2NgXC
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_6Xc0q4RZGVTXso6
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_egpQWGyKgCkhKXg
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_J9QXes6OnltmBT9
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_vMWK5TWtiCIzjTY
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_G8hqpYv9A6MbxJb
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_bl3UbFgIINJJBA2
+https://ie.co1.qualtrics.com/ControlPanel/Graphic.php?IM=IM_uqbSdATMaC1DLAF
+
