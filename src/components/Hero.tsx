@@ -55,7 +55,7 @@ const Hero = () => {
               Danilo Messinese is an Assistant Professor of Strategy at IE Business School. His research explores how data 
               and artificial intelligence complement and shape strategic decision-making, innovation, and entrepreneurship. 
               He combines experimental and computational methods to study how humans and algorithms learn and adapt under uncertainty. 
-              Viewing scientific and business theories as causal theories, he investigates how causal machine learning can support 
+              Viewing social scientific and business theories as causal structures, he investigates how causal machine learning can support 
               human agents—managers, entrepreneurs, and scientists—in engaging in Kuhnian scientific reasoning: challenging existing 
               causal explanations through surprising or anomalous evidence and fostering theory-changing innovation.
               His work has been published in leading academic journals and featured in Harvard Business Review. 
