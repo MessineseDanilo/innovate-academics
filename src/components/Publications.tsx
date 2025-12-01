@@ -123,9 +123,9 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
         "What role does predictive artificial intelligence (A.I.) play in entrepreneurial decision-making? We explore this question using a comprehensive dataset of U.S. software startups and their time-varying adoption of A.I. We find that A.I. adoption significantly reshapes startups' technology portfolios and enhances customer acquisition, with performance gains concentrated in the upper tail of the treatment effect distribution. These effects are strongest among startups led by highly skilled founders. Complementary survey evidence and an ad hoc experiment shed light on the underlying mechanism: beyond extrapolating from past trends, A.I. detects unexpected patterns–anomalies–in data, signaling novel opportunities and enabling breakthrough innovation. To capitalize on these anomalies, however, entrepreneurs must embed them within causal theories that guide the development of actionable strategies.",
     },
     {
-      title: "How Entrepreneurs Respond to New Information under Different Reasoning Logics",
+      title: "Entrepreneurial Responses to New Information under Different Reasoning Logics",
       authors: "Camuffo, A., Gambardella, A., & Messinese, D.",
-      journal: "Ready for Submission",
+      journal: "Under Review",
       year: "2025",
       image: paperReasoningLogics,
       categories: ["decisions", "entrepreneurship"],
@@ -291,6 +291,9 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground">Publications</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Peer-reviewed research and ongoing projects
+            </p>
+            <p className="text-xs text-muted-foreground max-w-xl mx-auto">
+              All authors are listed in alphabetical order.
             </p>
           </div>
 

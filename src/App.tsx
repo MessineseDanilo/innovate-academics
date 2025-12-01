@@ -9,21 +9,25 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+import { HelmetProvider } from "react-helmet-async";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/insights" element={<CuratedInsights />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <HelmetProvider>  {/* ← Aggiunto questo wrapper */}
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/insights" element={<CuratedInsights />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </HelmetProvider>  {/* ← Chiusura del wrapper */}
   </QueryClientProvider>
 );
+
 
 export default App;

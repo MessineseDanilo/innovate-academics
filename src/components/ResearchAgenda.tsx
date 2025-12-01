@@ -104,7 +104,7 @@ const ResearchAgenda = ({ onCategoryClick }: ResearchAgendaProps) => {
           </div>
           <div className="space-y-6 text-muted-foreground">
             <p className="text-justify leading-relaxed">
-              My research investigates how data and artificial intelligence (AI) are reshaping strategic decision-making, innovation, and entrepreneurship—and how, in turn, humans reason, learn, and create under uncertainty. I study how algorithms and human decision-makers complement each other in discovering new ideas, forming strategies, and driving innovation in fast-changing environments.
+              I study how algorithms and human decision-makers complement each other in discovering new ideas, forming strategies, and driving innovation in fast-changing environments.
             </p>
             <p className="text-justify leading-relaxed">
               By combining large-scale experiments with data-driven analysis and theoretical modeling, my work explores how information and AI transform not only what organizations decide, but how they think. This approach connects the cognitive foundations of innovation—how entrepreneurs, scientists, and managers make sense of the unknown—with the transformative potential of predictive and generative technologies.
