@@ -137,7 +137,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
 
   const newProjects: Publication[] = [
     {
-      title: "Causal Explanations and Theory Generation with AI",
+      title: "Theorizing with Machines: From Causal Explaination of Anomalies to Generating New Hypotheses",
       authors: "Messinese, D.",
       journal: "Work in Progress",
       year: "2025",
