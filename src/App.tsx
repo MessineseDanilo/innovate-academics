@@ -13,7 +13,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <HelmetProvider>  {/* ← Aggiunto questo wrapper */}
+    <HelmetProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -25,7 +25,7 @@ const App = () => (
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
-    </HelmetProvider>  {/* ← Chiusura del wrapper */}
+    </HelmetProvider>
   </QueryClientProvider>
 );
 

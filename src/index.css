@@ -9,43 +9,43 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 10% 15%;
+    --foreground: 216 18% 17%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 10% 15%;
+    --card-foreground: 216 18% 17%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 10% 15%;
+    --popover-foreground: 216 18% 17%;
 
-    --primary: 210 80% 45%;
+    --primary: 204 65% 32%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 10% 95%;
-    --secondary-foreground: 220 10% 15%;
+    --secondary: 210 18% 96%;
+    --secondary-foreground: 216 18% 17%;
 
-    --muted: 220 10% 95%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 210 18% 96%;
+    --muted-foreground: 216 9% 42%;
 
-    --accent: 45 90% 60%;
-    --accent-foreground: 220 10% 15%;
+    --accent: 28 42% 49%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 10% 90%;
-    --input: 220 10% 90%;
-    --ring: 210 80% 45%;
+    --border: 214 16% 88%;
+    --input: 214 16% 88%;
+    --ring: 204 65% 32%;
 
     --radius: 0.5rem;
     
     --anthracite: 220 10% 15%;
-    --gold: 45 90% 60%;
-    --academic-blue: 210 80% 45%;
+    --gold: 28 42% 49%;
+    --academic-blue: 204 65% 32%;
     --signature-navy: 220 20% 20%;
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --shadow-elegant: 0 4px 20px -4px hsl(220 10% 15% / 0.1);
-    --shadow-hover: 0 8px 30px -6px hsl(210 80% 45% / 0.2);
+    --shadow-hover: 0 8px 30px -6px hsl(204 65% 32% / 0.16);
 
     --sidebar-background: 0 0% 98%;
 
@@ -112,19 +112,6 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
-  @media (max-width: 768px) {
-    body {
-      font-size: 14px; /* o 0.875rem */
-    }
-    
-    h1 { font-size: 1.75rem; }
-    h2 { font-size: 1.5rem; }
-    h3 { font-size: 1.25rem; }
-    h4 { font-size: 1.1rem; }
-    h5 { font-size: 1rem; }
-    h6 { font-size: 0.875rem; }
-  }
-  
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 600;

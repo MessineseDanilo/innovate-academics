@@ -1,90 +1,54 @@
-import { Mail, Linkedin, FileDown, Building2 } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Building2, FileDown, Linkedin, Mail } from "lucide-react";
 
 const Contact = () => {
-  const contactInfo = [
+  const links = [
     {
       icon: Mail,
-      label: "Email",
-      value: "danilo.messinese@ie.edu",
-      link: "mailto:danilo.messinese@ie.edu",
+      label: "danilo.messinese@ie.edu",
+      href: "mailto:danilo.messinese@ie.edu",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      value: "Connect on LinkedIn",
-      link: "https://www.linkedin.com/in/danilomessinese/",
+      href: "https://www.linkedin.com/in/danilomessinese/",
     },
     {
-      icon: Building2,
-      label: "Office",
-      value: "IE Tower, Madrid, Office 22.09",
-      link: null,
+      icon: FileDown,
+      label: "Curriculum vitae",
+      href: "/Messinese Danilo_Academic_cv_October 2025.pdf",
     },
   ];
 
   return (
-    <section id="contact" className="py-24 px-6 bg-secondary/30">
-      <div className="container mx-auto max-w-4xl">
-        <div className="space-y-12">
-          <div className="text-center space-y-4 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
-              Get in Touch
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              I'm always interested in new research collaborations and speaking opportunities
-            </p>
+    <section id="contact" className="border-t border-border bg-secondary/40 px-5 py-14 md:px-6 scroll-mt-24">
+      <div className="mx-auto max-w-5xl">
+        <div className="grid gap-8 md:grid-cols-[220px_1fr]">
+          <div>
+            <h2 className="text-2xl font-semibold text-foreground">Contact</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {contactInfo.map((item, index) => (
-              <Card
-                key={item.label}
-                className="p-6 hover:shadow-hover transition-smooth animate-slide-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                    <item.icon size={24} />
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-medium text-muted-foreground">{item.label}</p>
-                    {item.link ? (
-                      <a
-                        href={item.link}
-                        className="text-foreground hover:text-primary transition-smooth font-medium"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="text-foreground font-medium">{item.value}</p>
-                    )}
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
+          <div className="space-y-6">
+            <div className="grid gap-4 text-sm leading-6 text-muted-foreground md:grid-cols-3">
+              {links.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.href.startsWith("http") || item.href.endsWith(".pdf") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") || item.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
+                  className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
+                >
+                  <item.icon size={16} />
+                  {item.label}
+                </a>
+              ))}
+            </div>
 
-          <div className="pt-8 flex justify-center animate-fade-in" style={{ animationDelay: "300ms" }}>
-            <Button size="lg" variant="outline" className="group" asChild>
-              <a
-                href="/Messinese Danilo_Academic_cv_October 2025.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FileDown className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-smooth" />
-                Download CV (PDF)
-              </a>
-            </Button>
-          </div>
-
-
-          <div className="text-center pt-8 text-sm text-muted-foreground animate-fade-in" style={{ animationDelay: "400ms" }}>
-            <p>IE Business School</p>
-            <p>Madrid, Spain</p>
+            <div className="flex items-start gap-2 text-sm leading-6 text-muted-foreground">
+              <Building2 className="mt-1 h-4 w-4 shrink-0" />
+              <p>
+                IE Business School, Strategy Department. IE Tower, Office 22.09, Madrid, Spain.
+              </p>
+            </div>
           </div>
         </div>
       </div>
