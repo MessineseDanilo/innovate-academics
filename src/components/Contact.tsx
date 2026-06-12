@@ -1,4 +1,4 @@
-import { Building2, GraduationCap, Linkedin, Mail } from "lucide-react";
+import { Building2, GraduationCap, Mail } from "lucide-react";
 
 const Contact = () => {
   const links = [
@@ -6,11 +6,6 @@ const Contact = () => {
       icon: Mail,
       label: "danilo.messinese@ie.edu",
       href: "mailto:danilo.messinese@ie.edu",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/in/danilomessinese/",
     },
     {
       icon: GraduationCap,
