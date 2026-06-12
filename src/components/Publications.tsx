@@ -131,14 +131,14 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   };
 
   const renderPublication = (paper: Publication) => (
-    <article key={paper.title} className="border-b border-border py-6 last:border-b-0">
-      <div className="grid gap-3 md:grid-cols-[110px_1fr]">
-        <div className="text-[13.5px] font-medium text-muted-foreground">{paper.year}</div>
-        <div className="space-y-3">
+    <article key={paper.title} className="border-b border-border py-5 last:border-b-0">
+      <div className="grid gap-2 md:grid-cols-[88px_1fr]">
+        <div className="text-[12.5px] font-medium text-muted-foreground">{paper.year}</div>
+        <div className="space-y-2.5">
           <div>
-            <h3 className="text-[18px] font-medium leading-7 text-foreground">{paper.title}</h3>
-            <p className="mt-2 text-[13.5px] leading-6 text-muted-foreground">{paper.authors}</p>
-            <p className="mt-1 text-[13.5px] font-semibold leading-6 text-foreground">{paper.journal}</p>
+            <h3 className="text-[15.5px] font-semibold leading-6 text-foreground">{paper.title}</h3>
+            <p className="mt-1.5 text-[12.5px] leading-5 text-muted-foreground">{paper.authors}</p>
+            <p className="mt-0.5 text-[12.5px] font-semibold leading-5 text-foreground">{paper.journal}</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -176,7 +176,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
           </div>
 
           {paper.abstract && expandedAbstracts.has(paper.title) && (
-            <p className="max-w-3xl text-[14.5px] leading-7 text-foreground/75">{paper.abstract}</p>
+            <p className="max-w-3xl text-[13px] leading-6 text-foreground/75">{paper.abstract}</p>
           )}
         </div>
       </div>
@@ -188,20 +188,20 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   const filteredProgress = filterPublications(workInProgress);
 
   return (
-    <section id="publications" className="px-5 py-14 md:px-6 md:py-18 scroll-mt-24">
-      <div className="mx-auto max-w-5xl">
-        <div className="grid gap-10 md:grid-cols-[220px_1fr]">
+    <section id="publications" className="px-5 py-11 md:px-6 md:py-12 scroll-mt-24">
+      <div className="mx-auto max-w-[940px]">
+        <div className="grid gap-8 md:grid-cols-[170px_1fr]">
           <div>
-            <h2 className="text-[22px] font-medium text-foreground">Research</h2>
-            <p className="mt-3 text-[13.5px] leading-6 text-muted-foreground">
+            <h2 className="text-[19px] font-semibold text-foreground">Research</h2>
+            <p className="mt-2.5 text-[12.5px] leading-5 text-muted-foreground">
               Peer-reviewed articles, working papers, and selected projects.
             </p>
-            <p className="mt-4 text-[12.5px] leading-5 text-muted-foreground">
+            <p className="mt-3 text-[11.5px] leading-5 text-muted-foreground">
               Unless otherwise noted, authors are listed alphabetically.
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             {activeFilter && onClearFilter && (
               <div className="flex flex-wrap items-center gap-3">
                 <Badge variant="default">Filtered by {categoryLabels[activeFilter] || activeFilter}</Badge>

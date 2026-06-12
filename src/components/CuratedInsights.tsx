@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Podcast, FileText, Newspaper, Filter, ChevronDown, ChevronUp, Calendar } from "lucide-react";
 import { useState } from "react";
@@ -232,29 +231,29 @@ const CuratedInsights = () => {
     });
 
   return (
-    <section id="curated-insights" className="bg-secondary/20 px-5 py-16 md:px-6 md:py-20">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-8 max-w-3xl animate-fade-in">
-          <h2 className="mb-3 text-[28px] font-medium leading-tight text-foreground md:text-[34px]">
+    <section id="curated-insights" className="bg-secondary/20 px-5 py-12 md:px-6 md:py-14">
+      <div className="mx-auto max-w-[940px]">
+        <div className="mb-7 max-w-2xl animate-fade-in">
+          <h2 className="mb-2 text-[24px] font-semibold leading-tight text-foreground">
             Curated Insights
           </h2>
-          <p className="text-[15px] leading-7 text-muted-foreground">
+          <p className="text-[13px] leading-6 text-muted-foreground">
             A personal selection of ideas and papers outside my primary field that I've found inspiring.
           </p>
         </div>
 
         {/* Filters */}
-        <div className="mb-8 space-y-3 animate-fade-in">
+        <div className="mb-7 space-y-2.5 animate-fade-in">
           {/* Type Filter */}
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <Filter size={16} className="text-muted-foreground hidden sm:block" />
             <Filter size={14} className="text-muted-foreground sm:hidden" />
-            <span className="text-[13px] font-semibold text-foreground">Type:</span>
+            <span className="text-[12px] font-semibold text-foreground">Type:</span>
             <Button
               variant={selectedType === null ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedType(null)}
-              className="h-8 px-3 text-[12.5px]"
+              className="h-7 px-2.5 text-[12px]"
             >
               All
             </Button>
@@ -264,7 +263,7 @@ const CuratedInsights = () => {
                 variant={selectedType === type.value ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedType(type.value)}
-                className="h-8 gap-2 px-3 text-[12.5px]"
+                className="h-7 gap-1.5 px-2.5 text-[12px]"
               >
                 <type.icon size={12} className="sm:w-3.5 sm:h-3.5" />
                 <span className="hidden sm:inline">{type.label}</span>
@@ -277,12 +276,12 @@ const CuratedInsights = () => {
           <div className="flex items-center gap-2">
             <Filter size={16} className="text-muted-foreground hidden sm:block" />
             <Filter size={14} className="text-muted-foreground sm:hidden" />
-            <span className="text-[13px] font-semibold text-foreground">Topic:</span>
+            <span className="text-[12px] font-semibold text-foreground">Topic:</span>
             <Select
               value={selectedTopic || "all"}
               onValueChange={(value) => setSelectedTopic(value === "all" ? null : value)}
             >
-              <SelectTrigger className="h-8 w-[180px] bg-background text-[12.5px]">
+              <SelectTrigger className="h-7 w-[170px] bg-background text-[12px]">
                 <SelectValue placeholder="All topics" />
               </SelectTrigger>
               <SelectContent className="bg-background z-50">
@@ -300,12 +299,12 @@ const CuratedInsights = () => {
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <Calendar size={16} className="text-muted-foreground hidden sm:block" />
             <Calendar size={14} className="text-muted-foreground sm:hidden" />
-            <span className="text-[13px] font-semibold text-foreground">Sort by:</span>
+            <span className="text-[12px] font-semibold text-foreground">Sort by:</span>
             <Button
               variant={sortOrder === "newest" ? "default" : "outline"}
               size="sm"
               onClick={() => setSortOrder("newest")}
-              className="h-8 px-3 text-[12.5px]"
+              className="h-7 px-2.5 text-[12px]"
             >
               Newest
             </Button>
@@ -313,46 +312,71 @@ const CuratedInsights = () => {
               variant={sortOrder === "oldest" ? "default" : "outline"}
               size="sm"
               onClick={() => setSortOrder("oldest")}
-              className="h-8 px-3 text-[12.5px]"
+              className="h-7 px-2.5 text-[12px]"
             >
               Oldest
             </Button>
           </div>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
+        <div className="space-y-3">
           {filteredInsights.map((item, index) => {
             const isExpanded = expandedAbstracts.has(index);
             
             return (
               <Card
                 key={index}
-                className="group rounded-sm border border-border/70 transition-smooth hover:shadow-elegant animate-fade-in"
+                className="group rounded-[2px] border border-border/70 transition-smooth hover:shadow-elegant animate-fade-in"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <CardContent className="space-y-4 p-5">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className={`rounded-sm bg-background p-2 ${item.color}`}>
-                      <item.icon size={18} />
-                    </div>
-                    <div className="flex flex-col items-end gap-1">
-                      <Badge variant="secondary" className="text-[11.5px]">
-                        {item.badge}
-                      </Badge>
-                      {item.source && (
-                        <Badge variant="outline" className="text-[11.5px]">
-                          {item.source}
-                        </Badge>
-                      )}
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <h3 className="text-[17px] font-medium leading-6 text-foreground transition-smooth group-hover:text-primary">
+                <CardContent className="p-4">
+                  <div className="grid gap-3 md:grid-cols-[1fr_auto] md:items-start">
+                    <div className="space-y-2">
+                      <div className="flex flex-wrap items-center gap-2 text-[11.5px] text-muted-foreground">
+                        <span className="inline-flex items-center gap-1.5">
+                          <item.icon size={13} className={item.color} />
+                          {item.badge}
+                        </span>
+                        {item.source && <span>{item.source}</span>}
+                        <span>{format(item.date, "MMMM d, yyyy")}</span>
+                      </div>
+                      <h3 className="text-[15px] font-semibold leading-5 text-foreground transition-smooth group-hover:text-primary">
                       {item.title}
-                    </h3>
-                  </div>
+                      </h3>
+                      <p className="text-[12.5px] font-medium leading-5 text-muted-foreground">
+                        {item.author}
+                      </p>
+                    </div>
 
+                    <div className="flex items-center gap-3 md:justify-end">
+                      <Collapsible open={isExpanded} onOpenChange={(open) => {
+                        setExpandedAbstracts(prev => {
+                          const newSet = new Set(prev);
+                          if (open) {
+                            newSet.add(index);
+                          } else {
+                            newSet.delete(index);
+                          }
+                          return newSet;
+                        });
+                      }}>
+                        <CollapsibleTrigger asChild>
+                          <Button variant="ghost" size="sm" className="h-7 px-2 text-[12px]">
+                            <span>{isExpanded ? "Hide" : "Abstract"}</span>
+                            {isExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
+                          </Button>
+                        </CollapsibleTrigger>
+                      </Collapsible>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-7 px-2 hover:bg-transparent"
+                        onClick={() => window.open(item.link, "_blank")}
+                      >
+                        <ExternalLink size={14} className="text-muted-foreground group-hover:text-primary transition-smooth" />
+                      </Button>
+                    </div>
+                  </div>
                   <Collapsible open={isExpanded} onOpenChange={(open) => {
                     setExpandedAbstracts(prev => {
                       const newSet = new Set(prev);
@@ -364,47 +388,12 @@ const CuratedInsights = () => {
                       return newSet;
                     });
                   }}>
-                    <CollapsibleTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="w-full justify-between text-[12.5px]"
-                      >
-                        <span>{isExpanded ? "Hide" : "Show"} Abstract</span>
-                        {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                      </Button>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="mt-2">
-                      <p className="rounded-sm bg-secondary/30 p-3 text-[13.5px] leading-6 text-muted-foreground">
+                    <CollapsibleContent className="mt-3">
+                      <p className="rounded-[2px] bg-secondary/30 p-3 text-[12.5px] leading-5 text-muted-foreground">
                         {item.abstract}
                       </p>
                     </CollapsibleContent>
                   </Collapsible>
-
-                  <div className="flex flex-col gap-2 pt-2 border-t border-border/30">
-                    <div className="flex items-center gap-2">
-                      <Calendar size={12} className="text-muted-foreground" />
-                      <p className="text-[12.5px] text-muted-foreground">
-                        {format(item.date, "MMMM d, yyyy")}
-                      </p>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <p className="text-[12.5px] font-medium text-muted-foreground">
-                        {item.author}
-                      </p>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-auto p-0 hover:bg-transparent"
-                        onClick={() => window.open(item.link, '_blank')}
-                      >
-                        <ExternalLink 
-                          size={16} 
-                          className="text-muted-foreground group-hover:text-primary transition-smooth" 
-                        />
-                      </Button>
-                    </div>
-                  </div>
                 </CardContent>
               </Card>
             );

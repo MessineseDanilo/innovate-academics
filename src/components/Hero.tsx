@@ -3,23 +3,23 @@ import professorPortrait from "@/assets/professor-portrait.jpg";
 
 const Hero = () => {
   return (
-    <section id="home" className="px-5 pb-14 pt-28 md:px-6 md:pb-18 md:pt-32 scroll-mt-24">
-      <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[1fr_280px] md:items-start">
-        <div className="space-y-6">
-          <div className="space-y-3">
-            <p className="text-[13px] font-semibold uppercase text-muted-foreground">
+    <section id="home" className="px-5 pb-10 pt-24 md:px-6 md:pb-12 md:pt-28 scroll-mt-24">
+      <div className="mx-auto grid max-w-[940px] gap-9 md:grid-cols-[1fr_250px] md:items-start">
+        <div className="space-y-5">
+          <div className="space-y-2">
+            <p className="text-[12.5px] font-semibold text-muted-foreground">
               Assistant Professor of Strategy, IE Business School
             </p>
-            <h1 className="text-[2.35rem] font-medium leading-[1.08] text-foreground md:text-[2.9rem]">
+            <h1 className="text-[32px] font-semibold leading-[1.12] text-foreground md:text-[38px]">
               Danilo Messinese
             </h1>
-            <p className="max-w-2xl text-[17px] leading-8 text-muted-foreground">
+            <p className="max-w-[620px] text-[14.5px] leading-[1.65] text-muted-foreground">
               I study how data and artificial intelligence shape strategic decision-making,
               innovation, and entrepreneurship.
             </p>
           </div>
 
-          <div className="max-w-3xl space-y-4 text-[15.5px] leading-7 text-foreground/85">
+          <div className="max-w-[660px] space-y-3 text-[14px] leading-[1.65] text-foreground/85">
             <p>
               My research examines how human decision-makers and algorithms learn, reason, and
               adapt under uncertainty. I combine experimental and computational methods to study
@@ -40,12 +40,12 @@ const Hero = () => {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-x-6 gap-y-3 border-t border-border pt-5 text-[13.5px] text-muted-foreground">
+          <div className="flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-4 text-[12.5px] text-muted-foreground">
             <a
               href="mailto:danilo.messinese@ie.edu"
               className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
             >
-              <Mail size={16} />
+              <Mail size={14} />
               danilo.messinese@ie.edu
             </a>
             <a
@@ -54,23 +54,23 @@ const Hero = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
             >
-              <FileDown size={16} />
+              <FileDown size={14} />
               CV
             </a>
             <span className="inline-flex items-center gap-2">
-              <MapPin size={16} />
+              <MapPin size={14} />
               Madrid, Spain
             </span>
           </div>
         </div>
 
-        <aside className="space-y-4 md:pt-2">
+        <aside className="space-y-3 md:pt-1">
           <img
             src={professorPortrait}
             alt="Danilo Messinese"
-            className="aspect-[4/5] w-full max-w-[280px] rounded-sm object-cover shadow-elegant"
+            className="aspect-[4/5] w-full max-w-[250px] rounded-[2px] object-cover shadow-elegant"
           />
-          <div className="max-w-[280px] space-y-1 text-[13.5px] leading-6 text-muted-foreground">
+          <div className="max-w-[250px] space-y-1 text-[12.5px] leading-5 text-muted-foreground">
             <p className="font-medium text-foreground">IE Business School</p>
             <p>Strategy Department</p>
             <p>IE Tower, Office 22.09</p>

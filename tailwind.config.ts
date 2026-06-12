@@ -65,9 +65,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        serif: ['Source Serif 4', 'Georgia', 'serif'],
-        sans: ['Source Sans 3', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        signature: ['Source Serif 4', 'Georgia', 'serif'],
+        serif: ['Georgia', 'Times New Roman', 'serif'],
+        sans: ['Arial', 'Helvetica Neue', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        signature: ['Georgia', 'Times New Roman', 'serif'],
       },
       keyframes: {
         "accordion-down": {
