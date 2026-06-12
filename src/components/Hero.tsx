@@ -1,4 +1,4 @@
-import { FileDown, Mail, MapPin } from "lucide-react";
+import { GraduationCap, Mail, MapPin } from "lucide-react";
 import professorPortrait from "@/assets/professor-portrait.jpg";
 
 const Hero = () => {
@@ -49,13 +49,13 @@ const Hero = () => {
               danilo.messinese@ie.edu
             </a>
             <a
-              href="/Messinese Danilo_Academic_cv_October 2025.pdf"
+              href="https://scholar.google.com/citations?user=p5Wj5nkAAAAJ&hl=en&authuser=1&oi=ao"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
             >
-              <FileDown size={14} />
-              CV
+              <GraduationCap size={14} />
+              Google Scholar
             </a>
             <span className="inline-flex items-center gap-2">
               <MapPin size={14} />
