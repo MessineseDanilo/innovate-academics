@@ -232,29 +232,29 @@ const CuratedInsights = () => {
     });
 
   return (
-    <section id="curated-insights" className="py-24 bg-secondary/20">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto text-center mb-8 animate-fade-in">
-          <h2 className="text-2xl sm:text-4xl font-serif font-bold text-foreground mb-2 sm:mb-4">
+    <section id="curated-insights" className="bg-secondary/20 px-5 py-16 md:px-6 md:py-20">
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-8 max-w-3xl animate-fade-in">
+          <h2 className="mb-3 text-[28px] font-medium leading-tight text-foreground md:text-[34px]">
             Curated Insights
           </h2>
-          <p className="text-sm sm:text-lg text-muted-foreground italic">
+          <p className="text-[15px] leading-7 text-muted-foreground">
             A personal selection of ideas and papers outside my primary field that I've found inspiring.
           </p>
         </div>
 
         {/* Filters */}
-        <div className="max-w-6xl mx-auto mb-8 space-y-3 sm:space-y-4 animate-fade-in">
+        <div className="mb-8 space-y-3 animate-fade-in">
           {/* Type Filter */}
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <Filter size={16} className="text-muted-foreground hidden sm:block" />
             <Filter size={14} className="text-muted-foreground sm:hidden" />
-            <span className="text-xs sm:text-sm font-medium text-foreground">Type:</span>
+            <span className="text-[13px] font-semibold text-foreground">Type:</span>
             <Button
               variant={selectedType === null ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedType(null)}
-              className="h-7 sm:h-8 text-xs px-2 sm:px-3"
+              className="h-8 px-3 text-[12.5px]"
             >
               All
             </Button>
@@ -264,7 +264,7 @@ const CuratedInsights = () => {
                 variant={selectedType === type.value ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedType(type.value)}
-                className="gap-1 sm:gap-2 h-7 sm:h-8 text-xs px-2 sm:px-3"
+                className="h-8 gap-2 px-3 text-[12.5px]"
               >
                 <type.icon size={12} className="sm:w-3.5 sm:h-3.5" />
                 <span className="hidden sm:inline">{type.label}</span>
@@ -277,12 +277,12 @@ const CuratedInsights = () => {
           <div className="flex items-center gap-2">
             <Filter size={16} className="text-muted-foreground hidden sm:block" />
             <Filter size={14} className="text-muted-foreground sm:hidden" />
-            <span className="text-xs sm:text-sm font-medium text-foreground">Topic:</span>
+            <span className="text-[13px] font-semibold text-foreground">Topic:</span>
             <Select
               value={selectedTopic || "all"}
               onValueChange={(value) => setSelectedTopic(value === "all" ? null : value)}
             >
-              <SelectTrigger className="w-[180px] h-7 sm:h-8 text-xs sm:text-sm bg-background">
+              <SelectTrigger className="h-8 w-[180px] bg-background text-[12.5px]">
                 <SelectValue placeholder="All topics" />
               </SelectTrigger>
               <SelectContent className="bg-background z-50">
@@ -300,12 +300,12 @@ const CuratedInsights = () => {
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <Calendar size={16} className="text-muted-foreground hidden sm:block" />
             <Calendar size={14} className="text-muted-foreground sm:hidden" />
-            <span className="text-xs sm:text-sm font-medium text-foreground">Sort by:</span>
+            <span className="text-[13px] font-semibold text-foreground">Sort by:</span>
             <Button
               variant={sortOrder === "newest" ? "default" : "outline"}
               size="sm"
               onClick={() => setSortOrder("newest")}
-              className="h-7 sm:h-8 text-xs px-2 sm:px-3"
+              className="h-8 px-3 text-[12.5px]"
             >
               Newest
             </Button>
@@ -313,34 +313,34 @@ const CuratedInsights = () => {
               variant={sortOrder === "oldest" ? "default" : "outline"}
               size="sm"
               onClick={() => setSortOrder("oldest")}
-              className="h-7 sm:h-8 text-xs px-2 sm:px-3"
+              className="h-8 px-3 text-[12.5px]"
             >
               Oldest
             </Button>
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-5 md:grid-cols-2">
           {filteredInsights.map((item, index) => {
             const isExpanded = expandedAbstracts.has(index);
             
             return (
               <Card
                 key={index}
-                className="group hover:shadow-elegant transition-smooth border border-border/50 animate-fade-in"
+                className="group rounded-sm border border-border/70 transition-smooth hover:shadow-elegant animate-fade-in"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <CardContent className="p-6 space-y-4">
+                <CardContent className="space-y-4 p-5">
                   <div className="flex items-start justify-between gap-3">
-                    <div className={`p-2 rounded-lg bg-background ${item.color}`}>
-                      <item.icon size={20} />
+                    <div className={`rounded-sm bg-background p-2 ${item.color}`}>
+                      <item.icon size={18} />
                     </div>
                     <div className="flex flex-col items-end gap-1">
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="secondary" className="text-[11.5px]">
                         {item.badge}
                       </Badge>
                       {item.source && (
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="outline" className="text-[11.5px]">
                           {item.source}
                         </Badge>
                       )}
@@ -348,7 +348,7 @@ const CuratedInsights = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-lg font-serif font-semibold text-foreground leading-tight group-hover:text-primary transition-smooth">
+                    <h3 className="text-[17px] font-medium leading-6 text-foreground transition-smooth group-hover:text-primary">
                       {item.title}
                     </h3>
                   </div>
@@ -368,14 +368,14 @@ const CuratedInsights = () => {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="w-full justify-between text-xs"
+                        className="w-full justify-between text-[12.5px]"
                       >
                         <span>{isExpanded ? "Hide" : "Show"} Abstract</span>
                         {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                       </Button>
                     </CollapsibleTrigger>
                     <CollapsibleContent className="mt-2">
-                      <p className="text-sm text-muted-foreground leading-relaxed bg-secondary/30 p-3 rounded-md">
+                      <p className="rounded-sm bg-secondary/30 p-3 text-[13.5px] leading-6 text-muted-foreground">
                         {item.abstract}
                       </p>
                     </CollapsibleContent>
@@ -384,12 +384,12 @@ const CuratedInsights = () => {
                   <div className="flex flex-col gap-2 pt-2 border-t border-border/30">
                     <div className="flex items-center gap-2">
                       <Calendar size={12} className="text-muted-foreground" />
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-[12.5px] text-muted-foreground">
                         {format(item.date, "MMMM d, yyyy")}
                       </p>
                     </div>
                     <div className="flex items-center justify-between">
-                      <p className="text-xs text-muted-foreground font-medium">
+                      <p className="text-[12.5px] font-medium text-muted-foreground">
                         {item.author}
                       </p>
                       <Button

@@ -57,7 +57,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           <button
             onClick={() => handleNavigation("home")}
-            className="text-base font-semibold text-foreground transition-smooth hover:text-primary"
+            className="text-[15px] font-semibold text-foreground transition-smooth hover:text-primary"
           >
             Danilo Messinese
           </button>
@@ -67,7 +67,7 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => handleNavigation(item.id, item.isPage)}
-                className="text-sm text-muted-foreground transition-smooth hover:text-foreground"
+                className="text-[13.5px] text-muted-foreground transition-smooth hover:text-foreground"
               >
                 {item.label}
               </button>
@@ -76,7 +76,7 @@ const Navigation = () => {
               href="/Messinese Danilo_Academic_cv_October 2025.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-smooth hover:text-foreground"
+              className="inline-flex items-center gap-2 text-[13.5px] text-muted-foreground transition-smooth hover:text-foreground"
             >
               <FileDown size={15} />
               CV
@@ -100,7 +100,7 @@ const Navigation = () => {
                 <button
                   key={item.id}
                   onClick={() => handleNavigation(item.id, item.isPage)}
-                  className="text-left text-sm font-medium text-muted-foreground hover:text-primary transition-smooth"
+                  className="text-left text-[14px] font-medium text-muted-foreground hover:text-primary transition-smooth"
                 >
                   {item.label}
                 </button>
@@ -109,7 +109,7 @@ const Navigation = () => {
                 href="/Messinese Danilo_Academic_cv_October 2025.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-left text-sm font-medium text-muted-foreground transition-smooth hover:text-primary"
+                className="text-left text-[14px] font-medium text-muted-foreground transition-smooth hover:text-primary"
               >
                 CV
               </a>
