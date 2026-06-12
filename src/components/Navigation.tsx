@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { FileDown, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
@@ -44,7 +44,6 @@ const Navigation = () => {
     { label: "Home", id: "home" },
     { label: "Research", id: "research", isPage: true },
     { label: "Insights", id: "insights", isPage: true },
-    { label: "Contact", id: "contact" },
   ];
 
   return (
@@ -72,15 +71,6 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
-            <a
-              href="/Messinese Danilo_Academic_cv_October 2025.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[13.5px] text-muted-foreground transition-smooth hover:text-foreground"
-            >
-              <FileDown size={15} />
-              CV
-            </a>
           </div>
 
           <Button
@@ -105,14 +95,6 @@ const Navigation = () => {
                   {item.label}
                 </button>
               ))}
-              <a
-                href="/Messinese Danilo_Academic_cv_October 2025.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-left text-[14px] font-medium text-muted-foreground transition-smooth hover:text-primary"
-              >
-                CV
-              </a>
             </div>
           </div>
         )}
