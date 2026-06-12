@@ -31,7 +31,7 @@ const publications: Publication[] = [
     journalLink: "https://doi.org/10.1287/orsc.2023.18245",
     status: "Best Paper, AOM 2022, TIM Division",
     abstract:
-      "We develop a unified framework to examine two approaches to strategic decision making under uncertainty: designing and shaping future scenarios versus testing theories about future scenarios. In a randomized controlled trial with early-stage entrepreneurs, both approaches reduce information needs and increase commitment, but they lead to distinct rules for termination, pivoting, and breakthrough outcomes.",
+      "We develop a unified framework to examine the implications of two primary approaches to strategic decision making under uncertainty: designing and shaping future scenarios vis-à-vis testing theories about future scenarios. We conducted a three-arm randomized controlled trial involving 308 early stage entrepreneurs, dividing them into three groups—design-based training, theory-based training, and a control group—and tracked them over approximately 1.5 years. Our findings reveal that both approaches reduce the need for information in decision making and lead to higher commitment rates. The design-based approach encourages action despite negative beliefs, resulting in less frequent and later project termination. In contrast, the theory-based approach promotes a more conservative termination rule, leading to earlier and more frequent project abandonment. Although the theory-based approach is associated with higher average performance upon survival, the design-based approach fosters breakthroughs for decision makers. In sum, the design-based approach is well-suited for innovative ventures that gather information to shape their environment, whereas the theory-based approach is optimal for pursuing high performance under lower degrees of uncertainty.",
   },
   {
     title: "A Scientific Approach to Entrepreneurial Decision Making: Large Scale Replication and Extension",
@@ -42,7 +42,7 @@ const publications: Publication[] = [
     journalLink: "https://doi.org/10.1002/smj.3580",
     status: "Best Experimental Paper, 2024 IGL Research Prize",
     abstract:
-      "This article reports a large-scale replication and extension of a scientific approach to entrepreneurial decision making across 759 firms in four randomized controlled trials. The findings clarify how scientific training affects idea termination, methodic doubt, and radical pivots.",
+      "This article runs a large-scale replication of Camuffo and colleagues in 2020, involving 759 firms in four randomized control trials. The larger sample generates novel and more precise insights about the teachability and implications of a scientific approach in entrepreneurship. We observe a positive impact on idea termination and results that are consistent with a nonlinear effect on radical pivots, with treated firms running few over no or repeated pivots. We provide a theoretical interpretation of the empirical results: the scientific approach enhances entrepreneurs' efficiency in searching for viable ideas and raises their methodic doubt because, like scientists, they realize that there may alternative scenarios from the ones that they theorize.",
   },
 ];
 
@@ -55,7 +55,7 @@ const workingPapers: Publication[] = [
     categories: ["ai", "entrepreneurship", "decisions"],
     ssrnLink: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4958898",
     abstract:
-      "Using data on U.S. software startups and their adoption of AI, this paper studies how predictive AI reshapes technology portfolios and customer acquisition. The results point to strong heterogeneity and suggest that AI can surface anomalies that become valuable only when entrepreneurs embed them in causal theories.",
+      "What role does predictive artificial intelligence (A.I.) play in entrepreneurial decision-making? We explore this question using a comprehensive dataset of U.S. software startups and their time-varying adoption of A.I. We find that A.I. adoption significantly reshapes startups' technology portfolios and enhances customer acquisition, with performance gains concentrated in the upper tail of the treatment effect distribution. These effects are strongest among startups led by highly skilled founders. Complementary survey evidence and an ad hoc experiment shed light on the underlying mechanism: beyond extrapolating from past trends, A.I. detects unexpected patterns–anomalies–in data, signaling novel opportunities and enabling breakthrough innovation. To capitalize on these anomalies, however, entrepreneurs must embed them within causal theories that guide the development of actionable strategies.",
   },
   {
     title: "Entrepreneurial Responses to New Information under Different Reasoning Logics",
@@ -64,7 +64,7 @@ const workingPapers: Publication[] = [
     year: "2025",
     categories: ["decisions", "entrepreneurship"],
     abstract:
-      "This paper studies how entrepreneurs update beliefs and strategies when trained in theory-based or design-based reasoning. The findings reveal a trade-off between calibrated but rigid expectations and more flexible but volatile strategic adaptation.",
+      "The way entrepreneurs process information shapes how they strategize, and innovate. We study this mechanism through a randomized controlled trial in Italy involving early-stage entrepreneurs randomly assigned to one of two training conditions: Theorists, trained to reason through explicit causal models and interpret information against structured hypotheses, and Designers, trained to adapt opportunistically through action and treat new signals as cues for reshaping their environment. Over eighteen months, we tracked how entrepreneurs' expectations about their venture's value evolved in response to new information—both endogenous feedback and exogenous shocks. Two main results emerge. First, Theorists hold expectations approximately 2.3 times higher than those of Designers, yet their forecast errors, when benchmarked against realized revenues, are about 10% lower. Second, Theorists update more conservatively: their responsiveness to comparable informational shifts, including exogenous shocks, is about 50% lower than that of Designers. However, when confronted with major, theory-violating surprises, they react sharply—becoming roughly 20% more likely to revise their business model than Designers. Together, the findings reveal a fundamental trade-off in entrepreneurial cognition: the theory-based logic fosters well-calibrated yet rigid expectations, whereas the design-based logic promotes flexibility at the cost of greater volatility.",
   },
 ];
 
@@ -76,7 +76,7 @@ const workInProgress: Publication[] = [
     year: "2025",
     categories: ["ai", "entrepreneurship"],
     abstract:
-      "This project develops a framework for AI-assisted abductive theorizing, where machine learning, causal discovery, and language models help detect theory violations, trace their causal structure, and generate plausible explanatory mechanisms.",
+      "Artificial intelligence (AI) is transforming how social scientists discover, interpret, and explain empirical phenomena. Beyond prediction and optimization, advances in machine learning (ML), causal discovery, and large language models (LLMs) open new possibilities for theory generation. This paper proposes a framework in which AI acts as an epistemic partner in abductive theorizing—the process of generating explanations for unexpected empirical patterns that violate established causal explanations. We show how AI can augment key stages of theorizing: detecting theory violations in the data, tracing their causal structure, and assisting researchers in formulating plausible explanatory mechanisms. In addition to purely inductive uses of ML, our approach emphasizes explanation: helping scholars understand why models fail and how conceptual innovation can emerge from such failures. We demonstrate the approach through classic economic and organizational settings, illustrating how systematic discrepancies between predicted and observed outcomes reveal hidden pathways and latent heterogeneity. More broadly, the paper argues that computational methods can make theorizing more systematic, transparent, and cumulative across the social sciences, positioning AI not as a tool of prediction, but as a collaborator in the creation of new theoretical insight.",
   },
   {
     title: "Unsupervised Discovery of Causal Mechanisms for Management Research",
@@ -85,7 +85,7 @@ const workInProgress: Publication[] = [
     year: "2025",
     categories: ["ai"],
     abstract:
-      "This project examines independence-based causal machine learning as a tool for identifying latent causal sources in longitudinal business data and estimating heterogeneous effects at the firm-time level.",
+      "We explore the potential of independence-based causal machine learning to identify unobserved predictive causal sources in longitudinal business data. This causal inference approach does not require the full discovery of the data generating process graph or defining treatment groups. In particular, we adapt the pipeline in Lasko et al. (2025), which discovers probabilistically independent latent sources and their interpretable signatures directly from observational data. We apply this method to a large-scale panel of U.S. software startups. We benchmark this approach against standard difference-in-differences (DiD) estimates of the exogenous release of AI tools and show that causal machine learning not only replicates average treatment effects but also reveals multiple latent drivers, can clusters firms by their causal profiles, and estimates heterogeneous causal effects at the firm-time level. Our contribution is to demonstrate the multiple advantages of this approach to management research and decision making and to highlight its value as a flexible complement to established econometric inference.",
   },
   {
     title: "Bounded Machine Creativity and Human Judgment: Evidence from Chess",
