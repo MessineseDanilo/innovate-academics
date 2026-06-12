@@ -17,8 +17,8 @@ interface Publication {
 }
 
 interface PublicationsProps {
-  activeFilter: string | null;
-  onClearFilter: () => void;
+  activeFilter?: string | null;
+  onClearFilter?: () => void;
 }
 
 const publications: Publication[] = [
@@ -102,7 +102,7 @@ const categoryLabels: Record<string, string> = {
   entrepreneurship: "Innovation",
 };
 
-const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
+const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps = {}) => {
   const [activeTab, setActiveTab] = useState("publications");
   const [expandedAbstracts, setExpandedAbstracts] = useState<Set<string>>(new Set());
 
@@ -192,7 +192,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
       <div className="mx-auto max-w-5xl">
         <div className="grid gap-10 md:grid-cols-[220px_1fr]">
           <div>
-            <h2 className="text-2xl font-semibold text-foreground">Publications</h2>
+            <h2 className="text-2xl font-semibold text-foreground">Research</h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">
               Peer-reviewed articles, working papers, and selected projects.
             </p>
@@ -202,7 +202,7 @@ const Publications = ({ activeFilter, onClearFilter }: PublicationsProps) => {
           </div>
 
           <div className="space-y-6">
-            {activeFilter && (
+            {activeFilter && onClearFilter && (
               <div className="flex flex-wrap items-center gap-3">
                 <Badge variant="default">Filtered by {categoryLabels[activeFilter] || activeFilter}</Badge>
                 <Button variant="ghost" size="sm" onClick={onClearFilter}>

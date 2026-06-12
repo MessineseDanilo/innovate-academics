@@ -42,8 +42,7 @@ const Navigation = () => {
 
   const navItems = [
     { label: "Home", id: "home" },
-    { label: "Research", id: "about" },
-    { label: "Publications", id: "publications" },
+    { label: "Research", id: "publications" },
     { label: "Contact", id: "contact" },
   ];
 
