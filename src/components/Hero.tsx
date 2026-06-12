@@ -1,4 +1,3 @@
-import { GraduationCap, Mail, MapPin } from "lucide-react";
 import professorPortrait from "@/assets/professor-portrait.jpg";
 
 const Hero = () => {
@@ -38,29 +37,6 @@ const Hero = () => {
               Theoretical Physics, and Mathematical Finance from the University of Bologna, and a
               Ph.D. in Management from Bocconi University.
             </p>
-          </div>
-
-          <div className="flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-4 text-[12.5px] text-muted-foreground">
-            <a
-              href="mailto:danilo.messinese@ie.edu"
-              className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
-            >
-              <Mail size={14} />
-              danilo.messinese@ie.edu
-            </a>
-            <a
-              href="https://scholar.google.com/citations?user=p5Wj5nkAAAAJ&hl=en&authuser=1&oi=ao"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
-            >
-              <GraduationCap size={14} />
-              Google Scholar
-            </a>
-            <span className="inline-flex items-center gap-2">
-              <MapPin size={14} />
-              Madrid, Spain
-            </span>
           </div>
         </div>
 
