@@ -1,4 +1,4 @@
-import { Building2, FileDown, Linkedin, Mail } from "lucide-react";
+import { Building2, GraduationCap, Linkedin, Mail } from "lucide-react";
 
 const Contact = () => {
   const links = [
@@ -13,9 +13,9 @@ const Contact = () => {
       href: "https://www.linkedin.com/in/danilomessinese/",
     },
     {
-      icon: FileDown,
-      label: "Curriculum vitae",
-      href: "/Messinese Danilo_Academic_cv_October 2025.pdf",
+      icon: GraduationCap,
+      label: "Google Scholar",
+      href: "https://scholar.google.com/citations?user=p5Wj5nkAAAAJ&hl=en&authuser=1&oi=ao",
     },
   ];
 
