@@ -188,9 +188,9 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   const filteredProgress = filterPublications(workInProgress);
 
   return (
-    <section id="publications" className="px-5 py-11 md:px-6 md:py-12 scroll-mt-24">
-      <div className="mx-auto max-w-[940px]">
-        <div className="grid gap-8 md:grid-cols-[170px_1fr]">
+    <section id="research" className="px-5 py-10 md:px-6 md:py-12 scroll-mt-24">
+      <div className="mx-auto max-w-[1040px]">
+        <div className="grid gap-10 md:grid-cols-[190px_1fr]">
           <div>
             <h2 className="text-[19px] font-semibold text-foreground">Research</h2>
             <p className="mt-2.5 text-[12.5px] leading-5 text-muted-foreground">

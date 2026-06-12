@@ -1,20 +1,17 @@
 import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-
-import Contact from "@/components/Contact";
+import Publications from "@/components/Publications";
 import Footer from "@/components/Footer";
 
-const Index = () => {
+const Research = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <main>
-        <Hero />
-        <Contact />
+      <main className="pt-16">
+        <Publications />
       </main>
       <Footer />
     </div>
   );
 };
 
-export default Index;
+export default Research;

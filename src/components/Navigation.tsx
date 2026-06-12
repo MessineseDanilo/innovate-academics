@@ -42,7 +42,7 @@ const Navigation = () => {
 
   const navItems = [
     { label: "Home", id: "home" },
-    { label: "Research", id: "publications" },
+    { label: "Research", id: "research", isPage: true },
     { label: "Insights", id: "insights", isPage: true },
     { label: "Contact", id: "contact" },
   ];
