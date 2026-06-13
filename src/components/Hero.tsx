@@ -35,10 +35,10 @@ const Hero = () => {
           <div className="max-w-[720px] space-y-2.5 text-[13.5px] leading-[1.55] text-foreground md:space-y-3 md:text-[14px] md:leading-[1.65]">
             <p>
               Danilo is a professor in the strategy area at IE Business School.
-              His research focuses on how data and artificial intelligence (AI) impact firm
-              decisions, and the implications for how firms and startups navigate and shape their
-              information landscape. He combines experimental and formal models to study these
-              questions.
+              His research focuses on how data and artificial intelligence (AI) impact firm and
+              startup decisions, and the implications for how they navigate and shape the
+              information landscape to innovate. He combines experimental and formal models to
+              study these questions.
             </p>
             <p>
               Danilo holds degrees in Theoretical Physics and Mathematical Finance from the University of
