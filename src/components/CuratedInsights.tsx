@@ -244,23 +244,23 @@ const CuratedInsights = () => {
     });
 
   return (
-    <section id="curated-insights" className="bg-background px-4 py-9 md:px-[clamp(48px,6vw,120px)] md:py-12">
+    <section id="curated-insights" className="bg-background px-5 py-9 md:px-[clamp(48px,6vw,120px)] md:py-12">
       <div className="mx-auto max-w-[1160px]">
         <div className="mb-6 max-w-3xl border-b border-border pb-5 md:mb-7">
-          <h2 className="mb-3 text-[30px] font-normal leading-[1.08] text-foreground md:text-[38px]">
+          <h2 className="mb-3 text-[32px] font-normal leading-[1.08] text-foreground md:text-[38px]">
             Curated Insights
           </h2>
-          <p className="text-[14px] leading-6 text-foreground md:text-[15px] md:leading-[1.4]">
+          <p className="text-[14.5px] leading-6 text-foreground md:text-[15px] md:leading-[1.4]">
             A personal selection of ideas and papers outside my primary field that I've found inspiring.
           </p>
         </div>
 
-        <div className="mb-6 flex flex-col gap-2 border-b border-border py-3 sm:flex-row sm:flex-wrap sm:items-center md:mb-7">
+        <div className="mb-6 flex flex-col gap-2.5 border-b border-border py-3 sm:flex-row sm:flex-wrap sm:items-center md:mb-7 md:gap-2">
           <Select
             value={selectedType || "all"}
             onValueChange={(value) => setSelectedType(value === "all" ? null : value)}
           >
-            <SelectTrigger className="h-8 w-full bg-background text-[12.5px] font-normal text-foreground sm:w-[164px]">
+            <SelectTrigger className="h-9 w-full bg-background text-[13px] font-normal text-foreground sm:h-8 sm:w-[164px] sm:text-[12.5px]">
               <SelectValue placeholder="All types" />
             </SelectTrigger>
             <SelectContent className="z-50 bg-background">
@@ -277,7 +277,7 @@ const CuratedInsights = () => {
             value={selectedTopic || "all"}
             onValueChange={(value) => setSelectedTopic(value === "all" ? null : value)}
           >
-            <SelectTrigger className="h-8 w-full bg-background text-[12.5px] font-normal text-foreground sm:w-[184px]">
+            <SelectTrigger className="h-9 w-full bg-background text-[13px] font-normal text-foreground sm:h-8 sm:w-[184px] sm:text-[12.5px]">
               <SelectValue placeholder="All topics" />
             </SelectTrigger>
             <SelectContent className="z-50 bg-background">
@@ -290,12 +290,12 @@ const CuratedInsights = () => {
             </SelectContent>
           </Select>
 
-          <div className="flex h-8 rounded-sm border border-input bg-background p-0.5 sm:ml-auto">
+          <div className="flex h-9 rounded-sm border border-input bg-background p-0.5 sm:ml-auto sm:h-8">
             <Button
               variant={sortOrder === "newest" ? "secondary" : "ghost"}
               size="sm"
               onClick={() => setSortOrder("newest")}
-              className="h-7 flex-1 px-2.5 text-[12px] font-normal text-foreground sm:flex-none"
+              className="h-8 flex-1 px-2.5 text-[13px] font-normal text-foreground sm:h-7 sm:flex-none sm:text-[12px]"
             >
               Newest
             </Button>
@@ -303,7 +303,7 @@ const CuratedInsights = () => {
               variant={sortOrder === "oldest" ? "secondary" : "ghost"}
               size="sm"
               onClick={() => setSortOrder("oldest")}
-              className="h-7 flex-1 px-2.5 text-[12px] font-normal text-foreground sm:flex-none"
+              className="h-8 flex-1 px-2.5 text-[13px] font-normal text-foreground sm:h-7 sm:flex-none sm:text-[12px]"
             >
               Oldest
             </Button>
@@ -317,7 +317,7 @@ const CuratedInsights = () => {
                 setSelectedType(null);
                 setSelectedTopic(null);
               }}
-              className="h-8 px-0 text-[12.5px] font-normal text-foreground sm:px-2"
+              className="h-8 px-0 text-[13px] font-normal text-foreground sm:px-2 sm:text-[12.5px]"
             >
               Clear filters
             </Button>
@@ -333,8 +333,8 @@ const CuratedInsights = () => {
                 key={index}
                 className="group rounded-none border-x-0 border-b border-t-0 border-border bg-transparent shadow-none transition-colors first:border-t"
               >
-                <CardContent className="p-0 py-[18px] md:py-6">
-                  <div className="grid gap-2.5 md:grid-cols-[1fr_170px] md:items-start md:gap-6">
+                <CardContent className="p-0 py-5 md:py-6">
+                  <div className="grid gap-3 md:grid-cols-[1fr_170px] md:items-start md:gap-6">
                     <div className="space-y-2.5">
                       <div className="flex flex-wrap items-center gap-2 text-[12.5px] leading-5 text-foreground md:text-[13px]">
                         <span className="inline-flex items-center gap-1.5">
@@ -345,7 +345,7 @@ const CuratedInsights = () => {
                         <span>{format(item.date, "MMMM d, yyyy")}</span>
                       </div>
                       <h3 className="text-[16.5px] font-normal leading-[1.38] text-foreground transition-smooth md:text-[19px] md:leading-[1.45]">
-                      {item.title}
+                        {item.title}
                       </h3>
                       <p className="text-[13.5px] font-normal leading-6 text-foreground md:text-[14.5px]">
                         {item.author}
@@ -365,7 +365,7 @@ const CuratedInsights = () => {
                         });
                       }}>
                         <CollapsibleTrigger asChild>
-                          <Button variant="ghost" size="sm" className="h-7 px-2 text-[13.5px] font-normal text-foreground md:text-[14px]">
+                          <Button variant="ghost" size="sm" className="h-7 px-0 text-[13.5px] font-normal text-foreground md:px-2 md:text-[14px]">
                             <span>{isExpanded ? "Hide" : "Abstract"}</span>
                             {isExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
                           </Button>

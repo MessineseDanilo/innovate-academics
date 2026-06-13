@@ -131,7 +131,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   };
 
   const renderPublication = (paper: Publication) => (
-    <article key={paper.title} className="border-b border-border py-[18px] last:border-b-0 md:py-6">
+    <article key={paper.title} className="border-b border-border py-5 last:border-b-0 md:py-6">
       <div className="grid gap-2 md:grid-cols-[96px_minmax(0,1fr)] md:gap-10 xl:grid-cols-[112px_minmax(0,1fr)]">
         <div className="text-[13.5px] font-medium leading-6 text-foreground md:pt-0.5 md:text-[14.5px]">{paper.year}</div>
         <div className="space-y-2.5 md:space-y-3">
@@ -189,13 +189,13 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   const filteredProgress = filterPublications(workInProgress);
 
   return (
-    <section id="research" className="scroll-mt-24 px-4 py-8 md:px-[clamp(48px,6vw,120px)] md:py-12">
+    <section id="research" className="scroll-mt-24 px-5 py-9 md:px-[clamp(48px,6vw,120px)] md:py-12">
       <div className="mx-auto w-full max-w-[1160px]">
-        <div className="space-y-7 md:space-y-8">
+        <div className="space-y-6 md:space-y-8">
           <div className="border-b border-border pb-5 md:grid md:grid-cols-[minmax(0,1fr)_420px] md:items-end md:gap-16">
             <div className="max-w-[920px]">
-              <h2 className="text-[30px] font-normal leading-[1.08] text-foreground md:text-[38px]">Research</h2>
-              <p className="mt-3 text-[15px] leading-7 text-foreground md:text-[17px]">
+              <h2 className="text-[32px] font-normal leading-[1.08] text-foreground md:text-[38px]">Research</h2>
+              <p className="mt-3 text-[14.5px] leading-6 text-foreground md:text-[17px] md:leading-7">
                 Peer-reviewed articles, working papers, and selected projects.
               </p>
             </div>
@@ -216,22 +216,22 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
             )}
 
             <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="h-auto w-full justify-start gap-8 overflow-x-auto rounded-none border-b border-border bg-transparent p-0">
+              <TabsList className="h-auto w-full justify-start gap-6 overflow-x-auto rounded-none border-b border-border bg-transparent p-0 md:gap-8">
                 <TabsTrigger
                   value="publications"
-                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[14.5px] font-normal leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[15px]"
+                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-3.5 text-[14px] font-normal leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:py-4 md:text-[15px]"
                 >
                   Peer-Reviewed
                 </TabsTrigger>
                 <TabsTrigger
                   value="working"
-                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[14.5px] font-normal leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[15px]"
+                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-3.5 text-[14px] font-normal leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:py-4 md:text-[15px]"
                 >
                   Working Papers
                 </TabsTrigger>
                 <TabsTrigger
                   value="progress"
-                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[14.5px] font-normal leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[15px]"
+                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-3.5 text-[14px] font-normal leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:py-4 md:text-[15px]"
                 >
                   Work in Progress
                 </TabsTrigger>
