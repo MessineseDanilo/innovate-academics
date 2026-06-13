@@ -232,8 +232,8 @@ const CuratedInsights = () => {
 
   return (
     <section id="curated-insights" className="bg-secondary/20 px-4 py-9 md:px-6 md:py-14">
-      <div className="mx-auto max-w-[940px]">
-        <div className="mb-6 max-w-2xl animate-fade-in md:mb-7">
+      <div className="mx-auto max-w-[1160px]">
+        <div className="mb-6 max-w-3xl animate-fade-in md:mb-7">
           <h2 className="mb-2 text-[22px] font-semibold leading-tight text-foreground md:text-[24px]">
             Curated Insights
           </h2>
@@ -322,7 +322,7 @@ const CuratedInsights = () => {
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 <CardContent className="p-3.5 md:p-4">
-                  <div className="grid gap-2.5 md:grid-cols-[1fr_auto] md:items-start md:gap-3">
+                  <div className="grid gap-2.5 md:grid-cols-[1fr_170px] md:items-start md:gap-6">
                     <div className="space-y-2">
                       <div className="flex flex-wrap items-center gap-2 text-[11.5px] text-muted-foreground">
                         <span className="inline-flex items-center gap-1.5">

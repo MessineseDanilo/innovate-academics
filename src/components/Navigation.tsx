@@ -52,7 +52,7 @@ const Navigation = () => {
         isScrolled ? "shadow-elegant" : ""
       }`}
     >
-      <div className="mx-auto max-w-5xl px-4 py-3 md:px-6 md:py-4">
+      <div className="mx-auto max-w-[1160px] px-4 py-3 md:px-6 md:py-4">
         <div className="flex items-center justify-between">
           <button
             onClick={() => handleNavigation("home")}

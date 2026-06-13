@@ -176,7 +176,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
           </div>
 
           {paper.abstract && expandedAbstracts.has(paper.title) && (
-            <p className="max-w-3xl text-[12.75px] leading-5 text-foreground/75 md:text-[13px] md:leading-6">{paper.abstract}</p>
+            <p className="max-w-[820px] text-[12.75px] leading-5 text-foreground/75 md:text-[13px] md:leading-6">{paper.abstract}</p>
           )}
         </div>
       </div>
@@ -189,8 +189,8 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
 
   return (
     <section id="research" className="px-4 py-8 md:px-6 md:py-12 scroll-mt-24">
-      <div className="mx-auto max-w-[1040px]">
-        <div className="grid gap-6 md:grid-cols-[190px_1fr] md:gap-10">
+      <div className="mx-auto max-w-[1160px]">
+        <div className="grid gap-6 md:grid-cols-[220px_1fr] md:gap-12">
           <div>
             <h2 className="text-[19px] font-semibold text-foreground">Research</h2>
             <p className="mt-2.5 text-[12.5px] leading-5 text-muted-foreground">
