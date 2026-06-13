@@ -10,11 +10,6 @@ const Hero = () => {
             alt="Danilo Messinese"
             className="aspect-[4/5] w-full max-w-[360px] rounded-[2px] object-cover shadow-elegant"
           />
-          <div className="max-w-[360px] space-y-1 text-[12.5px] leading-5 text-muted-foreground">
-            <p className="font-medium text-foreground">IE Business School</p>
-            <p>Strategy Department</p>
-            <p>IE Tower, Office 22.09</p>
-          </div>
         </aside>
 
         <div className="space-y-4 md:space-y-5">
