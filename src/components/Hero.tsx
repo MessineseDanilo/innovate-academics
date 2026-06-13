@@ -14,7 +14,7 @@ const Hero = () => {
 
         <div className="space-y-4 md:space-y-5">
           <div className="space-y-2.5">
-            <h1 className="text-[30px] font-semibold leading-[1.12] text-foreground md:text-[38px]">
+            <h1 className="text-[30px] font-normal leading-[1.12] text-foreground md:text-[38px]">
               Danilo Messinese
             </h1>
           </div>
