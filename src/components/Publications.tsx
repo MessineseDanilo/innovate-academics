@@ -136,7 +136,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
         <div className="text-[14px] font-medium leading-6 text-foreground md:pt-0.5 md:text-[15px]">{paper.year}</div>
         <div className="space-y-3 md:space-y-3.5">
           <div>
-            <h3 className="text-[17px] font-semibold leading-[1.42] text-foreground md:text-[20px] md:leading-8">
+            <h3 className="text-[17px] font-normal leading-[1.42] text-foreground md:text-[20px] md:leading-8">
               {paper.title}
             </h3>
             <p className="mt-1.5 text-[14px] leading-6 text-foreground md:text-[15px]">{paper.authors}</p>
@@ -145,7 +145,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
 
           <div className="flex flex-wrap items-center gap-2.5">
             {paper.status && (
-              <Badge variant="outline" className="text-[13px] md:text-[14px]">
+              <Badge variant="outline" className="text-[13px] font-normal md:text-[14px]">
                 {paper.status}
               </Badge>
             )}
