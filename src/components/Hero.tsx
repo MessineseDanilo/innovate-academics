@@ -4,12 +4,12 @@ const Hero = () => {
   return (
     <section id="home" className="scroll-mt-24 px-5 pb-7 pt-24 md:flex md:flex-1 md:items-center md:px-8 md:pb-4 md:pt-[72px]">
       <div className="mx-auto w-full max-w-[1160px]">
-        <div className="grid gap-6 md:grid-cols-[minmax(320px,350px)_minmax(0,1fr)] md:items-start md:gap-12 lg:gap-[86px]">
-          <h1 className="mx-auto w-full max-w-[300px] text-[32px] font-normal leading-[1.08] text-foreground md:hidden">
+        <div className="grid gap-0 md:grid-cols-[minmax(320px,350px)_minmax(0,1fr)] md:items-start md:gap-12 lg:gap-[86px]">
+          <h1 className="mx-auto mb-10 w-full max-w-[300px] text-[32px] font-normal leading-[1.08] text-foreground md:hidden">
             Danilo Messinese
           </h1>
 
-          <aside>
+          <aside className="mb-6 md:mb-0">
             <img
               src={professorPortrait}
               alt="Danilo Messinese"
