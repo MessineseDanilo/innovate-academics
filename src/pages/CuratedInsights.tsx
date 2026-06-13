@@ -7,7 +7,7 @@ const CuratedInsightsPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Helmet>
-        <title>Curated Insights — Danilo Messinese</title>
+        <title>Insights</title>
         <meta
           name="description"
           content="A personal selection of ideas and papers outside my primary field that I've found inspiring."
