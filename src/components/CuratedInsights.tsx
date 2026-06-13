@@ -20,6 +20,19 @@ const CuratedInsights = () => {
 
   const insights = [
     {
+      type: "paper",
+      icon: FileText,
+      title: "AI & Science: What Is the Future of Discovery?",
+      description: "A Dædalus special issue on how AI is changing scientific discovery across the life sciences, physical sciences, medicine, social science, and the science of AI itself.",
+      abstract: "This Dædalus volume gathers leading scientists and AI researchers to examine how artificial intelligence is reshaping scientific discovery. Across conversations and essays, the issue looks at AI as a tool for protein design, drug discovery, cellular biology, neuroscience, climate science, physics, medicine, autonomous laboratories, and social science. It also asks a deeper question: how scientific reasoning, institutions, and epistemic standards may need to change when AI systems become active participants in discovery.",
+      author: "James Manyika, guest editor, Dædalus / American Academy of Arts & Sciences",
+      date: new Date("2026-01-01"),
+      link: "https://www.amacad.org/sites/default/files/publication/downloads/daedalus_wi-sp26_ai-science-what-is-future-of-discovery_3.pdf",
+      color: "text-primary",
+      badge: "Research Paper",
+      topics: ["AI", "Innovation", "Philosophy of Science"],
+    },
+    {
       type: "podcast",
       icon: Podcast,
       title: "Cursor CEO: Going Beyond Code, Superintelligent AI Agents And Why Taste Still Matters",
