@@ -17,7 +17,7 @@ const Hero = () => {
             />
           </aside>
 
-          <div className="mx-auto w-full max-w-[300px] space-y-4 text-foreground md:mx-0 md:max-w-none md:pt-0">
+          <div className="mx-auto w-full max-w-[300px] space-y-4 text-foreground md:mx-0 md:max-w-none md:space-y-7 md:pt-0">
             <h1 className="hidden font-light leading-[1.08] text-foreground md:block md:text-[38px]">
               Danilo Messinese
             </h1>
