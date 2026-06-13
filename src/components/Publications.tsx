@@ -140,7 +140,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
               {paper.title}
             </h3>
             <p className="mt-1.5 text-[14px] leading-6 text-foreground md:text-[15px]">{paper.authors}</p>
-            <p className="mt-0.5 text-[14px] font-semibold leading-6 text-foreground md:text-[15px]">{paper.journal}</p>
+            <p className="mt-0.5 text-[14px] font-normal italic leading-6 text-foreground md:text-[15px]">{paper.journal}</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
