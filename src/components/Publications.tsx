@@ -131,21 +131,21 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   };
 
   const renderPublication = (paper: Publication) => (
-    <article key={paper.title} className="border-b border-border py-5 last:border-b-0 md:py-7">
+    <article key={paper.title} className="border-b border-border py-[18px] last:border-b-0 md:py-6">
       <div className="grid gap-2 md:grid-cols-[96px_minmax(0,1fr)] md:gap-10 xl:grid-cols-[112px_minmax(0,1fr)]">
-        <div className="text-[14px] font-medium leading-6 text-foreground md:pt-0.5 md:text-[15px]">{paper.year}</div>
-        <div className="space-y-3 md:space-y-3.5">
+        <div className="text-[13.5px] font-medium leading-6 text-foreground md:pt-0.5 md:text-[14.5px]">{paper.year}</div>
+        <div className="space-y-2.5 md:space-y-3">
           <div>
-            <h3 className="text-[17px] font-normal leading-[1.42] text-foreground md:text-[20px] md:leading-8">
+            <h3 className="text-[16.5px] font-normal leading-[1.38] text-foreground md:text-[19px] md:leading-[1.45]">
               {paper.title}
             </h3>
-            <p className="mt-1.5 text-[14px] leading-6 text-foreground md:text-[15px]">{paper.authors}</p>
-            <p className="mt-0.5 text-[14px] font-normal italic leading-6 text-foreground md:text-[15px]">{paper.journal}</p>
+            <p className="mt-1.5 text-[13.5px] leading-6 text-foreground md:text-[14.5px]">{paper.authors}</p>
+            <p className="mt-0.5 text-[13.5px] font-normal italic leading-6 text-foreground md:text-[14.5px]">{paper.journal}</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
             {paper.status && (
-              <Badge variant="outline" className="text-[13px] font-normal md:text-[14px]">
+              <Badge variant="outline" className="text-[12.5px] font-normal md:text-[13px]">
                 {paper.status}
               </Badge>
             )}
@@ -153,13 +153,13 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
 
           <div className="flex flex-wrap gap-x-5 gap-y-1">
             {paper.abstract && (
-              <Button variant="ghost" size="sm" onClick={() => toggleAbstract(paper.title)} className="h-8 px-0 text-[14px] md:text-[15px]">
+              <Button variant="ghost" size="sm" onClick={() => toggleAbstract(paper.title)} className="h-7 px-0 text-[13.5px] md:text-[14px]">
                 <FileText className="mr-2 h-4 w-4" />
                 {expandedAbstracts.has(paper.title) ? "Hide abstract" : "Abstract"}
               </Button>
             )}
             {paper.ssrnLink && (
-              <Button variant="ghost" size="sm" asChild className="h-8 px-0 text-[14px] md:text-[15px]">
+              <Button variant="ghost" size="sm" asChild className="h-7 px-0 text-[13.5px] md:text-[14px]">
                 <a href={paper.ssrnLink} target="_blank" rel="noopener noreferrer">
                   SSRN
                   <ExternalLink className="ml-2 h-3.5 w-3.5" />
@@ -167,7 +167,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
               </Button>
             )}
             {paper.journalLink && (
-              <Button variant="ghost" size="sm" asChild className="h-8 px-0 text-[14px] md:text-[15px]">
+              <Button variant="ghost" size="sm" asChild className="h-7 px-0 text-[13.5px] md:text-[14px]">
                 <a href={paper.journalLink} target="_blank" rel="noopener noreferrer">
                   Journal
                   <ExternalLink className="ml-2 h-3.5 w-3.5" />
@@ -177,7 +177,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
           </div>
 
           {paper.abstract && expandedAbstracts.has(paper.title) && (
-            <p className="max-w-[1240px] text-[14px] leading-6 text-foreground md:text-[15px] md:leading-7">{paper.abstract}</p>
+            <p className="max-w-[1240px] text-[13.5px] leading-6 text-foreground md:text-[14.5px] md:leading-6">{paper.abstract}</p>
           )}
         </div>
       </div>
@@ -191,20 +191,20 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   return (
     <section id="research" className="scroll-mt-24 px-4 py-8 md:px-[clamp(48px,6vw,120px)] md:py-12">
       <div className="w-full">
-        <div className="space-y-8 md:space-y-9">
-          <div className="border-b border-border pb-6 md:grid md:grid-cols-[minmax(0,1fr)_420px] md:items-end md:gap-16">
+        <div className="space-y-7 md:space-y-8">
+          <div className="border-b border-border pb-5 md:grid md:grid-cols-[minmax(0,1fr)_420px] md:items-end md:gap-16">
             <div className="max-w-[920px]">
-              <h2 className="text-[28px] font-semibold leading-tight text-foreground md:text-[38px]">Research</h2>
-              <p className="mt-4 text-[15px] leading-7 text-foreground md:text-[18px]">
+              <h2 className="text-[28px] font-semibold leading-tight text-foreground md:text-[36px]">Research</h2>
+              <p className="mt-3 text-[15px] leading-7 text-foreground md:text-[17px]">
                 Peer-reviewed articles, working papers, and selected projects.
               </p>
             </div>
-            <p className="mt-3 max-w-[420px] text-[13.5px] leading-6 text-foreground md:mt-0 md:justify-self-end md:text-[15px]">
+            <p className="mt-3 max-w-[420px] text-[13.5px] leading-6 text-foreground md:mt-0 md:justify-self-end md:text-[14.5px]">
               Unless otherwise noted, authors are listed alphabetically.
             </p>
           </div>
 
-          <div className="space-y-5 md:space-y-7">
+          <div className="space-y-5 md:space-y-6">
             {activeFilter && onClearFilter && (
               <div className="flex flex-wrap items-center gap-3">
                 <Badge variant="default">Filtered by {categoryLabels[activeFilter] || activeFilter}</Badge>
