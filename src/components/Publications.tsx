@@ -192,16 +192,13 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
     <section id="research" className="scroll-mt-24 px-5 py-9 md:px-[clamp(48px,6vw,120px)] md:py-12">
       <div className="mx-auto w-full max-w-[1160px]">
         <div className="space-y-6 md:space-y-8">
-          <div className="border-b border-border pb-5 md:grid md:grid-cols-[minmax(0,1fr)_420px] md:items-end md:gap-16">
+          <div className="border-b border-border pb-5">
             <div className="max-w-[920px]">
               <h2 className="text-[32px] font-light leading-[1.08] text-foreground md:text-[38px]">Research</h2>
-              <p className="mt-3 text-[14.5px] leading-6 text-foreground md:text-[17px] md:leading-7">
-                Peer-reviewed articles, working papers, and selected projects.
+              <p className="mt-3 max-w-[420px] text-[13.5px] leading-6 text-foreground md:text-[14.5px]">
+                Unless otherwise noted, authors are listed alphabetically.
               </p>
             </div>
-            <p className="mt-3 max-w-[420px] text-[13.5px] leading-6 text-foreground md:mt-0 md:justify-self-end md:text-[14.5px]">
-              Unless otherwise noted, authors are listed alphabetically.
-            </p>
           </div>
 
           <div className="space-y-5 md:space-y-6">
