@@ -53,14 +53,7 @@ const Navigation = () => {
       }`}
     >
       <div className="mx-auto max-w-[1160px] px-4 py-3 md:px-6 md:py-4">
-        <div className="flex items-center justify-between">
-          <button
-            onClick={() => handleNavigation("home")}
-            className="text-[14.5px] font-semibold text-foreground transition-smooth hover:text-primary md:text-[15px]"
-          >
-            Danilo Messinese
-          </button>
-
+        <div className="flex items-center justify-end">
           <div className="hidden items-center gap-7 md:flex">
             {navItems.map((item) => (
               <button
@@ -76,7 +69,7 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8 md:hidden"
+            className="ml-auto h-8 w-8 md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
