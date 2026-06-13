@@ -244,23 +244,23 @@ const CuratedInsights = () => {
     });
 
   return (
-    <section id="curated-insights" className="bg-secondary/20 px-4 py-9 md:px-6 md:py-14">
+    <section id="curated-insights" className="bg-background px-4 py-9 md:px-[clamp(48px,6vw,120px)] md:py-12">
       <div className="mx-auto max-w-[1160px]">
-        <div className="mb-6 max-w-3xl md:mb-7">
-          <h2 className="mb-2 text-[22px] font-semibold leading-tight text-foreground md:text-[24px]">
+        <div className="mb-6 max-w-3xl border-b border-border pb-5 md:mb-7">
+          <h2 className="mb-3 text-[30px] font-normal leading-[1.08] text-foreground md:text-[38px]">
             Curated Insights
           </h2>
-          <p className="text-[12.5px] leading-5 text-muted-foreground md:text-[13px] md:leading-6">
+          <p className="text-[14px] leading-6 text-foreground md:text-[15px] md:leading-[1.4]">
             A personal selection of ideas and papers outside my primary field that I've found inspiring.
           </p>
         </div>
 
-        <div className="mb-6 flex flex-col gap-2 border-y border-border/70 py-3 sm:flex-row sm:flex-wrap sm:items-center md:mb-7">
+        <div className="mb-6 flex flex-col gap-2 border-b border-border py-3 sm:flex-row sm:flex-wrap sm:items-center md:mb-7">
           <Select
             value={selectedType || "all"}
             onValueChange={(value) => setSelectedType(value === "all" ? null : value)}
           >
-            <SelectTrigger className="h-8 w-full bg-background text-[12px] sm:w-[164px]">
+            <SelectTrigger className="h-8 w-full bg-background text-[12.5px] font-normal text-foreground sm:w-[164px]">
               <SelectValue placeholder="All types" />
             </SelectTrigger>
             <SelectContent className="z-50 bg-background">
@@ -277,7 +277,7 @@ const CuratedInsights = () => {
             value={selectedTopic || "all"}
             onValueChange={(value) => setSelectedTopic(value === "all" ? null : value)}
           >
-            <SelectTrigger className="h-8 w-full bg-background text-[12px] sm:w-[184px]">
+            <SelectTrigger className="h-8 w-full bg-background text-[12.5px] font-normal text-foreground sm:w-[184px]">
               <SelectValue placeholder="All topics" />
             </SelectTrigger>
             <SelectContent className="z-50 bg-background">
@@ -295,7 +295,7 @@ const CuratedInsights = () => {
               variant={sortOrder === "newest" ? "secondary" : "ghost"}
               size="sm"
               onClick={() => setSortOrder("newest")}
-              className="h-7 flex-1 px-2.5 text-[11.5px] sm:flex-none sm:text-[12px]"
+              className="h-7 flex-1 px-2.5 text-[12px] font-normal text-foreground sm:flex-none"
             >
               Newest
             </Button>
@@ -303,7 +303,7 @@ const CuratedInsights = () => {
               variant={sortOrder === "oldest" ? "secondary" : "ghost"}
               size="sm"
               onClick={() => setSortOrder("oldest")}
-              className="h-7 flex-1 px-2.5 text-[11.5px] sm:flex-none sm:text-[12px]"
+              className="h-7 flex-1 px-2.5 text-[12px] font-normal text-foreground sm:flex-none"
             >
               Oldest
             </Button>
@@ -317,26 +317,26 @@ const CuratedInsights = () => {
                 setSelectedType(null);
                 setSelectedTopic(null);
               }}
-              className="h-8 px-0 text-[12px] text-muted-foreground hover:text-foreground sm:px-2"
+              className="h-8 px-0 text-[12.5px] font-normal text-foreground sm:px-2"
             >
               Clear filters
             </Button>
           )}
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-0">
           {filteredInsights.map((item, index) => {
             const isExpanded = expandedAbstracts.has(index);
             
             return (
               <Card
                 key={index}
-                className="group rounded-[2px] border border-border/70 transition-colors"
+                className="group rounded-none border-x-0 border-b border-t-0 border-border bg-transparent shadow-none transition-colors first:border-t"
               >
-                <CardContent className="p-3.5 md:p-4">
+                <CardContent className="p-0 py-[18px] md:py-6">
                   <div className="grid gap-2.5 md:grid-cols-[1fr_170px] md:items-start md:gap-6">
-                    <div className="space-y-2">
-                      <div className="flex flex-wrap items-center gap-2 text-[11.5px] text-muted-foreground">
+                    <div className="space-y-2.5">
+                      <div className="flex flex-wrap items-center gap-2 text-[12.5px] leading-5 text-foreground md:text-[13px]">
                         <span className="inline-flex items-center gap-1.5">
                           <item.icon size={13} className={item.color} />
                           {item.badge}
@@ -344,10 +344,10 @@ const CuratedInsights = () => {
                         {item.source && <span>{item.source}</span>}
                         <span>{format(item.date, "MMMM d, yyyy")}</span>
                       </div>
-                      <h3 className="text-[14.5px] font-semibold leading-5 text-foreground transition-smooth group-hover:text-primary md:text-[15px]">
+                      <h3 className="text-[16.5px] font-normal leading-[1.38] text-foreground transition-smooth md:text-[19px] md:leading-[1.45]">
                       {item.title}
                       </h3>
-                      <p className="text-[12.25px] font-medium leading-5 text-muted-foreground md:text-[12.5px]">
+                      <p className="text-[13.5px] font-normal leading-6 text-foreground md:text-[14.5px]">
                         {item.author}
                       </p>
                     </div>
@@ -365,7 +365,7 @@ const CuratedInsights = () => {
                         });
                       }}>
                         <CollapsibleTrigger asChild>
-                          <Button variant="ghost" size="sm" className="h-7 px-2 text-[12px]">
+                          <Button variant="ghost" size="sm" className="h-7 px-2 text-[13.5px] font-normal text-foreground md:text-[14px]">
                             <span>{isExpanded ? "Hide" : "Abstract"}</span>
                             {isExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
                           </Button>
@@ -377,7 +377,7 @@ const CuratedInsights = () => {
                         className="h-7 px-2 hover:bg-transparent"
                         onClick={() => window.open(item.link, "_blank")}
                       >
-                        <ExternalLink size={14} className="text-muted-foreground group-hover:text-primary transition-smooth" />
+                        <ExternalLink size={14} className="text-foreground transition-smooth" />
                       </Button>
                     </div>
                   </div>
@@ -393,7 +393,7 @@ const CuratedInsights = () => {
                     });
                   }}>
                     <CollapsibleContent className="mt-3">
-                      <p className="rounded-[2px] bg-secondary/30 p-2.5 text-[12.25px] leading-5 text-muted-foreground md:p-3 md:text-[12.5px]">
+                      <p className="max-w-[1240px] text-[13.5px] leading-6 text-foreground md:text-[14.5px] md:leading-6">
                         {item.abstract}
                       </p>
                     </CollapsibleContent>

@@ -194,7 +194,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
         <div className="space-y-7 md:space-y-8">
           <div className="border-b border-border pb-5 md:grid md:grid-cols-[minmax(0,1fr)_420px] md:items-end md:gap-16">
             <div className="max-w-[920px]">
-              <h2 className="text-[28px] font-semibold leading-tight text-foreground md:text-[36px]">Research</h2>
+              <h2 className="text-[30px] font-normal leading-[1.08] text-foreground md:text-[38px]">Research</h2>
               <p className="mt-3 text-[15px] leading-7 text-foreground md:text-[17px]">
                 Peer-reviewed articles, working papers, and selected projects.
               </p>
@@ -219,19 +219,19 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
               <TabsList className="h-auto w-full justify-start gap-8 overflow-x-auto rounded-none border-b border-border bg-transparent p-0">
                 <TabsTrigger
                   value="publications"
-                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[15px] leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[16px]"
+                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[14.5px] font-normal leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[15px]"
                 >
                   Peer-Reviewed
                 </TabsTrigger>
                 <TabsTrigger
                   value="working"
-                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[15px] leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[16px]"
+                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[14.5px] font-normal leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[15px]"
                 >
                   Working Papers
                 </TabsTrigger>
                 <TabsTrigger
                   value="progress"
-                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[15px] leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[16px]"
+                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[14.5px] font-normal leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[15px]"
                 >
                   Work in Progress
                 </TabsTrigger>
