@@ -5,7 +5,7 @@ const Hero = () => {
     <section id="home" className="scroll-mt-24 px-5 pb-7 pt-24 md:flex md:flex-1 md:items-center md:px-8 md:pb-4 md:pt-[72px]">
       <div className="mx-auto w-full max-w-[1160px]">
         <div className="grid gap-6 md:grid-cols-[minmax(320px,350px)_minmax(0,1fr)] md:items-start md:gap-12 lg:gap-[86px]">
-          <h1 className="text-[32px] font-normal leading-[1.08] text-foreground md:hidden">
+          <h1 className="mx-auto w-full max-w-[300px] text-[32px] font-normal leading-[1.08] text-foreground md:hidden">
             Danilo Messinese
           </h1>
 
@@ -17,7 +17,7 @@ const Hero = () => {
             />
           </aside>
 
-          <div className="space-y-4 text-foreground md:pt-0">
+          <div className="mx-auto w-full max-w-[300px] space-y-4 text-foreground md:mx-0 md:max-w-none md:pt-0">
             <h1 className="hidden font-normal leading-[1.08] text-foreground md:block md:text-[38px]">
               Danilo Messinese
             </h1>
