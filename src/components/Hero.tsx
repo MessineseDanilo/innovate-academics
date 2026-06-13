@@ -43,8 +43,16 @@ const Hero = () => {
             <p>
               Danilo holds degrees in Theoretical Physics and Mathematical Finance from the University of
               Bologna, and a Ph.D. in Management from Bocconi University. Before academia, he worked
-              at Bain & Company and UniCredit Group. He co-organizes IEStrat, an annual conference on
-              strategy and AI at IE Business School.
+              at Bain & Company and UniCredit Group. He co-organizes{" "}
+              <a
+                href="https://www.ie.edu/iestrat/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2"
+              >
+                IEStrat
+              </a>
+              , an annual conference on strategy and AI at IE Business School.
             </p>
           </div>
         </div>
