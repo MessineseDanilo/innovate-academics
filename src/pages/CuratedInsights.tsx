@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 
 const CuratedInsightsPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <Helmet>
         <title>Curated Insights — Danilo Messinese</title>
         <meta
@@ -29,7 +29,7 @@ const CuratedInsightsPage = () => {
         <meta name="twitter:image" content="https://www.danilomessinese.com/opengraph.png" />
       </Helmet>
       <Navigation />
-      <main className="pt-14 md:pt-20">
+      <main className="flex-1 pt-14 md:pt-20">
         <CuratedInsights />
       </main>
       <Footer />

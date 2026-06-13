@@ -190,13 +190,13 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   return (
     <section id="research" className="px-4 py-8 md:px-6 md:py-12 scroll-mt-24">
       <div className="mx-auto max-w-[1160px]">
-        <div className="grid gap-6 md:grid-cols-[220px_1fr] md:gap-12">
-          <div>
+        <div className="space-y-7">
+          <div className="max-w-[780px]">
             <h2 className="text-[19px] font-semibold text-foreground">Research</h2>
-            <p className="mt-2.5 text-[12.5px] leading-5 text-muted-foreground">
+            <p className="mt-2.5 text-[12.5px] leading-5 text-muted-foreground md:text-[13px]">
               Peer-reviewed articles, working papers, and selected projects.
             </p>
-            <p className="mt-3 text-[11.5px] leading-5 text-muted-foreground">
+            <p className="mt-2 text-[11.5px] leading-5 text-muted-foreground">
               Unless otherwise noted, authors are listed alphabetically.
             </p>
           </div>

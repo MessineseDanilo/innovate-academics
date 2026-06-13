@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 
 const Research = () => {
   return (
-    <div className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <Navigation />
-      <main className="pt-14 md:pt-16">
+      <main className="flex-1 pt-14 md:pt-16">
         <Publications />
       </main>
       <Footer />
