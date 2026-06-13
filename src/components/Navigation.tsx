@@ -52,11 +52,11 @@ const Navigation = () => {
         isScrolled ? "shadow-elegant" : ""
       }`}
     >
-      <div className="mx-auto max-w-5xl px-5 py-4 md:px-6">
+      <div className="mx-auto max-w-5xl px-4 py-3 md:px-6 md:py-4">
         <div className="flex items-center justify-between">
           <button
             onClick={() => handleNavigation("home")}
-            className="text-[15px] font-semibold text-foreground transition-smooth hover:text-primary"
+            className="text-[14.5px] font-semibold text-foreground transition-smooth hover:text-primary md:text-[15px]"
           >
             Danilo Messinese
           </button>
@@ -76,21 +76,21 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="h-8 w-8 md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </Button>
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 animate-fade-in">
-            <div className="flex flex-col gap-4">
+          <div className="mt-3 pb-3 md:hidden animate-fade-in">
+            <div className="flex flex-col gap-3">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavigation(item.id, item.isPage)}
-                  className="text-left text-[14px] font-medium text-muted-foreground hover:text-primary transition-smooth"
+                  className="py-1 text-left text-[13.5px] font-medium text-muted-foreground hover:text-primary transition-smooth"
                 >
                   {item.label}
                 </button>

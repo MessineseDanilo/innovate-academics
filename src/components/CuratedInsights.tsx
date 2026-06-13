@@ -231,19 +231,19 @@ const CuratedInsights = () => {
     });
 
   return (
-    <section id="curated-insights" className="bg-secondary/20 px-5 py-12 md:px-6 md:py-14">
+    <section id="curated-insights" className="bg-secondary/20 px-4 py-9 md:px-6 md:py-14">
       <div className="mx-auto max-w-[940px]">
-        <div className="mb-7 max-w-2xl animate-fade-in">
-          <h2 className="mb-2 text-[24px] font-semibold leading-tight text-foreground">
+        <div className="mb-6 max-w-2xl animate-fade-in md:mb-7">
+          <h2 className="mb-2 text-[22px] font-semibold leading-tight text-foreground md:text-[24px]">
             Curated Insights
           </h2>
-          <p className="text-[13px] leading-6 text-muted-foreground">
+          <p className="text-[12.5px] leading-5 text-muted-foreground md:text-[13px] md:leading-6">
             A personal selection of ideas and papers outside my primary field that I've found inspiring.
           </p>
         </div>
 
         {/* Filters */}
-        <div className="mb-7 space-y-2.5 animate-fade-in">
+        <div className="mb-6 space-y-2.5 animate-fade-in md:mb-7">
           {/* Type Filter */}
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <Filter size={16} className="text-muted-foreground hidden sm:block" />
@@ -253,7 +253,7 @@ const CuratedInsights = () => {
               variant={selectedType === null ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedType(null)}
-              className="h-7 px-2.5 text-[12px]"
+              className="h-7 px-2.5 text-[11.5px] sm:text-[12px]"
             >
               All
             </Button>
@@ -263,7 +263,7 @@ const CuratedInsights = () => {
                 variant={selectedType === type.value ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedType(type.value)}
-                className="h-7 gap-1.5 px-2.5 text-[12px]"
+                className="h-7 gap-1.5 px-2.5 text-[11.5px] sm:text-[12px]"
               >
                 <type.icon size={12} className="sm:w-3.5 sm:h-3.5" />
                 <span className="hidden sm:inline">{type.label}</span>
@@ -281,7 +281,7 @@ const CuratedInsights = () => {
               value={selectedTopic || "all"}
               onValueChange={(value) => setSelectedTopic(value === "all" ? null : value)}
             >
-              <SelectTrigger className="h-7 w-[170px] bg-background text-[12px]">
+            <SelectTrigger className="h-7 w-[160px] bg-background text-[12px] sm:w-[170px]">
                 <SelectValue placeholder="All topics" />
               </SelectTrigger>
               <SelectContent className="bg-background z-50">
@@ -304,7 +304,7 @@ const CuratedInsights = () => {
               variant={sortOrder === "newest" ? "default" : "outline"}
               size="sm"
               onClick={() => setSortOrder("newest")}
-              className="h-7 px-2.5 text-[12px]"
+              className="h-7 px-2.5 text-[11.5px] sm:text-[12px]"
             >
               Newest
             </Button>
@@ -312,7 +312,7 @@ const CuratedInsights = () => {
               variant={sortOrder === "oldest" ? "default" : "outline"}
               size="sm"
               onClick={() => setSortOrder("oldest")}
-              className="h-7 px-2.5 text-[12px]"
+              className="h-7 px-2.5 text-[11.5px] sm:text-[12px]"
             >
               Oldest
             </Button>
@@ -329,8 +329,8 @@ const CuratedInsights = () => {
                 className="group rounded-[2px] border border-border/70 transition-smooth hover:shadow-elegant animate-fade-in"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <CardContent className="p-4">
-                  <div className="grid gap-3 md:grid-cols-[1fr_auto] md:items-start">
+                <CardContent className="p-3.5 md:p-4">
+                  <div className="grid gap-2.5 md:grid-cols-[1fr_auto] md:items-start md:gap-3">
                     <div className="space-y-2">
                       <div className="flex flex-wrap items-center gap-2 text-[11.5px] text-muted-foreground">
                         <span className="inline-flex items-center gap-1.5">
@@ -340,15 +340,15 @@ const CuratedInsights = () => {
                         {item.source && <span>{item.source}</span>}
                         <span>{format(item.date, "MMMM d, yyyy")}</span>
                       </div>
-                      <h3 className="text-[15px] font-semibold leading-5 text-foreground transition-smooth group-hover:text-primary">
+                      <h3 className="text-[14.5px] font-semibold leading-5 text-foreground transition-smooth group-hover:text-primary md:text-[15px]">
                       {item.title}
                       </h3>
-                      <p className="text-[12.5px] font-medium leading-5 text-muted-foreground">
+                      <p className="text-[12.25px] font-medium leading-5 text-muted-foreground md:text-[12.5px]">
                         {item.author}
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-3 md:justify-end">
+                    <div className="flex items-center gap-2 md:justify-end md:gap-3">
                       <Collapsible open={isExpanded} onOpenChange={(open) => {
                         setExpandedAbstracts(prev => {
                           const newSet = new Set(prev);
@@ -389,7 +389,7 @@ const CuratedInsights = () => {
                     });
                   }}>
                     <CollapsibleContent className="mt-3">
-                      <p className="rounded-[2px] bg-secondary/30 p-3 text-[12.5px] leading-5 text-muted-foreground">
+                      <p className="rounded-[2px] bg-secondary/30 p-2.5 text-[12.25px] leading-5 text-muted-foreground md:p-3 md:text-[12.5px]">
                         {item.abstract}
                       </p>
                     </CollapsibleContent>

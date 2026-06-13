@@ -2,23 +2,31 @@ import professorPortrait from "@/assets/professor-portrait.jpg";
 
 const Hero = () => {
   return (
-    <section id="home" className="px-5 pb-10 pt-24 md:px-6 md:pb-12 md:pt-28 scroll-mt-24">
-      <div className="mx-auto grid max-w-[940px] gap-9 md:grid-cols-[1fr_250px] md:items-start">
-        <div className="space-y-5">
-          <div className="space-y-2">
+    <section id="home" className="px-4 pb-8 pt-20 md:px-6 md:pb-12 md:pt-28 scroll-mt-24">
+      <div className="mx-auto grid max-w-[940px] gap-7 md:grid-cols-[1fr_250px] md:items-start md:gap-9">
+        <div className="space-y-4 md:space-y-5">
+          <div className="space-y-2.5">
             <p className="text-[12.5px] font-semibold text-muted-foreground">
               Assistant Professor of Strategy, IE Business School
             </p>
-            <h1 className="text-[32px] font-semibold leading-[1.12] text-foreground md:text-[38px]">
+            <h1 className="text-[30px] font-semibold leading-[1.12] text-foreground md:text-[38px]">
               Danilo Messinese
             </h1>
-            <p className="max-w-[620px] text-[14.5px] leading-[1.65] text-muted-foreground">
+            <p className="max-w-[620px] text-[14px] leading-[1.55] text-muted-foreground md:text-[14.5px] md:leading-[1.65]">
               I study how data and artificial intelligence shape strategic decision-making,
               innovation, and entrepreneurship.
             </p>
           </div>
 
-          <div className="max-w-[660px] space-y-3 text-[14px] leading-[1.65] text-foreground/85">
+          <div className="md:hidden">
+            <img
+              src={professorPortrait}
+              alt="Danilo Messinese"
+              className="aspect-[4/5] w-full max-w-[220px] rounded-[2px] object-cover shadow-elegant"
+            />
+          </div>
+
+          <div className="max-w-[660px] space-y-2.5 text-[13.5px] leading-[1.55] text-foreground/85 md:space-y-3 md:text-[14px] md:leading-[1.65]">
             <p>
               My research examines how human decision-makers and algorithms learn, reason, and
               adapt under uncertainty. I combine experimental and computational methods to study
@@ -40,7 +48,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <aside className="space-y-3 md:pt-1">
+        <aside className="hidden space-y-3 md:block md:pt-1">
           <img
             src={professorPortrait}
             alt="Danilo Messinese"

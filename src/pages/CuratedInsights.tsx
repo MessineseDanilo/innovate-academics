@@ -29,7 +29,7 @@ const CuratedInsightsPage = () => {
         <meta name="twitter:image" content="https://www.danilomessinese.com/opengraph.png" />
       </Helmet>
       <Navigation />
-      <main className="pt-20">
+      <main className="pt-14 md:pt-20">
         <CuratedInsights />
       </main>
       <Footer />

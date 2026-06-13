@@ -131,13 +131,13 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   };
 
   const renderPublication = (paper: Publication) => (
-    <article key={paper.title} className="border-b border-border py-5 last:border-b-0">
-      <div className="grid gap-2 md:grid-cols-[88px_1fr]">
+    <article key={paper.title} className="border-b border-border py-4 last:border-b-0 md:py-5">
+      <div className="grid gap-1.5 md:grid-cols-[88px_1fr] md:gap-2">
         <div className="text-[12.5px] font-medium text-muted-foreground">{paper.year}</div>
-        <div className="space-y-2.5">
+        <div className="space-y-2 md:space-y-2.5">
           <div>
-            <h3 className="text-[15.5px] font-semibold leading-6 text-foreground">{paper.title}</h3>
-            <p className="mt-1.5 text-[12.5px] leading-5 text-muted-foreground">{paper.authors}</p>
+            <h3 className="text-[15px] font-semibold leading-[1.45] text-foreground md:text-[15.5px] md:leading-6">{paper.title}</h3>
+            <p className="mt-1 text-[12.5px] leading-5 text-muted-foreground md:mt-1.5">{paper.authors}</p>
             <p className="mt-0.5 text-[12.5px] font-semibold leading-5 text-foreground">{paper.journal}</p>
           </div>
 
@@ -150,7 +150,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-x-3 gap-y-1">
             {paper.abstract && (
               <Button variant="ghost" size="sm" onClick={() => toggleAbstract(paper.title)} className="h-8 px-0">
                 <FileText className="mr-2 h-4 w-4" />
@@ -176,7 +176,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
           </div>
 
           {paper.abstract && expandedAbstracts.has(paper.title) && (
-            <p className="max-w-3xl text-[13px] leading-6 text-foreground/75">{paper.abstract}</p>
+            <p className="max-w-3xl text-[12.75px] leading-5 text-foreground/75 md:text-[13px] md:leading-6">{paper.abstract}</p>
           )}
         </div>
       </div>
@@ -188,9 +188,9 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   const filteredProgress = filterPublications(workInProgress);
 
   return (
-    <section id="research" className="px-5 py-10 md:px-6 md:py-12 scroll-mt-24">
+    <section id="research" className="px-4 py-8 md:px-6 md:py-12 scroll-mt-24">
       <div className="mx-auto max-w-[1040px]">
-        <div className="grid gap-10 md:grid-cols-[190px_1fr]">
+        <div className="grid gap-6 md:grid-cols-[190px_1fr] md:gap-10">
           <div>
             <h2 className="text-[19px] font-semibold text-foreground">Research</h2>
             <p className="mt-2.5 text-[12.5px] leading-5 text-muted-foreground">
@@ -201,7 +201,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
             </p>
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-4 md:space-y-5">
             {activeFilter && onClearFilter && (
               <div className="flex flex-wrap items-center gap-3">
                 <Badge variant="default">Filtered by {categoryLabels[activeFilter] || activeFilter}</Badge>
@@ -214,9 +214,15 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
 
             <Tabs value={activeTab} onValueChange={setActiveTab}>
               <TabsList className="h-auto w-full justify-start overflow-x-auto rounded-sm bg-muted p-1">
-                <TabsTrigger value="publications">Peer-Reviewed</TabsTrigger>
-                <TabsTrigger value="working">Working Papers</TabsTrigger>
-                <TabsTrigger value="progress">Work in Progress</TabsTrigger>
+                <TabsTrigger value="publications" className="px-2 py-1.5 text-[11.5px] leading-tight sm:text-[12px]">
+                  Peer-Reviewed
+                </TabsTrigger>
+                <TabsTrigger value="working" className="px-2 py-1.5 text-[11.5px] leading-tight sm:text-[12px]">
+                  Working Papers
+                </TabsTrigger>
+                <TabsTrigger value="progress" className="px-2 py-1.5 text-[11.5px] leading-tight sm:text-[12px]">
+                  Work in Progress
+                </TabsTrigger>
               </TabsList>
 
               <TabsContent value="publications" className="mt-2">
