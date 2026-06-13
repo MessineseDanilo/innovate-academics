@@ -3,7 +3,20 @@ import professorPortrait from "@/assets/professor-portrait.jpg";
 const Hero = () => {
   return (
     <section id="home" className="px-4 pb-8 pt-20 md:px-6 md:pb-12 md:pt-28 scroll-mt-24">
-      <div className="mx-auto grid max-w-[1160px] gap-7 md:grid-cols-[1fr_300px] md:items-start md:gap-12">
+      <div className="mx-auto grid max-w-[1160px] gap-7 md:grid-cols-[300px_1fr] md:items-start md:gap-12">
+        <aside className="hidden space-y-3 md:block md:pt-1">
+          <img
+            src={professorPortrait}
+            alt="Danilo Messinese"
+            className="aspect-[4/5] w-full max-w-[300px] rounded-[2px] object-cover shadow-elegant"
+          />
+          <div className="max-w-[300px] space-y-1 text-[12.5px] leading-5 text-muted-foreground">
+            <p className="font-medium text-foreground">IE Business School</p>
+            <p>Strategy Department</p>
+            <p>IE Tower, Office 22.09</p>
+          </div>
+        </aside>
+
         <div className="space-y-4 md:space-y-5">
           <div className="space-y-2.5">
             <p className="text-[12.5px] font-semibold text-muted-foreground">
@@ -48,18 +61,6 @@ const Hero = () => {
           </div>
         </div>
 
-        <aside className="hidden space-y-3 md:block md:pt-1">
-          <img
-            src={professorPortrait}
-            alt="Danilo Messinese"
-            className="aspect-[4/5] w-full max-w-[300px] rounded-[2px] object-cover shadow-elegant"
-          />
-          <div className="max-w-[300px] space-y-1 text-[12.5px] leading-5 text-muted-foreground">
-            <p className="font-medium text-foreground">IE Business School</p>
-            <p>Strategy Department</p>
-            <p>IE Tower, Office 22.09</p>
-          </div>
-        </aside>
       </div>
     </section>
   );
