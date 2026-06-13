@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Podcast, FileText, Newspaper, Filter, ChevronDown, ChevronUp, Calendar } from "lucide-react";
+import { ExternalLink, Podcast, FileText, Newspaper, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { format } from "date-fns";
@@ -242,81 +242,73 @@ const CuratedInsights = () => {
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="mb-6 space-y-2.5 animate-fade-in md:mb-7">
-          {/* Type Filter */}
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-            <Filter size={16} className="text-muted-foreground hidden sm:block" />
-            <Filter size={14} className="text-muted-foreground sm:hidden" />
-            <span className="text-[12px] font-semibold text-foreground">Type:</span>
-            <Button
-              variant={selectedType === null ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedType(null)}
-              className="h-7 px-2.5 text-[11.5px] sm:text-[12px]"
-            >
-              All
-            </Button>
-            {types.map((type) => (
-              <Button
-                key={type.value}
-                variant={selectedType === type.value ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedType(type.value)}
-                className="h-7 gap-1.5 px-2.5 text-[11.5px] sm:text-[12px]"
-              >
-                <type.icon size={12} className="sm:w-3.5 sm:h-3.5" />
-                <span className="hidden sm:inline">{type.label}</span>
-                <span className="sm:hidden">{type.value === "paper" ? "Paper" : type.value === "podcast" ? "Podcast" : "Article"}</span>
-              </Button>
-            ))}
-          </div>
+        <div className="mb-6 flex flex-col gap-2 border-y border-border/70 py-3 animate-fade-in sm:flex-row sm:flex-wrap sm:items-center md:mb-7">
+          <Select
+            value={selectedType || "all"}
+            onValueChange={(value) => setSelectedType(value === "all" ? null : value)}
+          >
+            <SelectTrigger className="h-8 w-full bg-background text-[12px] sm:w-[164px]">
+              <SelectValue placeholder="All types" />
+            </SelectTrigger>
+            <SelectContent className="z-50 bg-background">
+              <SelectItem value="all">All types</SelectItem>
+              {types.map((type) => (
+                <SelectItem key={type.value} value={type.value}>
+                  {type.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
-          {/* Topic Filter */}
-          <div className="flex items-center gap-2">
-            <Filter size={16} className="text-muted-foreground hidden sm:block" />
-            <Filter size={14} className="text-muted-foreground sm:hidden" />
-            <span className="text-[12px] font-semibold text-foreground">Topic:</span>
-            <Select
-              value={selectedTopic || "all"}
-              onValueChange={(value) => setSelectedTopic(value === "all" ? null : value)}
-            >
-            <SelectTrigger className="h-7 w-[160px] bg-background text-[12px] sm:w-[170px]">
-                <SelectValue placeholder="All topics" />
-              </SelectTrigger>
-              <SelectContent className="bg-background z-50">
-                <SelectItem value="all">All topics</SelectItem>
-                {topics.map((topic) => (
-                  <SelectItem key={topic} value={topic}>
-                    {topic}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+          <Select
+            value={selectedTopic || "all"}
+            onValueChange={(value) => setSelectedTopic(value === "all" ? null : value)}
+          >
+            <SelectTrigger className="h-8 w-full bg-background text-[12px] sm:w-[184px]">
+              <SelectValue placeholder="All topics" />
+            </SelectTrigger>
+            <SelectContent className="z-50 bg-background">
+              <SelectItem value="all">All topics</SelectItem>
+              {topics.map((topic) => (
+                <SelectItem key={topic} value={topic}>
+                  {topic}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
-          {/* Sort Order Filter */}
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-            <Calendar size={16} className="text-muted-foreground hidden sm:block" />
-            <Calendar size={14} className="text-muted-foreground sm:hidden" />
-            <span className="text-[12px] font-semibold text-foreground">Sort by:</span>
+          <div className="flex h-8 rounded-sm border border-input bg-background p-0.5 sm:ml-auto">
             <Button
-              variant={sortOrder === "newest" ? "default" : "outline"}
+              variant={sortOrder === "newest" ? "secondary" : "ghost"}
               size="sm"
               onClick={() => setSortOrder("newest")}
-              className="h-7 px-2.5 text-[11.5px] sm:text-[12px]"
+              className="h-7 flex-1 px-2.5 text-[11.5px] sm:flex-none sm:text-[12px]"
             >
               Newest
             </Button>
             <Button
-              variant={sortOrder === "oldest" ? "default" : "outline"}
+              variant={sortOrder === "oldest" ? "secondary" : "ghost"}
               size="sm"
               onClick={() => setSortOrder("oldest")}
-              className="h-7 px-2.5 text-[11.5px] sm:text-[12px]"
+              className="h-7 flex-1 px-2.5 text-[11.5px] sm:flex-none sm:text-[12px]"
             >
               Oldest
             </Button>
           </div>
+
+          {(selectedType || selectedTopic) && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                setSelectedType(null);
+                setSelectedTopic(null);
+              }}
+              className="h-8 px-0 text-[12px] text-muted-foreground hover:text-foreground sm:px-2"
+            >
+              Clear filters
+            </Button>
+          )}
         </div>
 
         <div className="space-y-3">
