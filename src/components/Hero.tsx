@@ -2,7 +2,7 @@ import professorPortrait from "@/assets/professor-portrait.jpg";
 
 const Hero = () => {
   return (
-    <section id="home" className="px-4 pb-8 pt-20 md:px-6 md:pb-12 md:pt-28 scroll-mt-24">
+    <section id="home" className="px-4 pb-8 pt-20 md:flex md:flex-1 md:items-center md:px-6 md:py-24 scroll-mt-24">
       <div className="mx-auto grid max-w-[1160px] gap-7 md:grid-cols-[360px_1fr] md:items-start md:gap-12">
         <aside className="hidden space-y-3 md:block md:pt-1">
           <img
