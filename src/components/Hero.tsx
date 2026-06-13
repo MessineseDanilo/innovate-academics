@@ -2,7 +2,7 @@ import professorPortrait from "@/assets/professor-portrait.jpg";
 
 const Hero = () => {
   return (
-    <section id="home" className="scroll-mt-24 px-4 pb-8 pt-20 md:flex md:flex-1 md:items-start md:px-8 md:pb-4 md:pt-[72px]">
+    <section id="home" className="scroll-mt-24 px-4 pb-8 pt-20 md:flex md:flex-1 md:items-center md:px-8 md:pb-4 md:pt-[72px]">
       <div className="mx-auto w-full max-w-[1160px]">
         <div className="grid gap-7 md:grid-cols-[minmax(320px,350px)_minmax(0,1fr)] md:items-start md:gap-12 lg:gap-[86px]">
           <aside>
