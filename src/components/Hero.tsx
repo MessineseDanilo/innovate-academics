@@ -32,8 +32,8 @@ const Hero = () => {
               Danilo is a professor in the strategy area at IE Business School.
               His research focuses on how data and artificial intelligence (AI) impact firm and
               startup decisions, and the implications for how they navigate and shape the
-              information landscape to innovate. He combines experimental and formal models to
-              study these questions.
+              information landscape to innovate. He usually leverages field experiments and formal
+              models to explore these questions.
             </p>
             <p>
               Danilo holds degrees in Theoretical Physics and Mathematical Finance from the University of
