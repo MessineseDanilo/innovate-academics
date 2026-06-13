@@ -131,53 +131,58 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   };
 
   const renderPublication = (paper: Publication) => (
-    <article key={paper.title} className="border-b border-border py-4 last:border-b-0 md:py-6">
-      <div className="grid gap-1.5 md:grid-cols-[72px_minmax(0,1fr)_150px] md:gap-8">
-        <div className="text-[12.5px] font-medium text-foreground md:pt-0.5">{paper.year}</div>
-        <div className="space-y-2 md:space-y-3">
+    <article key={paper.title} className="border-b border-border py-5 last:border-b-0 md:py-7">
+      <div className="grid gap-2 md:grid-cols-[96px_minmax(0,1fr)] md:gap-10 xl:grid-cols-[112px_minmax(0,1fr)]">
+        <div className="text-[14px] font-medium leading-6 text-foreground md:pt-0.5 md:text-[15px]">{paper.year}</div>
+        <div className="space-y-3 md:space-y-3.5">
           <div>
-            <h3 className="max-w-[900px] text-[15px] font-semibold leading-[1.45] text-foreground md:text-[17px] md:leading-7">
+            <h3 className="text-[17px] font-semibold leading-[1.42] text-foreground md:text-[20px] md:leading-8">
               {paper.title}
             </h3>
-            <p className="mt-1 text-[12.5px] leading-5 text-foreground md:mt-1.5 md:text-[13px]">{paper.authors}</p>
-            <p className="mt-0.5 text-[12.5px] font-semibold leading-5 text-foreground md:text-[13px]">{paper.journal}</p>
+            <p className="mt-1.5 text-[14px] leading-6 text-foreground md:text-[15px]">{paper.authors}</p>
+            <p className="mt-0.5 text-[14px] font-semibold leading-6 text-foreground md:text-[15px]">{paper.journal}</p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            {paper.status && <Badge variant="outline">{paper.status}</Badge>}
+          <div className="flex flex-wrap items-center gap-2.5">
+            {paper.status && (
+              <Badge variant="outline" className="text-[13px] md:text-[14px]">
+                {paper.status}
+              </Badge>
+            )}
             {paper.categories.map((category) => (
-              <Badge key={category} variant="secondary">
+              <Badge key={category} variant="secondary" className="text-[13px] md:text-[14px]">
                 {categoryLabels[category] || category}
               </Badge>
             ))}
           </div>
 
+          <div className="flex flex-wrap gap-x-5 gap-y-1">
+            {paper.abstract && (
+              <Button variant="ghost" size="sm" onClick={() => toggleAbstract(paper.title)} className="h-8 px-0 text-[14px] md:text-[15px]">
+                <FileText className="mr-2 h-4 w-4" />
+                {expandedAbstracts.has(paper.title) ? "Hide abstract" : "Abstract"}
+              </Button>
+            )}
+            {paper.ssrnLink && (
+              <Button variant="ghost" size="sm" asChild className="h-8 px-0 text-[14px] md:text-[15px]">
+                <a href={paper.ssrnLink} target="_blank" rel="noopener noreferrer">
+                  SSRN
+                  <ExternalLink className="ml-2 h-3.5 w-3.5" />
+                </a>
+              </Button>
+            )}
+            {paper.journalLink && (
+              <Button variant="ghost" size="sm" asChild className="h-8 px-0 text-[14px] md:text-[15px]">
+                <a href={paper.journalLink} target="_blank" rel="noopener noreferrer">
+                  Journal
+                  <ExternalLink className="ml-2 h-3.5 w-3.5" />
+                </a>
+              </Button>
+            )}
+          </div>
+
           {paper.abstract && expandedAbstracts.has(paper.title) && (
-            <p className="max-w-[980px] text-[12.75px] leading-5 text-foreground md:text-[13.5px] md:leading-6">{paper.abstract}</p>
-          )}
-        </div>
-        <div className="flex flex-wrap gap-x-3 gap-y-1 md:flex-col md:items-start md:pt-0.5">
-          {paper.abstract && (
-            <Button variant="ghost" size="sm" onClick={() => toggleAbstract(paper.title)} className="h-8 px-0 text-[13px]">
-              <FileText className="mr-2 h-4 w-4" />
-              {expandedAbstracts.has(paper.title) ? "Hide abstract" : "Abstract"}
-            </Button>
-          )}
-          {paper.ssrnLink && (
-            <Button variant="ghost" size="sm" asChild className="h-8 px-0 text-[13px]">
-              <a href={paper.ssrnLink} target="_blank" rel="noopener noreferrer">
-                SSRN
-                <ExternalLink className="ml-2 h-3.5 w-3.5" />
-              </a>
-            </Button>
-          )}
-          {paper.journalLink && (
-            <Button variant="ghost" size="sm" asChild className="h-8 px-0 text-[13px]">
-              <a href={paper.journalLink} target="_blank" rel="noopener noreferrer">
-                Journal
-                <ExternalLink className="ml-2 h-3.5 w-3.5" />
-              </a>
-            </Button>
+            <p className="max-w-[1240px] text-[14px] leading-6 text-foreground md:text-[15px] md:leading-7">{paper.abstract}</p>
           )}
         </div>
       </div>
@@ -189,17 +194,17 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
   const filteredProgress = filterPublications(workInProgress);
 
   return (
-    <section id="research" className="scroll-mt-24 px-4 py-8 md:px-8 md:py-12">
-      <div className="mx-auto max-w-[1360px]">
-        <div className="space-y-8 md:space-y-10">
-          <div className="border-b border-border pb-6 md:grid md:grid-cols-[minmax(0,1fr)_320px] md:items-end md:gap-12">
-            <div className="max-w-[760px]">
-              <h2 className="text-[24px] font-semibold leading-tight text-foreground md:text-[31px]">Research</h2>
-              <p className="mt-3 text-[13.5px] leading-6 text-foreground md:text-[15px]">
+    <section id="research" className="scroll-mt-24 px-4 py-8 md:px-[clamp(48px,6vw,120px)] md:py-12">
+      <div className="w-full">
+        <div className="space-y-8 md:space-y-9">
+          <div className="border-b border-border pb-6 md:grid md:grid-cols-[minmax(0,1fr)_420px] md:items-end md:gap-16">
+            <div className="max-w-[920px]">
+              <h2 className="text-[28px] font-semibold leading-tight text-foreground md:text-[38px]">Research</h2>
+              <p className="mt-4 text-[15px] leading-7 text-foreground md:text-[18px]">
                 Peer-reviewed articles, working papers, and selected projects.
               </p>
             </div>
-            <p className="mt-3 max-w-[360px] text-[12px] leading-5 text-foreground md:mt-0 md:justify-self-end">
+            <p className="mt-3 max-w-[420px] text-[13.5px] leading-6 text-foreground md:mt-0 md:justify-self-end md:text-[15px]">
               Unless otherwise noted, authors are listed alphabetically.
             </p>
           </div>
@@ -216,22 +221,22 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
             )}
 
             <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="h-auto w-full justify-start gap-6 overflow-x-auto rounded-none border-b border-border bg-transparent p-0">
+              <TabsList className="h-auto w-full justify-start gap-8 overflow-x-auto rounded-none border-b border-border bg-transparent p-0">
                 <TabsTrigger
                   value="publications"
-                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-3 text-[12.5px] leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none sm:text-[13px]"
+                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[15px] leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[16px]"
                 >
                   Peer-Reviewed
                 </TabsTrigger>
                 <TabsTrigger
                   value="working"
-                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-3 text-[12.5px] leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none sm:text-[13px]"
+                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[15px] leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[16px]"
                 >
                   Working Papers
                 </TabsTrigger>
                 <TabsTrigger
                   value="progress"
-                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-3 text-[12.5px] leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none sm:text-[13px]"
+                  className="rounded-none border-b-2 border-transparent bg-transparent px-0 py-4 text-[15px] leading-tight shadow-none data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none md:text-[16px]"
                 >
                   Work in Progress
                 </TabsTrigger>
