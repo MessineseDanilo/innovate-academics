@@ -32,7 +32,7 @@ const Hero = () => {
               </p>
               <p>
                 Danilo holds degrees in Theoretical Physics and Mathematical Finance from the University of
-                Bologna, and a Ph.D. in Management from Bocconi University. Before academia, he worked
+                Bologna, and a Ph.D. in Technology Innovation Management from Bocconi University. Before academia, he worked
                 at Bain & Company and UniCredit Group. He co-organizes{" "}
                 <a
                   href="https://www.ie.edu/iestrat/"
