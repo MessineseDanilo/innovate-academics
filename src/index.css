@@ -126,6 +126,10 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  #research .bg-secondary.rounded-full {
+    display: none;
+  }
+
   .transition-smooth {
     transition: var(--transition-smooth);
   }
