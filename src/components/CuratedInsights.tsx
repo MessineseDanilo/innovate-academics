@@ -246,7 +246,7 @@ const CuratedInsights = () => {
   return (
     <section id="curated-insights" className="bg-secondary/20 px-4 py-9 md:px-6 md:py-14">
       <div className="mx-auto max-w-[1160px]">
-        <div className="mb-6 max-w-3xl animate-fade-in md:mb-7">
+        <div className="mb-6 max-w-3xl md:mb-7">
           <h2 className="mb-2 text-[22px] font-semibold leading-tight text-foreground md:text-[24px]">
             Curated Insights
           </h2>
@@ -255,7 +255,7 @@ const CuratedInsights = () => {
           </p>
         </div>
 
-        <div className="mb-6 flex flex-col gap-2 border-y border-border/70 py-3 animate-fade-in sm:flex-row sm:flex-wrap sm:items-center md:mb-7">
+        <div className="mb-6 flex flex-col gap-2 border-y border-border/70 py-3 sm:flex-row sm:flex-wrap sm:items-center md:mb-7">
           <Select
             value={selectedType || "all"}
             onValueChange={(value) => setSelectedType(value === "all" ? null : value)}
@@ -331,8 +331,7 @@ const CuratedInsights = () => {
             return (
               <Card
                 key={index}
-                className="group rounded-[2px] border border-border/70 transition-smooth hover:shadow-elegant animate-fade-in"
-                style={{ animationDelay: `${index * 50}ms` }}
+                className="group rounded-[2px] border border-border/70 transition-colors"
               >
                 <CardContent className="p-3.5 md:p-4">
                   <div className="grid gap-2.5 md:grid-cols-[1fr_170px] md:items-start md:gap-6">
