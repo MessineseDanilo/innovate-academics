@@ -176,7 +176,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
           </div>
 
           {paper.abstract && expandedAbstracts.has(paper.title) && (
-            <p className="max-w-[820px] text-[12.75px] leading-5 text-foreground/75 md:text-[13px] md:leading-6">{paper.abstract}</p>
+            <p className="max-w-[820px] text-[12.75px] leading-5 text-foreground md:text-[13px] md:leading-6">{paper.abstract}</p>
           )}
         </div>
       </div>
