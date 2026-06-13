@@ -149,11 +149,6 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
                 {paper.status}
               </Badge>
             )}
-            {paper.categories.map((category) => (
-              <Badge key={category} variant="secondary" className="text-[13px] md:text-[14px]">
-                {categoryLabels[category] || category}
-              </Badge>
-            ))}
           </div>
 
           <div className="flex flex-wrap gap-x-5 gap-y-1">
