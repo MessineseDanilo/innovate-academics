@@ -22,7 +22,7 @@ const Hero = () => {
               Danilo Messinese
             </h1>
 
-            <div className="space-y-2.5 text-[14.5px] leading-[1.52] md:space-y-2 md:text-[15px] md:leading-[1.4] md:[text-align:justify]">
+            <div className="space-y-2.5 text-[14.5px] leading-[1.52] [text-align:justify] md:space-y-2 md:text-[15px] md:leading-[1.4]">
               <p>
                 Danilo is a professor in the strategy area at IE Business School.
                 His research focuses on how data and artificial intelligence (AI) impact firm and
