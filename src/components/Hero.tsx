@@ -2,22 +2,22 @@ import professorPortrait from "@/assets/professor-portrait.jpg";
 
 const Hero = () => {
   return (
-    <section id="home" className="scroll-mt-24 px-4 pb-8 pt-20 md:flex md:flex-1 md:items-center md:px-8 md:py-20">
-      <div className="mx-auto w-full max-w-[1440px] space-y-8 md:space-y-10">
-        <h1 className="text-[30px] font-normal leading-[1.12] text-foreground md:text-[46px]">
+    <section id="home" className="scroll-mt-24 px-4 pb-8 pt-20 md:flex md:flex-1 md:items-start md:px-8 md:pb-4 md:pt-[72px]">
+      <div className="mx-auto w-full max-w-[1440px] space-y-7 md:space-y-5">
+        <h1 className="text-[30px] font-normal leading-[1.12] text-foreground md:text-[38px]">
           Danilo Messinese
         </h1>
 
-        <div className="grid gap-7 md:grid-cols-[minmax(420px,520px)_minmax(0,1fr)] md:items-start md:gap-12 lg:gap-16">
+        <div className="grid gap-7 md:grid-cols-[minmax(320px,350px)_minmax(0,1fr)] md:items-start md:gap-12 lg:gap-16">
           <aside>
             <img
               src={professorPortrait}
               alt="Danilo Messinese"
-              className="aspect-[4/5] w-full max-w-[260px] rounded-[2px] object-cover shadow-elegant md:max-w-[520px]"
+              className="aspect-[4/5] w-full max-w-[260px] rounded-[2px] object-cover shadow-elegant md:max-w-[350px]"
             />
           </aside>
 
-          <div className="max-w-[760px] space-y-3 text-[14px] leading-[1.55] text-foreground md:pt-3 md:text-[15.5px] md:leading-[1.52] md:[text-align:justify]">
+          <div className="max-w-[840px] space-y-2 text-[14px] leading-[1.55] text-foreground md:pt-1 md:text-[15px] md:leading-[1.4] md:[text-align:justify]">
             <p>
               Danilo is a professor in the strategy area at IE Business School.
               His research focuses on how data and artificial intelligence (AI) impact firm and
