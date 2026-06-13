@@ -22,10 +22,6 @@ const Hero = () => {
             <h1 className="text-[30px] font-semibold leading-[1.12] text-foreground md:text-[38px]">
               Danilo Messinese
             </h1>
-            <p className="max-w-[720px] text-[14px] leading-[1.55] text-muted-foreground md:text-[14.5px] md:leading-[1.65]">
-              I study how human and artificial intelligence shape strategic decision-making,
-              innovation, and entrepreneurship.
-            </p>
           </div>
 
           <div className="md:hidden">
