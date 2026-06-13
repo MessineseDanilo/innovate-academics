@@ -247,7 +247,7 @@ const CuratedInsights = () => {
     <section id="curated-insights" className="bg-background px-5 py-9 md:px-[clamp(48px,6vw,120px)] md:py-12">
       <div className="mx-auto max-w-[1160px]">
         <div className="mb-6 max-w-3xl border-b border-border pb-5 md:mb-7">
-          <h2 className="mb-3 text-[32px] font-normal leading-[1.08] text-foreground md:text-[38px]">
+          <h2 className="mb-3 text-[32px] font-light leading-[1.08] text-foreground md:text-[38px]">
             Curated Insights
           </h2>
           <p className="text-[14.5px] leading-6 text-foreground md:text-[15px] md:leading-[1.4]">

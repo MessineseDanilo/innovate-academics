@@ -194,7 +194,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
         <div className="space-y-6 md:space-y-8">
           <div className="border-b border-border pb-5 md:grid md:grid-cols-[minmax(0,1fr)_420px] md:items-end md:gap-16">
             <div className="max-w-[920px]">
-              <h2 className="text-[32px] font-normal leading-[1.08] text-foreground md:text-[38px]">Research</h2>
+              <h2 className="text-[32px] font-light leading-[1.08] text-foreground md:text-[38px]">Research</h2>
               <p className="mt-3 text-[14.5px] leading-6 text-foreground md:text-[17px] md:leading-7">
                 Peer-reviewed articles, working papers, and selected projects.
               </p>
