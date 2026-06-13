@@ -190,7 +190,7 @@ const Publications = ({ activeFilter = null, onClearFilter }: PublicationsProps 
 
   return (
     <section id="research" className="scroll-mt-24 px-4 py-8 md:px-[clamp(48px,6vw,120px)] md:py-12">
-      <div className="w-full">
+      <div className="mx-auto w-full max-w-[1160px]">
         <div className="space-y-7 md:space-y-8">
           <div className="border-b border-border pb-5 md:grid md:grid-cols-[minmax(0,1fr)_420px] md:items-end md:gap-16">
             <div className="max-w-[920px]">
