@@ -26,7 +26,7 @@ const Hero = () => {
               Danilo Messinese
             </h1>
             <p className="max-w-[720px] text-[14px] leading-[1.55] text-muted-foreground md:text-[14.5px] md:leading-[1.65]">
-              I study how data and artificial intelligence shape strategic decision-making,
+              I study how human and artificial intelligence shape strategic decision-making,
               innovation, and entrepreneurship.
             </p>
           </div>
@@ -41,22 +41,16 @@ const Hero = () => {
 
           <div className="max-w-[760px] space-y-2.5 text-[13.5px] leading-[1.55] text-foreground/85 md:space-y-3 md:text-[14px] md:leading-[1.65]">
             <p>
-              My research examines how human decision-makers and algorithms learn, reason, and
-              adapt under uncertainty. I combine experimental and computational methods to study
-              entrepreneurial strategy, theory-based reasoning, causal machine learning, and the
-              role of anomalies in discovery and innovation.
+              My research focuses on how data and artificial intelligence (AI) impact firm
+              decisions, and the implications for how firms and startups navigate and shape their
+              information landscape. I combine experimental and formal models to study these
+              questions.
             </p>
             <p>
-              Viewing social scientific and business theories as causal structures, I investigate
-              how AI can support managers, entrepreneurs, and scientists in challenging existing
-              explanations through surprising evidence and generating new hypotheses. My work has
-              appeared in leading management journals and has been featured in Harvard Business
-              Review.
-            </p>
-            <p>
-              Before academia, I worked at Bain & Company and UniCredit. I hold degrees in Physics,
-              Theoretical Physics, and Mathematical Finance from the University of Bologna, and a
-              Ph.D. in Management from Bocconi University.
+              I hold degrees in Theoretical Physics and Mathematical Finance from the University of
+              Bologna, and a Ph.D. in Management from Bocconi University. Before academia, I worked
+              at Bain & Company and UniCredit Group. I co-organize IEStrat, an annual conference on
+              strategy and AI at IE Business School.
             </p>
           </div>
         </div>
