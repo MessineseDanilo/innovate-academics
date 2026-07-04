@@ -15,7 +15,7 @@ const Contact = () => {
     {
       icon: FileDown,
       label: "CV",
-      href: "/Messinese Danilo_Academic_cv_October 2025.pdf",
+      href: "/Messinese Danilo_Academic_cv_Jul 26.pdf",
     },
   ];
 
